@@ -36,4 +36,7 @@ export class InvestorPage {
     alert('WithDrawal Request Send Successful!');
     this.showWithdrawPopup = false;
   }
+  createAccount() {
+    this.router.navigate(['/investor-details-page'])
+  }
 }

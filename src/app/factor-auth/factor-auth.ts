@@ -34,7 +34,7 @@ export class FactorAuth implements AfterViewInit {
       .subscribe({
         next: () => {
           alert('Verified Successfully');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/dashboard']);
         },
         error: () => {
           alert('Invalid DOB or PAN');

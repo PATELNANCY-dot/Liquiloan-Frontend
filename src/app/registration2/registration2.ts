@@ -40,7 +40,11 @@ export class Registration2 {
         ]
       ],
 
-      dob: ['', Validators.required],
+    //  dob: ['', [Validators.required,],
+      dob: ['', [Validators.required, this.ageValidator]],
+
+    
+
 
       aadhar: [
         '',
@@ -95,6 +99,27 @@ export class Registration2 {
     const savedData = JSON.parse(localStorage.getItem('clientRegistration') || '{}');
     this.registrationForm.patchValue(savedData);
   }
+
+  //age validater
+  ageValidator(control: any) {
+
+    if (!control.value) return null;
+
+    const parts = control.value.split('-');
+    const dob = new Date(parts[2], parts[1] - 1, parts[0]);
+
+    const today = new Date();
+
+    let age = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    return age >= 18 ? null : { underAge: true };
+  }
+  //
 
   ngOnInit() {
     this.loadCountries();

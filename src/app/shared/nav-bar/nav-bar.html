@@ -25,30 +25,20 @@
              (click)="accountDropdownOpen = !accountDropdownOpen">
             <i class="bi bi-person-circle"></i> Account
           </a>
-          
 
-          <ul class="dropdown-menu"
-              [ngClass]="{'show': accountDropdownOpen}">
-            <li><a class="dropdown-item" routerLink="/changepassword"> <i class="bi bi-chevron-right me-2"></i> Change Password</a></li>
-            <li><a class="dropdown-item" routerLink="/manage-account"> <i class="bi bi-chevron-right me-2"></i> Manage Account</a></li>
-            <li><a class="dropdown-item" routerLink="/change-nominee"> <i class="bi bi-chevron-right me-2"></i> Add & View Nominee</a></li>
+        
+          <ul class="dropdown-menu" [ngClass]="{'show': accountDropdownOpen}">
+            <li><a class="dropdown-item" routerLink="/changepassword"><i class="bi bi-chevron-right me-2"></i> Change Password</a></li>
+            <li><a class="dropdown-item" routerLink="/manage-account"><i class="bi bi-chevron-right me-2"></i> Manage Account</a></li>
+            <li><a class="dropdown-item" routerLink="/change-nominee"><i class="bi bi-chevron-right me-2"></i> Add & View Nominee</a></li>
           </ul>
         </li>
 
-        <!-- Reports -->
-        <li class="nav-item dropdown"
-            [ngClass]="{'show': reportDropdownOpen}">
-          <a class="nav-link dropdown-toggle"
-             href="javascript:void(0)"
-             (click)="reportDropdownOpen = !reportDropdownOpen">
-            <i class="bi bi-compass"></i> Investments
+        <!-- Investments -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/investor-page">
+            <i class="bi bi-compass"></i>   Investments
           </a>
-
-          <ul class="dropdown-menu"
-              [ngClass]="{'show': reportDropdownOpen}">
-            <li><a class="dropdown-item" routerLink="/investor-details-page"><i class="bi bi-chevron-right me-2"></i>Investor Details</a></li>
-            <li><a class="dropdown-item" routerLink="/investor-page"><i class="bi bi-chevron-right me-2"></i>Investor Page</a></li>
-          </ul>
         </li>
 
         <li class="nav-item">

@@ -39,7 +39,7 @@ export class Login {
         localStorage.setItem('userId', res.userId);
 
         setTimeout(() => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/factor-auth']);
         }, 50);
       },
       error: (err) => {

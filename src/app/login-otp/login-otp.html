@@ -15,49 +15,61 @@
 
         <!-- Mobile number -->
         <input class="textf"
-               type="text"
-               placeholder="Mobile Number" />
+               type="email"
+                name="email"
+               placeholder="email"
+               [(ngModel)]="email">
 
         <!-- OTP BOXES -->
         <div class="otp-container">
           <input type="text"
                  maxlength="1"
                  class="otp-input"
-                 (input)="moveNext($event)"
+                 (input)="moveNext($event); collectOtp()"
                  (keydown.backspace)="moveBack($event)" />
-          <input type="text" maxlength="1" class="otp-input"
-                 (input)="moveNext($event)"
+          <input type="text"
+                 maxlength="1"
+                 class="otp-input"
+                 (input)="moveNext($event); collectOtp()"
                  (keydown.backspace)="moveBack($event)" />
-          <input type="text" maxlength="1" class="otp-input"
-                 (input)="moveNext($event)"
+          <input type="text"
+                 maxlength="1"
+                 class="otp-input"
+                 (input)="moveNext($event); collectOtp()"
                  (keydown.backspace)="moveBack($event)" />
-          <input type="text" maxlength="1" class="otp-input"
-                 (input)="moveNext($event)"
+          <input type="text"
+                 maxlength="1"
+                 class="otp-input"
+                 (input)="moveNext($event); collectOtp()"
                  (keydown.backspace)="moveBack($event)" />
-          <input type="text" maxlength="1" class="otp-input"
-                 (input)="moveNext($event)"
+          <input type="text"
+                 maxlength="1"
+                 class="otp-input"
+                 (input)="moveNext($event); collectOtp()"
                  (keydown.backspace)="moveBack($event)" />
-          <input type="text" maxlength="1" class="otp-input"
-                 (input)="moveNext($event)"
+          <input type="text"
+                 maxlength="1"
+                 class="otp-input"
+                 (input)="moveNext($event); collectOtp()"
                  (keydown.backspace)="moveBack($event)" />
         </div>
 
         <br />
         <!-- RESEND -->
         <div style="text-align:center; margin-bottom:15px;">
-          <button type="button" (click)="generateOtp()" id="bt1">Resend</button>
+          <button type="button" id="bt1" (click)="sendOtp()">Resend</button>
         </div>
 
         <div class="links">
           <a routerLink="/forgot-password">Forgot password?</a>
-          <a routerLink="/login-otp" class="otp-link">Login with OTP</a>
+          <a routerLink="/login" class="otp-link">Login with password</a>
         </div>
         <br /><br />
 
         <!-- SUBMIT -->
-        <div style="text-align:center; margin-bottom:15px;">
-          <button type="button" (click)="verifyOtp()">Submit</button>
-        </div>
+              <div style="text-align:center; margin-bottom:15px;">
+                <button type="button" (click)="verifyOtp()">Submit</button>
+              </div>
       </form>
     </div>
 

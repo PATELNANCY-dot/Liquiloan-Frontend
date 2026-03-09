@@ -1,54 +1,41 @@
 import { Component } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
-
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [RouterLink, FormsModule, CommonModule, HttpClientModule],
   templateUrl: './login-otp.html',
   styleUrls: ['./login-otp.css']
 })
-
-
 export class LoginOtp {
-  [x: string]: any;
 
+  email: string = '';
   generatedOtp: string = '';
+  enteredOtp: string = '';
 
-  constructor(private router: Router) {
-    this.generateOtp();
+  constructor(private router: Router, private http: HttpClient) { }
+
+  // SEND OTP
+  sendOtp() {
+    this.http.post<any>('http://localhost:5048/api/send-otp', { email: this.email })
+      .subscribe(res => {
+        this.generatedOtp = res.otp;
+        alert("OTP sent to email");
+      });
   }
 
-  generateOtp() {
-    this.generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-    alert('Your OTP is: ' + this.generatedOtp);
-  }
-
+  // VERIFY OTP
   verifyOtp() {
-    const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
-    let enteredOtp = '';
-
-    inputs.forEach(input => {
-      enteredOtp += input.value;
-    });
-
-    if (enteredOtp.length !== 6) {
-      alert('Please enter complete OTP');
-      return;
-    }
-
-    if (enteredOtp === this.generatedOtp) {
-      alert('OTP Verified ✅');
+    if (this.enteredOtp === this.generatedOtp) {
+      alert("Login Successful");
       this.router.navigate(['/dashboard']);
     } else {
-      alert('Invalid OTP ❌');
+      alert("Invalid OTP");
     }
   }
-
-
-
 
   moveNext(event: any) {
     const input = event.target;
@@ -62,5 +49,13 @@ export class LoginOtp {
     if (!input.value && input.previousElementSibling) {
       input.previousElementSibling.focus();
     }
+  }
+
+  collectOtp() {
+    const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
+    this.enteredOtp = '';
+    inputs.forEach(input => {
+      this.enteredOtp += input.value;
+    });
   }
 }

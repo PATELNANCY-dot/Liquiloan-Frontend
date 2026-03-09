@@ -3,14 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\investment-page",
-    "\\src\\app\\investor-details-page",
-    "\\src\\app\\investor-page",
+    "\\src\\app\\change-nominee",
     "\\src\\app\\login-otp",
-    "\\src\\app\\manage-account",
-    "\\src\\app\\models",
-    "\\src\\app\\payment-page"
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\investor-details-page\\investor-details-page.html",
+  "SelectedNode": "\\src\\app\\login-otp\\login-otp.html",
   "PreviewInSolutionExplorer": false
 }

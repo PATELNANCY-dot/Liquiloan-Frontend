@@ -206,3 +206,11 @@ span b {
   color: #0b2c5f;
   font-size: 16px;
 }
+
+
+/* change-nominee.css */
+.cloned-form {
+  margin-top: 30px; /* Adjust gap as needed */
+  border-top: 1px solid #ccc; /* optional separator */
+  padding-top: 15px; /* optional padding */
+}

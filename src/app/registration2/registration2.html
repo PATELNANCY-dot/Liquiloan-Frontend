@@ -90,6 +90,12 @@
             <span class="calendar-icon" (click)="toggleCalendar()">
               <i class="bi bi-calendar3"></i>
             </span>
+
+          </div>
+
+          <div *ngIf="registrationForm.get('dob')?.touched && registrationForm.get('dob')?.errors?.['underAge']"
+               class="text-danger">
+            Must be at least 18 years old
           </div>
           <small class="text-danger"
                  *ngIf="registrationForm.get('dob')?.touched &&

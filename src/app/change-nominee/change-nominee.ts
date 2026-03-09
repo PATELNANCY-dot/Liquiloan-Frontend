@@ -127,6 +127,8 @@ checkMinor(dob: string) {
 
   nomineeFp: any;
   guardianFp: any;
+
+
   ngAfterViewInit(): void {
     this.nomineeFp = flatpickr(this.nomineeDobInput.nativeElement, {
       dateFormat: "d-m-Y",
@@ -170,5 +172,35 @@ checkMinor(dob: string) {
     });
   }
 
+  @ViewChild('nomineeContainer') nomineeContainer!: ElementRef;
+  cloneCount = 0; // keep track of clones
+  maxClones = 2;  // maximum 2 duplicates
 
+  // existing ngOnInit and other logic here...
+
+  addNomineeClone() {
+    if (this.cloneCount >= this.maxClones) return;
+
+    const original = this.nomineeContainer.nativeElement as HTMLElement;
+    const clone = original.cloneNode(true) as HTMLElement;
+
+    // Clear all input/select/textarea values
+    clone.querySelectorAll('input, select, textarea').forEach((el: any) => el.value = '');
+
+    // Change button text
+    const cloneButton = clone.querySelector('button.next-btn');
+    if (cloneButton) {
+      cloneButton.innerHTML = '<span><i class="bi bi-pencil-square"></i> EDIT NOMINEE</span>';
+    }
+
+    // Add CSS class for spacing
+    clone.classList.add('cloned-form');
+
+    // Append clone
+    const container = document.getElementById('clonedNomineesContainer');
+    if (container) {
+      container.appendChild(clone);
+      this.cloneCount++;
+    }
+  }
 }

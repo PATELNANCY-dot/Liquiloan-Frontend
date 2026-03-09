@@ -365,3 +365,22 @@ label {
 }
 
 
+/* ========================================
+   SOCIAL ICONS
+======================================== */
+
+.social-icons a {
+  background: #eef2f7;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+  color: #ff7a00;
+}
+
+  .social-icons a:hover {
+    background: #ff7a00;
+    color: white;
+  }
+
+
+

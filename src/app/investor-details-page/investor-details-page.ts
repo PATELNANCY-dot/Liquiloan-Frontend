@@ -67,5 +67,8 @@ export class InvestorDetailsPage {
     });
   }
 
+  back() {
+    this.router.navigate(['/investor-page'])
+  }
 
 }

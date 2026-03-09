@@ -2,17 +2,6 @@
    GLOBAL
 ======================================== */
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f4f7fb;
-  color: #1e293b;
-  margin: 0;
-}
-
-.dashboard {
-  min-height: 100vh;
-  background: #f4f7fb;
-}
 
 
 

@@ -18,7 +18,7 @@
   <div class="content-wrapper">
 
 
-    <div class="form-box">
+    <div class="form-box" #nomineeContainer>
 
       <form [formGroup]="nomineeForm" (ngSubmit)="updateNominee()">
 
@@ -114,18 +114,14 @@
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="next-btn"><span><i class="bi bi-plus-circle"></i>  ADD NOMINEE</span></button>
+          <button type="submit" class="next-btn" (click)="addNomineeClone()"><span><i class="bi bi-plus-circle"></i>  ADD NOMINEE</span></button>
         </div>
 
       </form>
-
-      <br />
-
-
     </div>
-
   </div>
-
+  <br />
+ 
 </div>
 
 

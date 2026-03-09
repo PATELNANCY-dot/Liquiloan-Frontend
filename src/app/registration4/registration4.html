@@ -105,14 +105,52 @@ registrationForm.get('nomineeDob')?.errors?.['required']">
 
       <br />
       <br />
+      <div *ngIf="isMinor">
+        <span>[Your nominee is minor please add Gurdian Details]</span>
+        <div class="form-row">
+          <div class="form-col">
+            <label>Guardian Pan(Optional)</label>
+            <input type="text" placeholder="Guardian Pan(Optional)"  formControlName="guardianPan">
+          </div>
+          <br />
+          <div class="form-col">
+            <label>Name of parent/Guardian</label>
+            <input type="text" placeholder="Name of parent/Guardian"  formControlName="guardianName">
+          </div>
+        </div>
 
+        <br />
 
-      <!--next button-->
-      <div class="form-actions">
-        <button type="button" (click)="goBack()" class="next-btn"><span><i class="bi bi-arrow-left"></i></span>Back</button>
+        <div class="form-row">
+          <div class="form-col">
+            <label>Guardian Dob</label>
+            <div class="date-wrapper">
+              <input type="text"
+                     formControlName="guardianDob"
+                      (click)="toggleGuardianCalendar()"
+                     #guardianDobInput
+                     class="custom-date"
+                     placeholder="Select Date" />
 
-        <button type="button" (click)="submit()" class="back-btn">Submit</button>
+              <span class="calendar-icon"  (click)="toggleGuardianCalendar()">
+                <i class="bi bi-calendar3"></i>
+              </span>
+            </div>
+          </div>
+
+          <br />
+          <div class="form-col">
+            <label>Relationship of Guardian with minor</label>
+            <input type="text" placeholder="Relationship of Guardian with minor"  formControlName="guardianRelation">
+          </div>
+        </div>
       </div>
+        <!--next button-->
+        <div class="form-actions">
+          <button type="button" (click)="goBack()" class="next-btn"><span><i class="bi bi-arrow-left"></i></span>Back</button>
 
-    </form>
+          <button type="button" (click)="submit()" class="back-btn">Submit</button>
+        </div>
+
+</form>
   </div>

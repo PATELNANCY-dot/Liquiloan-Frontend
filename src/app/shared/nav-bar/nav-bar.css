@@ -31,8 +31,7 @@
   min-width: 220px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   opacity: 0;
-  transform: translateY(12px);
-  transition: all 0.3s ease;
+
 }
 
 /* Show on hover */
