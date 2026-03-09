@@ -312,17 +312,33 @@ export class Registration4 {
       .subscribe({
         next: res => {
 
-          alert('Registration successful!');
-          localStorage.removeItem('clientRegistration');
-          this.router.navigate(['/factor-auth']);
+          const clientId = res.clientId;
+
+          const finalData1 = {
+            Username: existingData.name,
+            Password_1: existingData.Password_1,
+            ClientId: clientId
+          };
+
+          this.http.post('http://localhost:5048/api/auth/store', finalData1)
+            .subscribe({
+              next: () => {
+                alert('Registration successful!');
+                localStorage.removeItem('clientRegistration');
+                this.router.navigate(['/login']);
+              },
+              error: err => {
+                console.error(err);
+                alert('Login store failed.');
+              }
+            });
 
         },
         error: err => {
           console.error(err);
-          alert("Registration Failed");
+          alert('Registration failed.');
         }
       });
-
   }
   base64ToFile(base64: string, filename: string): File {
 

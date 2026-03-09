@@ -26,4 +26,9 @@ export interface AccountDetails {
   nomineeRelation: string;
   nomineeDob: string;
   nomineePan: string;
+
+  guardianName?: string;      // <-- make sure these match JSON
+  guardianRelation?: string;
+  guardianDob?: string;
+  guardianPan?: string;
 }

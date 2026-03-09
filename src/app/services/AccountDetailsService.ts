@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface AccountDetails
-{
+export interface AccountDetails {
   clientId: number;
   name: string;
   email: string;
@@ -16,24 +15,25 @@ export interface AccountDetails
   permanentAddress: string;
   bankName: string;
   accountNumber: string;
-  stateName: string;                
-  cityName: string;                 
-  correspondingStateName: string;  
-  correspondingCityName: string;    
+  stateName: string;
+  cityName: string;
+  correspondingStateName: string;
+  correspondingCityName: string;
+  guardianName: string;
+  guardianRelation: string;
+  guardianDob: string;
+  guardianPan: string;
 }
 
 @Injectable({
-providedIn: 'root'
+  providedIn: 'root'
 })
-export class AccountDetailsService
-{
-
+export class AccountDetailsService {
   private apiUrl = 'https://localhost:5001/api/AccountDetails'; // Your .NET backend URL
 
   constructor(private http: HttpClient) { }
 
-  getAccount(clientId: number) : Observable<AccountDetails> {
-    return this.http.get<AccountDetails>(`${this.apiUrl
-}/ account /${ clientId}`);
+  getAccount(clientId: number): Observable<AccountDetails> {
+    return this.http.get<AccountDetails>(`${this.apiUrl}/account/${clientId}`);
   }
 }
