@@ -18,19 +18,32 @@
         </li>
 
         <!-- My Account -->
-        <li class="nav-item dropdown"
-            [ngClass]="{'show': accountDropdownOpen}">
+        <li class="nav-item dropdown" [ngClass]="{'show': accountDropdownOpen}">
           <a class="nav-link dropdown-toggle"
              href="javascript:void(0)"
              (click)="accountDropdownOpen = !accountDropdownOpen">
             <i class="bi bi-person-circle"></i> Account
           </a>
 
-        
           <ul class="dropdown-menu" [ngClass]="{'show': accountDropdownOpen}">
-            <li><a class="dropdown-item" routerLink="/changepassword"><i class="bi bi-chevron-right me-2"></i> Change Password</a></li>
-            <li><a class="dropdown-item" routerLink="/manage-account"><i class="bi bi-chevron-right me-2"></i> Manage Account</a></li>
-            <li><a class="dropdown-item" routerLink="/change-nominee"><i class="bi bi-chevron-right me-2"></i> Add & View Nominee</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/changepassword"
+                 (click)="accountDropdownOpen = false">
+                <i class="bi bi-chevron-right me-2"></i> Change Password
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/manage-account"
+                 (click)="accountDropdownOpen = false">
+                <i class="bi bi-chevron-right me-2"></i> Manage Account
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/change-nominee"
+                 (click)="accountDropdownOpen = false">
+                <i class="bi bi-chevron-right me-2"></i> Add & View Nominee
+              </a>
+            </li>
           </ul>
         </li>
 

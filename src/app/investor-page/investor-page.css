@@ -329,17 +329,14 @@ label {
   font-weight: bold;
 }
 
-/* Orange Withdraw Button */
+
 .withdraw-btn {
   background-color: #ff8c00;
   color: white;
   font-weight: 600;
+  width:130px;
   border: none;
 }
-
-  .withdraw-btn:hover {
-    background-color: #e67e00;
-  }
 
 
 

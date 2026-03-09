@@ -35,11 +35,27 @@
 }
 
 /* Show on hover */
-.navbar-nav .dropdown:hover > .dropdown-menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+.dropdown-menu {
+  background: rgba(0, 44, 140, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  /* Start hidden for animation */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  display: block; /* important: Bootstrap JS handles show/hide */
+  visibility: hidden;
 }
+
+  /* When Bootstrap adds 'show', dropdown becomes visible */
+  .dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
 
 /* Dropdown items */
 .dropdown-item {

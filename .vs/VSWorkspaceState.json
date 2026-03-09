@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login-otp",
-    "\\src\\app\\manage-account",
-    "\\src\\app\\models",
+    "\\src\\app\\investment-page",
+    "\\src\\app\\investor-details-page",
+    "\\src\\app\\investor-page",
     "\\src\\app\\registration4",
     "\\src\\app\\services",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\registration4\\registration4.ts",
+  "SelectedNode": "\\src\\app\\investor-page\\investor-page.css",
   "PreviewInSolutionExplorer": false
 }
