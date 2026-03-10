@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NomineeService, UpdateNominee } from '../services/nominee';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 declare var bootstrap: any;
 
@@ -21,11 +23,13 @@ export class InvestorPage implements OnInit {
   selectedBank: string = '';
   totalWithdrawable: number = 5000;
 
-  constructor(private router: Router, private nomineeService: NomineeService) { }
+  constructor(private router: Router, private nomineeService: NomineeService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    // Optional: fetch nominees on page load
-    // this.fetchNominees();
+    const clientId = Number(localStorage.getItem('userId'));
+    if (!clientId) return alert('Client ID missing');
+
+    this.fetchNominees();
   }
 
   fetchNominees() {
@@ -48,6 +52,7 @@ export class InvestorPage implements OnInit {
 
     this.nomineeService.getNominee().subscribe({
       next: (data: UpdateNominee[]) => {
+        this.cdr.detectChanges(); // <-- force Angular to refresh view
         this.nomineesList = data;
 
         const modalEl: any = document.getElementById('nomineeModal');
@@ -62,6 +67,14 @@ export class InvestorPage implements OnInit {
   }
 
   editNominee(nominee: UpdateNominee) {
+    const modalEl: any = document.getElementById('nomineeModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+
+    if (modalInstance) {
+      modalInstance.hide(); // hide the modal and remove backdrop
+    }
+
+    // Navigate after hiding
     this.router.navigate(['/change-nominee', nominee.id]);
   }
 

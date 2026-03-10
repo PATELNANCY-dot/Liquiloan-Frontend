@@ -4,6 +4,7 @@ import { NomineeService, UpdateNominee } from '../services/nominee';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-change-nominee',
@@ -19,7 +20,8 @@ export class ChangeNominee implements OnInit {
     private fb: FormBuilder,
     private nomineeService: NomineeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {

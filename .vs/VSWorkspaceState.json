@@ -6,10 +6,11 @@
     "\\src\\app\\change-nominee",
     "\\src\\app\\investment-page",
     "\\src\\app\\investor-page",
+    "\\src\\app\\manage-account",
     "\\src\\app\\services",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\investor-page\\investor-page.css",
+  "SelectedNode": "\\src\\app\\change-nominee\\change-nominee.ts",
   "PreviewInSolutionExplorer": false
 }
