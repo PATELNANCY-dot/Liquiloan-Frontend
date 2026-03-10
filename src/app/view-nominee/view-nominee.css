@@ -1,0 +1,57 @@
+/* container card */
+form {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* header row */
+.nominee-header {
+  font-size: 15px;
+  color: #001f5b;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* nominee rows */
+.nominee-row {
+  padding: 15px 10px;
+  border-bottom: 1px solid #eef2f7;
+  transition: 0.3s;
+}
+
+  .nominee-row:hover {
+    background: #f8fbff;
+    border-radius: 10px;
+  }
+
+/* nominee name */
+.account-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2d3d;
+}
+
+/* relation text */
+.relation {
+  color: #ff6a00;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+/* modern button */
+.mordenbtn {
+  background: linear-gradient(90deg,#001f5b,#003f8a);
+  color: white;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+  .mordenbtn:hover {
+    background: #ff6a00;
+  }

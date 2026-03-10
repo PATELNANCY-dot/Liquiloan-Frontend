@@ -1,206 +1,199 @@
 import { Component, OnInit } from '@angular/core';
-import {  ElementRef, HostListener, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { NomineeService } from '../services/nominee';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { NomineeService, UpdateNominee } from '../services/nominee';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import flatpickr from 'flatpickr';
-
-
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-change-nominee',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './change-nominee.html',
-  styleUrls: ['./change-nominee.css'], 
+  styleUrls: ['./change-nominee.css'],
 })
 export class ChangeNominee implements OnInit {
   nomineeForm!: FormGroup;
-  isMinor = false;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private nomineeService: NomineeService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.nomineeForm = this.fb.group({
-      nomineeName: [''],
-      nomineeRelation: [''],
-      nomineeDob: [''],
-      nomineePan: [''],
-      guardianName: [''],
-      guardianRelation: [''],
-      guardianDob: [''],
-      guardianPan: ['']
+      nominees: this.fb.array([])
     });
 
-    // Load existing nominee info
-    this.nomineeService.getNominee().subscribe(data => {
-        const formattedData = {
-      ...data,
-      nomineeDob: data.nomineeDob ? data.nomineeDob.slice(0, 10) : '',
-      guardianDob: data.guardianDob ? data.guardianDob.slice(0, 10) : ''
-      };
-      // Use formattedData here, not data
-      this.nomineeForm.patchValue(formattedData);
-      this.checkMinor(formattedData.nomineeDob);
-    
-    });
+    this.addNominee(); // add first empty row
 
-    // Watch nominee DOB to detect minor
-    this.nomineeForm.get('nomineeDob')?.valueChanges.subscribe(dob => {
-      this.checkMinor(dob);
-    });
-  }
-checkMinor(dob: string) {
-  if (!dob) { 
-    this.isMinor = false; 
-    return; 
-  }
-  const birth = new Date(dob);
-  let age = new Date().getFullYear() - birth.getFullYear(); // <-- changed const -> let
-
-  // Adjust if birthday hasn't occurred yet this year
-  if (new Date().getMonth() < birth.getMonth() || 
-      (new Date().getMonth() === birth.getMonth() && new Date().getDate() < birth.getDate())) {
-    age--;
+    const nomineeId = this.route.snapshot.paramMap.get('id');
+    if (nomineeId) {
+      this.nomineeService.getNomineeById(nomineeId).subscribe((data: any) => {
+        // patch form including backend Id
+        this.nominees.at(0).patchValue({
+          id: data.id, // important for update
+          nomineeName: data.nomineeName,
+          nomineeRelation: data.nomineeRelation,
+          nomineeDob: data.nomineeDob?.slice(0, 10),
+          nomineePan: data.nomineePan,
+          guardianName: data.guardianName,
+          guardianRelation: data.guardianRelation,
+          guardianDob: data.guardianDob?.slice(0, 10),
+          guardianPan: data.guardianPan
+        });
+      });
+    }
   }
 
-  this.isMinor = age < 18;
+  get nominees(): FormArray {
+    return this.nomineeForm.get('nominees') as FormArray;
   }
-  private formatToISO(dateString: string | null): string | null {
-    if (!dateString) return null;
 
-    const parts = dateString.split('-'); // expecting dd-mm-yyyy
-
-    if (parts.length !== 3) return null;
-
-    const [day, month, year] = parts;
-
-    const isoDate = new Date(`${year}-${month}-${day}`);
-
-    return isNaN(isoDate.getTime())
-      ? null
-      : isoDate.toISOString();
+  // check if nominee is minor
+  isMinor(dob: string | null | undefined): boolean {
+    if (!dob) return false;
+    const birth = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    if (
+      today.getMonth() < birth.getMonth() ||
+      (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate())
+    ) {
+      age--;
+    }
+    return age < 18;
   }
+
+  // Helper to disable PAN input
+  disablePan(nominee: any): boolean {
+    return this.isMinor(nominee.nomineeDob);
+  }
+
+  // Called when nominee DOB changes
+  onDobChange(index: number) {
+    const nominee = this.nominees.at(index);
+    if (!this.isMinor(nominee.value.nomineeDob)) {
+      // Clear guardian fields if not minor
+      nominee.patchValue({
+        guardianName: null,
+        guardianRelation: null,
+        guardianDob: null,
+        guardianPan: null,
+      });
+    }
+  }
+
+  // save nominees (POST for new, PUT for existing)
   updateNominee() {
     if (this.nomineeForm.invalid) return;
 
-    const formValue = { ...this.nomineeForm.value };
+    const clientId = Number(localStorage.getItem('userId'));
+    if (!clientId || clientId <= 0) return alert('Client ID missing');
 
-    // Convert dd-mm-yyyy to ISO
-    const nomineeDobISO = formValue.nomineeDob ? this.formatToISO(formValue.nomineeDob) : null;
-    const guardianDobISO = this.isMinor && formValue.guardianDob ? this.formatToISO(formValue.guardianDob) : null;
+    const payload: UpdateNominee[] = this.nominees.controls.map(control => {
+      const n = control.value;
+      const isMinor = this.isMinor(n.nomineeDob);
 
-    const payload = {
-      nomineeName: formValue.nomineeName || null,
-      nomineeRelation: formValue.nomineeRelation || null,
-      nomineeDob: nomineeDobISO,
-      nomineePan: formValue.nomineePan || null,
+      return {
+        id: n.id, // null for new, existing for update
+        clientId: clientId,
+        nomineeName: n.nomineeName || null,
+        nomineeRelation: n.nomineeRelation || null,
+        nomineeDob: n.nomineeDob ? new Date(n.nomineeDob).toISOString() : null,
+        nomineePan: n.nomineePan || null,
+        guardianName: isMinor ? n.guardianName || null : null,
+        guardianRelation: isMinor ? n.guardianRelation || null : null,
+        guardianDob: isMinor && n.guardianDob ? new Date(n.guardianDob).toISOString() : null,
+        guardianPan: isMinor ? n.guardianPan || null : null
+      };
+    });
 
-      guardianName: this.isMinor ? (formValue.guardianName || null) : null,
-      guardianRelation: this.isMinor ? (formValue.guardianRelation || null) : null,
-      guardianDob: guardianDobISO,
-      guardianPan: this.isMinor ? (formValue.guardianPan || null) : null
-    };
+    console.log("Payload to backend:", payload);
 
-    console.log("Sending Payload:", payload);
-
-    this.nomineeService.updateNominee(payload).subscribe({
+    this.nomineeService.saveNominees(payload).subscribe({
       next: res => {
-        alert(res);
-        this.router.navigate(['/dashboard']);
+        alert(res); // backend se JSON message
+        this.router.navigate(['/view-nominee']);
       },
-      error: err => console.error('Error updating nominee', err)
-    });
-  }
-
-
-
-
-  //CUSTOME DATECOX
-  @ViewChild('nomineeDobInput') nomineeDobInput!: ElementRef;
-  @ViewChild('guardianDobInput') guardianDobInput!: ElementRef;
-
-  nomineeFp: any;
-  guardianFp: any;
-
-
-  ngAfterViewInit(): void {
-    this.nomineeFp = flatpickr(this.nomineeDobInput.nativeElement, {
-      dateFormat: "d-m-Y",
-      maxDate: "today",
-      disableMobile: true,
-      allowInput: false,
-      monthSelectorType: "dropdown",
-      clickOpens: false,
-      onReady: (_, __, instance) => this.removeYearSpinner(instance),
-      onMonthChange: (_, __, instance) => this.removeYearSpinner(instance),
-      onYearChange: (_, __, instance) => this.removeYearSpinner(instance)
-    });
-
-    this.guardianFp = flatpickr(this.guardianDobInput.nativeElement, {
-      dateFormat: "d-m-Y",
-      maxDate: "today",
-      disableMobile: true,
-      allowInput: false,
-      monthSelectorType: "dropdown",
-      clickOpens: false,
-      onReady: (_, __, instance) => this.removeYearSpinner(instance),
-      onMonthChange: (_, __, instance) => this.removeYearSpinner(instance),
-      onYearChange: (_, __, instance) => this.removeYearSpinner(instance)
-    });
-  }
-  toggleNomineeCalendar() {
-    this.nomineeFp.isOpen ? this.nomineeFp.close() : this.nomineeFp.open();
-  }
-
-  toggleGuardianCalendar() {
-    this.guardianFp.isOpen ? this.guardianFp.close() : this.guardianFp.open();
-  }
-
-  removeYearSpinner(instance: any) {
-    setTimeout(() => {
-      const yearInput = instance.calendarContainer.querySelector(".cur-year");
-      if (yearInput) {
-        yearInput.setAttribute("type", "text");
-        yearInput.style.width = "60px";
+      error: err => {
+        console.error('Error saving nominees', err);
+        const backendMessage = err.error?.message || err.error || 'Failed to save nominees';
+        alert(backendMessage);
       }
     });
   }
 
-  @ViewChild('nomineeContainer') nomineeContainer!: ElementRef;
-  cloneCount = 0; // keep track of clones
-  maxClones = 2;  // maximum 2 duplicates
-
-  // existing ngOnInit and other logic here...
-
-  addNomineeClone() {
-    if (this.cloneCount >= this.maxClones) return;
-
-    const original = this.nomineeContainer.nativeElement as HTMLElement;
-    const clone = original.cloneNode(true) as HTMLElement;
-
-    // Clear all input/select/textarea values
-    clone.querySelectorAll('input, select, textarea').forEach((el: any) => el.value = '');
-
-    // Change button text
-    const cloneButton = clone.querySelector('button.next-btn');
-    if (cloneButton) {
-      cloneButton.innerHTML = '<span><i class="bi bi-pencil-square"></i> EDIT NOMINEE</span>';
+   
+  addNominee(existing: any = null) {
+    if (this.nominees.length >= 3) {
+      alert('A client can have maximum 3 nominees');
+      return;
     }
 
-    // Add CSS class for spacing
-    clone.classList.add('cloned-form');
+    const group = this.fb.group({
+      id: [existing?.id || null],
+      nomineeName: [existing?.nomineeName || ''],
+      nomineeRelation: [existing?.nomineeRelation || ''],
+      nomineeDob: [existing?.nomineeDob?.slice(0, 10) || ''],
+      nomineePan: [existing?.nomineePan || ''],
+      guardianName: [existing?.guardianName || ''],
+      guardianRelation: [existing?.guardianRelation || ''],
+      guardianDob: [existing?.guardianDob?.slice(0, 10) || ''],
+      guardianPan: [existing?.guardianPan || '']
+    });
 
-    // Append clone
-    const container = document.getElementById('clonedNomineesContainer');
-    if (container) {
-      container.appendChild(clone);
-      this.cloneCount++;
+    const toggleFields = (dob: string) => {
+      const isMinor = this.isMinor(dob);
+
+      const panControl = group.get('nomineePan');
+      const guardianControls = ['guardianName', 'guardianRelation', 'guardianDob', 'guardianPan'];
+
+      if (isMinor) {
+        panControl?.disable({ emitEvent: false });
+        panControl?.setValue('', { emitEvent: false });
+        guardianControls.forEach(ctrl => group.get(ctrl)?.enable({ emitEvent: false }));
+      } else {
+        panControl?.enable({ emitEvent: false });
+        guardianControls.forEach(ctrl => {
+          const c = group.get(ctrl);
+          c?.disable({ emitEvent: false });
+          c?.setValue('', { emitEvent: false });
+        });
+      }
+    };
+
+    group.get('nomineeDob')?.valueChanges.subscribe(dob => toggleFields(dob));
+    toggleFields(group.get('nomineeDob')?.value);
+
+    this.nominees.push(group);
+  }
+
+ 
+
+    removeNominee(index: number) {
+      const nominee = this.nominees.at(index).value;
+
+      if (nominee.id) {
+        // If existing nominee, delete from backend first
+        this.nomineeService.deleteNominee(nominee.id).subscribe({
+          next: () => {
+            // Remove from form array after successful deletion
+            this.nominees.removeAt(index);
+            alert('Nominee deleted successfully');
+
+          },
+          error: err => {
+            console.error('Error deleting nominee', err);
+            alert('Failed to delete nominee. Check console.');
+          }
+        });
+      } else {
+        // Just remove from form array if it's a new, unsaved nominee
+        this.nominees.removeAt(index);
+      }
     }
   }
-}
+

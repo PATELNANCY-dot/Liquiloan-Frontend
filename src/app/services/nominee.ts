@@ -1,9 +1,11 @@
-// File: services/nominee.service.ts
+// services/nominee.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface UpdateNominee {
+  id?: number | null; // optional for new nominees
+  clientId: number;
   nomineeName: string | null;
   nomineeRelation: string | null;
   nomineeDob?: string | null;
@@ -18,23 +20,29 @@ export interface UpdateNominee {
   providedIn: 'root'
 })
 export class NomineeService {
-
   private apiUrl = 'http://localhost:5048/api/Nominee';
+
   constructor(private http: HttpClient) { }
 
-  updateNominee(data: UpdateNominee): Observable<any> {
-    // Get clientId from localStorage
-    const clientId = localStorage.getItem('userId');
-    if (!clientId) throw new Error('Client ID not found in localStorage');
-
-    // Attach clientId to the data
-    const payload = { clientId: +clientId, ...data };
-    return this.http.put(`${this.apiUrl}/Update`, payload, { responseType: 'text' });
+  deleteNominee(id: number) {
+    return this.http.delete(`${this.apiUrl}/DeleteNominee/${id}`);
   }
 
-  getNominee(): Observable<any> {
-    const clientId = localStorage.getItem('userId');
-    if (!clientId) throw new Error('Client ID not found in localStorage');
-    return this.http.get(`${this.apiUrl}/${clientId}`);
+  getNominee(): Observable<UpdateNominee[]> {
+    const clientId = Number(localStorage.getItem('userId'));
+    return this.http.get<UpdateNominee[]>(`${this.apiUrl}/${clientId}`);
+  }
+
+  getNomineeById(id: any) {
+    return this.http.get(`${this.apiUrl}/single/${id}`);
+  }
+
+  saveNominees(nominees: UpdateNominee[]) {
+    return this.http.post('http://localhost:5048/api/Nominee/UpsertNominees', nominees, { responseType: 'text' });
+  }
+
+  // nominee.service.ts
+  upsertNominees(nominees: UpdateNominee[]) {
+    return this.http.post(`${this.apiUrl}/UpsertNominees`, nominees);
   }
 }

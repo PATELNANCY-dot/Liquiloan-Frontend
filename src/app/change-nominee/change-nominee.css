@@ -17,11 +17,7 @@ body {
   width: 92%;
   max-width: 1500px;
   margin: 30px auto;
-  padding: 30px;
   border-radius: 22px;
-  background: #ffffff;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.06);
-  animation: fadeUp 0.6s ease;
 }
 
 /* ===============================
@@ -54,7 +50,7 @@ body {
 ================================ */
 
 .form-box {
-  padding: 20px;
+  padding: 25px;
   border-radius: 18px;
   background: linear-gradient(145deg, #ffffff, #f9fbff);
   box-shadow: 0 15px 40px rgba(0,0,0,0.05);
@@ -213,4 +209,29 @@ span b {
   margin-top: 30px; /* Adjust gap as needed */
   border-top: 1px solid #ccc; /* optional separator */
   padding-top: 15px; /* optional padding */
+}
+
+
+.nominee-block {
+  margin-bottom: 35px;
+  padding: 25px;
+  border-radius: 10px;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+}
+
+
+.nominee-block {
+  position: relative;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #f9f9f9;
+}
+
+.delete-btn-wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

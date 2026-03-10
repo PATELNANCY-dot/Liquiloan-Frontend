@@ -8,6 +8,8 @@
 <!-- Bootstrap Icons -->
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <div class="dashboard">
 
@@ -96,7 +98,7 @@
           </div>
 
           <div class="form-col">
-            <button (click)="goTo()" class="btn1">Add/View Nominee</button>
+            <button (click)="openNomineeModal()" class="btn1">Add/View Nominee</button>
 
           </div>
 
@@ -282,42 +284,89 @@
       <label class="form-label fw-bold">Total Withdrawable Amount</label>
       <div class="total-box">₹0</div>
 
-      
 
- 
 
-    <!-- Payout Bank -->
-    <div class="mb-3">
-      <label class="form-label">Payout Bank</label>
-      <select class="form-select" [(ngModel)]="selectedBank">
-        <option value="">Select Bank</option>
-        <option>HDFC Bank</option>
-        <option>ICICI Bank</option>
-        <option>SBI Bank</option>
-      </select>
+
+
+      <!-- Payout Bank -->
+      <div class="mb-3">
+        <label class="form-label">Payout Bank</label>
+        <select class="form-select" [(ngModel)]="selectedBank">
+          <option value="">Select Bank</option>
+          <option>HDFC Bank</option>
+          <option>ICICI Bank</option>
+          <option>SBI Bank</option>
+        </select>
+      </div>
+
+      <!-- Withdraw Amount -->
+      <div class="mb-4">
+        <label class="form-label">Withdraw Amount</label>
+        <input type="number"
+               class="form-control withdraw-input"
+               placeholder="Enter amount"
+               [(ngModel)]="withdrawAmount">
+        <small class="text-danger" *ngIf="withdrawAmount > totalWithdrawable">Amount exceeds available balance!</small>
+      </div>
+
+      <div class="text-center">
+        <!-- Withdraw Button -->
+        <button class=" withdraw-btn btn-lg mb-3" (click)="WithDraw()">
+          <b> Withdraw</b>
+        </button>
+      </div>
+
+      <!-- Note -->
+      <div class="note-box mt-3">
+        <strong>Note:</strong> To withdraw from a plan without lock-in, you can place a withdrawal request anytime. Requests are processed on T+2 basis.
+      </div>
+
     </div>
+  </div>
 
-    <!-- Withdraw Amount -->
-    <div class="mb-4">
-      <label class="form-label">Withdraw Amount</label>
-      <input type="number"
-             class="form-control withdraw-input"
-             placeholder="Enter amount"
-             [(ngModel)]="withdrawAmount">
-      <small class="text-danger" *ngIf="withdrawAmount > totalWithdrawable">Amount exceeds available balance!</small>
+</div>
+<!-- Add/View Nominee Modal -->
+<div class="modal fade" id="nomineeModal" tabindex="-1" aria-labelledby="nomineeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="nomineeModalLabel">Nominee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body p-2">
+        <table class="table table-striped table-hover table-sm mb-0">
+          <thead class="table-primary">
+            <tr>
+              <th>Name</th>
+              <th>DOB</th>
+              <th>Relation</th>
+              <th>% Share</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let n of nomineesList">
+              <td>{{ n.nomineeName }}</td>
+              <td>{{ n.nomineeDob | date:'dd-MM-yyyy' }}</td>
+              <td>{{ n.nomineeRelation }}</td>
+              <td></td>
+              <td>
+                <button class="btn btn-sm btn-outline-primary" (click)="editNominee(n)">
+                  Edit
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="nomineesList.length === 0">
+              <td colspan="5" class="text-center">No nominees found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
-
-    <div class="text-center">
-      <!-- Withdraw Button -->
-      <button class=" withdraw-btn btn-lg mb-3" (click)="WithDraw()">
-       <b> Withdraw</b>
-      </button>
-    </div>
-
-    <!-- Note -->
-    <div class="note-box mt-3">
-      <strong>Note:</strong> To withdraw from a plan without lock-in, you can place a withdrawal request anytime. Requests are processed on T+2 basis.
-    </div>
-
   </div>
 </div>

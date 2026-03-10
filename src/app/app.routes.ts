@@ -19,6 +19,8 @@ import { PaymentPage } from './payment-page/payment-page'
 import { FactorAuth } from './factor-auth/factor-auth'
 import { TransactionStatus } from './transaction-status/transaction-status'
 import { MainLayoutComponent } from './main-layout-component/main-layout-component'
+import { ViewNominee } from './view-nominee/view-nominee'
+
 
 
 
@@ -40,7 +42,7 @@ export const routes: Routes = [
 
   { path: 'payment-page', component: PaymentPage },
   { path: 'factor-auth', component: FactorAuth },
- 
+
   {
     path: '',
     component: MainLayoutComponent, // Root layout with navbar
@@ -53,7 +55,12 @@ export const routes: Routes = [
       { path: 'investor-page', component: InvestorPage },
       { path: 'investment-page', component: InvestmentPage },
       { path: 'transaction-status', component: TransactionStatus },
-
+      { path: 'view-nominee', component: ViewNominee },
+      {
+        path: 'change-nominee/:id',
+        loadComponent: () => import('./change-nominee/change-nominee')
+          .then(m => m.ChangeNominee)
+      },
       // add all other pages that should show navbar
     ]
   },

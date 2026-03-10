@@ -3,10 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\change-nominee",
     "\\src\\app\\investment-page",
-    "\\src\\app\\investor-details-page",
     "\\src\\app\\investor-page",
-    "\\src\\app\\registration4",
     "\\src\\app\\services",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar"

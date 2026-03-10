@@ -1,127 +1,90 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-
-
-
-
-
-
 <div class="main-wrapper">
-
   <h5 class="page-title">Nominee Information</h5>
-
   <div class="content-wrapper">
-
-
     <div class="form-box" #nomineeContainer>
-
       <form [formGroup]="nomineeForm" (ngSubmit)="updateNominee()">
 
-        <div class="form-row">
-          <div class="form-col">
-            <label>Nominee Name:</label>
-            <input formControlName="nomineeName" placeholder="Nominee Name" />
-          </div>
+        <div formArrayName="nominees">
+          <div class="nominee-block" *ngFor="let nominee of nominees.controls; let i = index" [formGroupName]="i">
 
-          <div class="form-col">
-            <label>DOB(DD/MM/YYYY):</label>
-            <div class="date-wrapper">
-              <input type="text"
-                     formControlName="nomineeDob"
-                     #nomineeDobInput
-                     class="custom-date"
-                     placeholder="Select Date"
-                     (click)="toggleNomineeCalendar()" />
-
-              <span class="calendar-icon" (click)="toggleNomineeCalendar()">
-                <i class="bi bi-calendar3"></i>
-              </span>
+            <!-- Delete button at top right -->
+            <div class="delete-btn-wrapper" style="text-align: right;">
+              <button type="button" class="btn btn-sm btn-danger" (click)="removeNominee(i)">
+                <i class="bi bi-trash"></i>
+              </button>
             </div>
-          </div>
 
-          <div class="form-col">
-            <label>Relationship With Client:</label>
-            <input formControlName="nomineeRelation" placeholder="Relation" />
-          </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label>Nominee Name</label>
+                <input formControlName="nomineeName">
+              </div>
 
+              <div class="form-col">
+                <label>DOB</label>
+                <div class="date-wrapper">
+                  <input type="date" formControlName="nomineeDob" class="form-control" (change)="onDobChange(i)">
+                  <span class="calendar-icon"><i class="bi bi-calendar3"></i></span>
+                </div>
+              </div>
 
-          <div class="form-col">
-            <label>Nominee Pan(Optional):</label>
-            <input formControlName="nomineePan" placeholder="Nominee PAN" />
-          </div>
+              <div class="form-col">
+                <label>Relation</label>
+                <input formControlName="nomineeRelation">
+              </div>
 
-          <div class="form-col">
-            <label>Precentage:</label>
-            <input type="text">
-          </div>
-        </div>
-
-
-        <div class="form-row">
-          <div class="form-col">
-            <label>Address 1:</label>
-            <input type="text">
-          </div>
-
-          <div class="form-col">
-            <label>Address 2:</label>
-            <input type="text">
-          </div>
-        </div>
-
-        <br />
-
-        <span><b> If Nominee is Minor <br /></b> </span>
-        <div class="form-row">
-          <div class="form-col">
-            <label>Guardian Pan(Optional)</label>
-            <input type="text" placeholder="Guardian Pan(Optional)" style="background-color:lightgray" formControlName="guardianPan">
-          </div>
-
-          <div class="form-col">
-            <label>Name of parent/Guardian</label>
-            <input type="text" placeholder="Name of parent/Guardian" style="background-color:lightgray" formControlName="guardianName">
-          </div>
-        </div>
-
-
-
-        <div class="form-row">
-          <div class="form-col">
-            <label>Guardian Dob</label>
-            <div class="date-wrapper">
-              <input type="text"
-                     formControlName="guardianDob"
-                     #guardianDobInput
-                     class="custom-date"
-                     placeholder="Select Date"
-                     (click)="toggleGuardianCalendar()" />
-
-              <span class="calendar-icon" (click)="toggleGuardianCalendar()">
-                <i class="bi bi-calendar3"></i>
-              </span>
+              <div class="form-col">
+                <label>Nominee PAN</label>
+                <input formControlName="nomineePan" [disabled]="disablePan(nominee.value)">
+              </div>
             </div>
-          </div>
-          <div class="form-col">
-            <label>Relationship of Guardian with minor</label>
-            <input type="text" placeholder="Relationship of Guardian with minor" style="background-color:lightgray" formControlName="guardianRelation">
+
+            <br>
+
+            <!-- Guardian fields - show only if nominee is minor -->
+            <div *ngIf="isMinor(nominee.value.nomineeDob)">
+              <div class="form-row">
+                <div class="form-col">
+                  <label>Guardian Name</label>
+                  <input formControlName="guardianName">
+                </div>
+
+                <div class="form-col">
+                  <label>Guardian PAN</label>
+                  <input formControlName="guardianPan">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col">
+                  <label>Guardian DOB</label>
+                  <div class="date-wrapper">
+                    <input type="date" formControlName="guardianDob" class="form-control">
+                    <span class="calendar-icon"><i class="bi bi-calendar3"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-col">
+                  <label>Guardian Relation</label>
+                  <input formControlName="guardianRelation">
+                </div>
+              </div>
+            </div>
+
+            <hr>
           </div>
         </div>
-
-        <div class="form-actions">
-          <button type="submit" class="next-btn" (click)="addNomineeClone()"><span><i class="bi bi-plus-circle"></i>  ADD NOMINEE</span></button>
-        </div>
-
       </form>
     </div>
+
+    <br />
+    <button type="button" class="next-btn" (click)="addNominee()">
+      <i class="bi bi-plus-circle"></i> ADD NOMINEE
+    </button>
   </div>
+
   <br />
- 
+  <div class="form-actions mt-3">
+    <button type="button" (click)="updateNominee()">Save Nominees</button>
+  </div>
 </div>
-
-

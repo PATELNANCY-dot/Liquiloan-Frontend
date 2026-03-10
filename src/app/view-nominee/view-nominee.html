@@ -1,0 +1,48 @@
+<div class="container mt-4">
+
+  <!-- Heading -->
+  <div class="loan-heading-section text-center">
+    <h1>
+      <span class="orange">Change</span>
+      <span class="navy">Nominee</span>
+    </h1>
+  </div>
+
+  <div>
+
+    <!-- Header -->
+    <div class="row nominee-header">
+      <div class="col-md-8">
+        <b>Account Holder Name</b>
+      </div>
+
+      <div class="col-md-4 text-end">
+        <b>Request</b>
+      </div>
+    </div>
+
+    <hr>
+
+    <div *ngIf="nominees.length === 0" class="text-center mt-4">
+      No nominees found
+    </div>
+
+    <div *ngFor="let nominee of nominees" class="row nominee-row align-items-center">
+
+      <div class="col-md-8">
+        {{ nominee.nomineeName }}
+        
+      </div>
+
+      <div class="col-md-4 text-end">
+        <button class="mordenbtn"
+                (click)="changeNominee(nominee.id)">
+          Change
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

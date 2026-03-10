@@ -16,7 +16,7 @@ export class NavBar {
 
   isNavCollapsed = true;
   accountDropdownOpen = false;
-  reportDropdownOpen = false;
+  nomineeDropdownOpen = false;
 
 
   activeMenu: string = 'dashboard';

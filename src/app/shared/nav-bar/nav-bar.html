@@ -12,7 +12,7 @@
       <ul class="navbar-nav ms-auto align-items-lg-center">
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard">
+          <a class="nav-link" routerLink="/dashboard" (click)="accountDropdownOpen = false">
             <i class="bi bi-columns-gap"></i>  Dashboard
           </a>
         </li>
@@ -39,9 +39,9 @@
               </a>
             </li>
             <li>
-              <a class="dropdown-item" routerLink="/change-nominee"
+              <a class="dropdown-item" routerLink="/view-nominee"
                  (click)="accountDropdownOpen = false">
-                <i class="bi bi-chevron-right me-2"></i> Add & View Nominee
+                <i class="bi bi-chevron-right me-2"></i> Manage Nominee
               </a>
             </li>
           </ul>
@@ -49,7 +49,7 @@
 
         <!-- Investments -->
         <li class="nav-item">
-          <a class="nav-link" routerLink="/investor-page">
+          <a class="nav-link" routerLink="/investor-page" (click)="accountDropdownOpen = false">
             <i class="bi bi-compass"></i>   Investments
           </a>
         </li>
