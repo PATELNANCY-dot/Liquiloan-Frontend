@@ -68,13 +68,13 @@
   margin-left:60px; /* increase if needed */
 }
 #bt1 {
-  height: 40px;
-  width: 80px;
-  background-color: #000080; /* navy blue */
+  width:80px;
+  background-color: #2f4f9d; /* navy blue */
   color: white; /* white text */
   border: none; /* remove default border */
-  border-radius: 4px; /* slightly rounded corners */
-  font-size: 14px; /* small font */
+  border-radius: 10px; /* slightly rounded corners */
+  text-align:center;
+  font-size: 16px; /* small font */
   cursor: pointer; /* pointer on hover */
   transition: background 0.3s;
 }
@@ -113,7 +113,7 @@
   }
 
   .box.right h2 {
-    color: #000080;
+    color: #2f4f9d;
     margin-bottom: 25px;
     text-align: center;
   }
@@ -142,7 +142,7 @@
 
   .links a {
     text-decoration: none;
-    color: #000080;
+    color: #2f4f9d;
   }
 
     .links a:hover {

@@ -1,42 +1,42 @@
-<div class="container mt-4">
+<div class="container nominee-page mt-4">
 
   <!-- Heading -->
-  <div class="loan-heading-section text-center">
+  <div class="page-header text-center">
     <h1>
       <span class="orange">Change</span>
       <span class="navy">Nominee</span>
     </h1>
+    <p class="subtitle">Manage and update nominee details</p>
   </div>
 
-  <div>
+  <!-- Nominee Card -->
+  <div class="nominee-card">
 
     <!-- Header -->
     <div class="row nominee-header">
       <div class="col-md-8">
-        <b>Account Holder Name</b>
+        Account Holder Name
       </div>
 
       <div class="col-md-4 text-end">
-        <b>Request</b>
+        Action
       </div>
     </div>
 
-    <hr>
+    <div class="divider"></div>
 
-    <div *ngIf="nominees.length === 0" class="text-center mt-4">
+    <div *ngIf="nominees.length === 0" class="text-center empty-msg">
       No nominees found
     </div>
 
     <div *ngFor="let nominee of nominees" class="row nominee-row align-items-center">
 
-      <div class="col-md-8">
+      <div class="col-md-8 nominee-name">
         {{ nominee.nomineeName }}
-        
       </div>
 
       <div class="col-md-4 text-end">
-        <button class="mordenbtn"
-                (click)="changeNominee(nominee.id)">
+        <button class="change-btn" (click)="changeNominee(nominee.id)">
           Change
         </button>
       </div>
@@ -45,4 +45,35 @@
 
   </div>
 
+  <!-- Back button -->
+  <div class="form-actions">
+    <button class="back-btn" type="button" (click)="back()">← Back</button>
+  </div>
+
+</div>
+
+
+<div class="classdiv text-left">
+  <!-- Social Icons -->
+  <div class="social-icons d-flex gap-3">
+    <a href="https://www.facebook.com" target="_blank" class="facebook">
+      <i class="bi bi-facebook fs-3"></i>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" class="twitter">
+      <i class="bi bi-twitter fs-3"></i>
+    </a>
+    <a href="https://www.linkedin.com" target="_blank" class="linkedin">
+      <i class="bi bi-linkedin fs-3"></i>
+    </a>
+    <a href="https://www.youtube.com" target="_blank" class="youtube">
+      <i class="bi bi-youtube fs-3"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" class="instagram">
+      <i class="bi bi-instagram fs-3"></i>
+    </a>
+    <a>
+      |
+    </a>
+
+  </div>
 </div>

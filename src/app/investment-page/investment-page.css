@@ -1,31 +1,26 @@
-/* ========================================
-   GLOBAL
-======================================== */
 
 
 
 
-/* ========================================
-   PAGE HEADING
-======================================== */
+/*HEADING SECTION */
 
-.loan-heading-section {
-  text-align: center;
-  padding: 30px 0 10px 0;
+.page-header {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-  .loan-heading-section h1 {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 1px;
+  .page-header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
 
+/* Text Colors */
 .orange {
-  color: #ff7a00;
+  color: #f26522; /* soft orange (not too bright) */
 }
 
 .navy {
-  color: #0b2c5f;
+  color: #0b2c5f; /* dark navy */
 }
 
 /* ========================================
@@ -119,20 +114,20 @@ select {
 }
 
 .btn-back {
-  background: #0b2c5f;
-  color: white;
-  border-radius: 10px;
-  padding: 10px 25px;
+  background: none;
   border: none;
-  transition: 0.3s;
+  color: #2f4f9d;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
 }
 
   .btn-back:hover {
-    background: #061c3a;
+    text-decoration: underline;
   }
 
 .btn-invest {
-  background: linear-gradient(135deg, #ff7a00, #ff9d3c);
+  background: #ff9a00;
   color: white;
   border-radius: 10px;
   padding: 10px 25px;
@@ -141,9 +136,6 @@ select {
   box-shadow: 0 6px 20px rgba(255,122,0,0.3);
 }
 
-  .btn-invest:hover {
-    transform: translateY(-2px);
-  }
 
 /* ========================================
    STATUS BOX

@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\change-nominee",
+    "\\src\\app\\changepassword",
+    "\\src\\app\\dashboard",
     "\\src\\app\\investment-page",
     "\\src\\app\\investor-page",
     "\\src\\app\\manage-account",
-    "\\src\\app\\services",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\nav-bar"
+    "\\src\\app\\payment-page",
+    "\\src\\app\\view-nominee"
   ],
-  "SelectedNode": "\\src\\app\\change-nominee\\change-nominee.ts",
+  "SelectedNode": "\\src\\app\\investor-page\\investor-page.css",
   "PreviewInSolutionExplorer": false
 }

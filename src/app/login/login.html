@@ -27,11 +27,17 @@
                placeholder="Username"
                [(ngModel)]="username"
                name="username" />
-        <input class="textf"
-               type="password"
-               placeholder="Password"
-               [(ngModel)]="password"
-               name="password" />
+        <div class="password-box">
+          <input class="textf"
+                 [type]="showPassword ? 'text' : 'password'"
+                 placeholder="Password"
+                 [(ngModel)]="password"
+                 name="password" />
+
+          <i class="bi"
+             [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
+             (click)="togglePassword()"></i>
+        </div>
 
 
 

@@ -32,18 +32,18 @@ body {
 
 /* PAY BUTTON */
 .btn-primary {
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  background: #2f4f9d;
+  color: white;
+  width: 30%;
+  height:50px;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 12px;
   font-weight: 600;
+  font-size:17px;
   transition: all 0.3s ease;
 }
 
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37,99,235,0.3);
-  }
 
 /* OPTION CARDS */
 .option-card {

@@ -289,3 +289,27 @@ input {
 .step.active .circle {
   transform: scale(1.1);
 }
+
+
+
+.password-box {
+  position: relative;
+}
+
+  .password-box input {
+    padding-right: 40px;
+  }
+
+  .password-box i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #64748b;
+  }
+
+    .password-box i:hover {
+      color: #0b2c5f;
+    }

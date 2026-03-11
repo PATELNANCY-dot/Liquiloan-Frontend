@@ -41,18 +41,17 @@
 }
 
 .btn-gradient {
-  background: linear-gradient(90deg, #ffcc70, #d4af37);
-  border: none;
+  background: #003366;
+  color: white;
   padding: 12px 28px;
   font-weight: 600;
-  border-radius: 30px;
-  transition: 0.3s ease;
+  font-size:20px;
+  border:none;
+  border-radius: 40px;
+
 }
 
-.btn-gradient:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+
 
 /* ========================================
    SECTION TITLES

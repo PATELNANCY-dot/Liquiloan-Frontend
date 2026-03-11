@@ -22,13 +22,12 @@
 
   <!-- Main Content -->
   <div class="flex-grow-1">
-    <div class="flex-grow-1">
-      <div class="loan-heading-section">
-        <h1>
-          <span class="orange">LIQUILOAN</span>
-          <span class="navy">DETAILS</span>
-        </h1>
-      </div>
+    <!-- Heading -->
+    <div class="page-header text-center">
+      <h1>
+        <span class="orange">Liquiloan</span>
+        <span class="navy">Details</span>
+      </h1>
     </div>
 
 
@@ -237,11 +236,11 @@
             </div>
             <div class="form-col">
               <label>Amount:</label>
-             <input type="text"
-                    inputmode="numeric"
+              <input type="text"
+                     inputmode="numeric"
                      class="form-control"
                      [(ngModel)]="investmentAmount"
-                       name="neftAmount">
+                     name="neftAmount">
             </div>
           </div>
         </form>
@@ -252,7 +251,8 @@
               <label>Payment Mode:</label>
               <div class="custom-dropdown" (click)="togglePaymentModeDropdown($event)">
                 <div class="dropdown-selected">
-                  {{ paymentMode || 'Select Payment Mode'
+                  {{
+ paymentMode || 'Select Payment Mode'
                   }}
                   <i class="bi bi-chevron-down"></i>
                 </div>
@@ -311,8 +311,8 @@
       <div class="flex-grow-1">
         <div class="loan-heading-section2">
           <div class="action-buttons">
-            <button (click)="goTo()" class="btn-back">Back</button>
-            <button (click)="goPay()" class="btn-invest">INVEST</button>
+            <button (click)="goTo()" class="btn-back"> <b>← Back</b> </button>
+            <button (click)="goPay()" class="btn-invest"> <b>LEND</b> </button>
           </div>
         </div>
       </div>

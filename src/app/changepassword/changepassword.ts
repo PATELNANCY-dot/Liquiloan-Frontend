@@ -77,5 +77,22 @@ export class Changepassword {
         }
       });
   }
- 
+
+
+
+  showCurrent = false;
+  showNew = false;
+  showConfirm = false;
+
+  toggleCurrent() {
+    this.showCurrent = !this.showCurrent;
+  }
+
+  toggleNew() {
+    this.showNew = !this.showNew;
+  }
+
+  toggleConfirm() {
+    this.showConfirm = !this.showConfirm;
+  }
 }

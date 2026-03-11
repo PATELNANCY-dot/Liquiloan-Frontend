@@ -118,3 +118,20 @@
   }
 
 
+
+.password-box {
+  position: relative;
+}
+
+  .password-box i {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+    color: #777;
+    font-size: 18px;
+  }
+
+    .password-box i:hover {
+      color: #000080;
+    }

@@ -1,90 +1,126 @@
-<div class="main-wrapper">
-  <h5 class="page-title">Nominee Information</h5>
-  <div class="content-wrapper">
-    <div class="form-box" #nomineeContainer>
-      <form [formGroup]="nomineeForm" (ngSubmit)="updateNominee()">
+<div class="nominee-page">
 
-        <div formArrayName="nominees">
-          <div class="nominee-block" *ngFor="let nominee of nominees.controls; let i = index" [formGroupName]="i">
-
-            <!-- Delete button at top right -->
-            <div class="delete-btn-wrapper" style="text-align: right;">
-              <button type="button" class="btn btn-sm btn-danger" (click)="removeNominee(i)">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-
-            <div class="form-row">
-              <div class="form-col">
-                <label>Nominee Name</label>
-                <input formControlName="nomineeName">
-              </div>
-
-              <div class="form-col">
-                <label>DOB</label>
-                <div class="date-wrapper">
-                  <input type="date" formControlName="nomineeDob" class="form-control" (change)="onDobChange(i)">
-                  <span class="calendar-icon"><i class="bi bi-calendar3"></i></span>
-                </div>
-              </div>
-
-              <div class="form-col">
-                <label>Relation</label>
-                <input formControlName="nomineeRelation">
-              </div>
-
-              <div class="form-col">
-                <label>Nominee PAN</label>
-                <input formControlName="nomineePan" [disabled]="disablePan(nominee.value)">
-              </div>
-            </div>
-
-            <br>
-
-            <!-- Guardian fields - show only if nominee is minor -->
-            <div *ngIf="isMinor(nominee.value.nomineeDob)">
-              <div class="form-row">
-                <div class="form-col">
-                  <label>Guardian Name</label>
-                  <input formControlName="guardianName">
-                </div>
-
-                <div class="form-col">
-                  <label>Guardian PAN</label>
-                  <input formControlName="guardianPan">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-col">
-                  <label>Guardian DOB</label>
-                  <div class="date-wrapper">
-                    <input type="date" formControlName="guardianDob" class="form-control">
-                    <span class="calendar-icon"><i class="bi bi-calendar3"></i></span>
-                  </div>
-                </div>
-
-                <div class="form-col">
-                  <label>Guardian Relation</label>
-                  <input formControlName="guardianRelation">
-                </div>
-              </div>
-            </div>
-
-            <hr>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <br />
-    <button type="button" class="next-btn" (click)="addNominee()">
-      <i class="bi bi-plus-circle"></i> ADD NOMINEE
+  <div class="page-header">
+    <h2>Nominee Information</h2>
+    <button class="add-btn" (click)="addNominee()">
+      <i class="bi bi-plus-circle"></i> Add Nominee
     </button>
   </div>
 
-  <br />
-  <div class="form-actions mt-3">
-    <button type="button" (click)="updateNominee()">Save Nominees</button>
+  <form [formGroup]="nomineeForm" (ngSubmit)="updateNominee()">
+
+    <div formArrayName="nominees">
+
+      <div class="nominee-card"
+           *ngFor="let nominee of nominees.controls; let i = index"
+           [formGroupName]="i">
+
+        <div class="delete-btn">
+          <button type="button" (click)="removeNominee(i)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label>Nominee Name</label>
+            <input formControlName="nomineeName">
+          </div>
+
+          <div class="field">
+            <label>DOB</label>
+            <input type="date" formControlName="nomineeDob" (change)="onDobChange(i)">
+          </div>
+
+          <div class="field">
+            <label>Relation</label>
+            <input formControlName="nomineeRelation">
+          </div>
+
+          <div class="field">
+            <label>Nominee PAN</label>
+            <input formControlName="nomineePan" [disabled]="disablePan(nominee.value)">
+          </div>
+
+        </div>
+
+        <div *ngIf="isMinor(nominee.value.nomineeDob)" class="guardian-section">
+
+          <h4>Guardian Details</h4>
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label>Guardian Name</label>
+              <input formControlName="guardianName">
+            </div>
+
+            <div class="field">
+              <label>Guardian PAN</label>
+              <input formControlName="guardianPan">
+            </div>
+
+            <div class="field">
+              <label>Guardian DOB</label>
+              <input type="date" formControlName="guardianDob">
+            </div>
+
+            <div class="field">
+              <label>Guardian Relation</label>
+              <input formControlName="guardianRelation">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <p class="nominee-note">
+      <strong>Note :</strong><br>
+      <i class="bi bi-dot"></i> In case of Joint holder Investment, Joint holder cannot be Nominee.<br>
+      <i class="bi bi-dot"></i> The nomination provided herewith will be captured in all new folios created through FundzBazar until I submit fresh request for modification or cancellation of Nomination.<br>
+      <i class="bi bi-dot"></i> As per the default system configuration, the nominee display preference shall be set to 'Always Display'. Accordingly, the nominee's name will be reflected in the Statement of Account (SOA).<br>
+      <i class="bi bi-dot"></i> In case the investor wishes to modify this preference, a formal written request must be submitted in physical form to the respective Asset Management Company (AMC).
+    </p>
+ 
+
+    <div class="form-actions">
+      <button type="button" class="back-btn" (click)="BACK()"><b>← Back</b></button>
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
+
+  </form>
+
+</div>
+
+
+
+<div class="classdiv text-left">
+  <!-- Social Icons -->
+  <div class="social-icons d-flex gap-3">
+    <a href="https://www.facebook.com" target="_blank" class="facebook">
+      <i class="bi bi-facebook fs-3"></i>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" class="twitter">
+      <i class="bi bi-twitter fs-3"></i>
+    </a>
+    <a href="https://www.linkedin.com" target="_blank" class="linkedin">
+      <i class="bi bi-linkedin fs-3"></i>
+    </a>
+    <a href="https://www.youtube.com" target="_blank" class="youtube">
+      <i class="bi bi-youtube fs-3"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" class="instagram">
+      <i class="bi bi-instagram fs-3"></i>
+    </a>
+    <a>
+      |
+    </a>
+
   </div>
 </div>

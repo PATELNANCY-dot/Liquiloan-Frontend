@@ -131,9 +131,15 @@
       <div class="form-row">
         <div class="form-col">
           <label>Password</label>
-          <input type="password"
-                 formControlName="Password_1"
-                 class="form-control">
+          <div class="password-box">
+            <input [type]="showConfirmPassword ? 'text' : 'password'"
+                   formControlName="confirmPassword"
+                   class="form-control">
+
+            <i class="bi"
+               [ngClass]="showConfirmPassword ? 'bi-eye-slash' : 'bi-eye'"
+               (click)="toggleConfirmPassword()"></i>
+          </div>
 
           <small class="text-danger"
                  *ngIf="registrationForm.get('Password_1')?.touched &&
@@ -159,9 +165,15 @@
 
         <div class="form-col">
           <label>Confirm Password</label>
-          <input type="password"
-                 formControlName="confirmPassword"
-                 class="form-control">
+          <div class="password-box">
+            <input [type]="showPassword ? 'text' : 'password'"
+                   formControlName="Password_1"
+                   class="form-control">
+
+            <i class="bi"
+               [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
+               (click)="togglePassword()"></i>
+          </div>
 
           <small class="text-danger"
                  *ngIf="registrationForm.get('confirmPassword')?.touched &&

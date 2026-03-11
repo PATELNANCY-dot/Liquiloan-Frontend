@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NomineeService } from '../services/nominee';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ViewNominee implements OnInit {
 
   nominees: any[] = [];
 
-  constructor(private nomineeService: NomineeService, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(private nomineeService: NomineeService, private router: Router, private cdr: ChangeDetectorRef, private location: Location) { }
 
   ngOnInit(): void {
     this.loadNominees(); 
@@ -48,4 +49,8 @@ export class ViewNominee implements OnInit {
     this.router.navigate(['/change-nominee', id]);
   }
 
+
+  back() {
+    this.router.navigate(['/dashboard'])
+  }
 }

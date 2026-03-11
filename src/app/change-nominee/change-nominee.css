@@ -1,237 +1,200 @@
+/* Page */
 
-
-
-/* ===============================
-   GLOBAL STYLE
-================================ */
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f4f7fb, #eef2f8);
-}
-/* ===============================
-   MAIN WRAPPER CARD
-================================ */
-
-.main-wrapper {
-  width: 92%;
-  max-width: 1500px;
-  margin: 30px auto;
-  border-radius: 22px;
+.nominee-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: 'Poppins',sans-serif;
 }
 
-/* ===============================
-   PAGE TITLE
-================================ */
 
-.page-title {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #0b2c5f;
-  margin-bottom: 35px;
-  position: relative;
-  display: inline-block;
+/* Header */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-  .page-title::after {
-    content: "";
-    width: 50%;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6a00, transparent);
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    border-radius: 4px;
+  .page-header h2 {
+    color: #0b2c5f;
+    font-weight: 600;
   }
 
-/* ===============================
-   FORM BOX
-================================ */
 
-.form-box {
-  padding: 25px;
-  border-radius: 18px;
-  background: linear-gradient(145deg, #ffffff, #f9fbff);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-}
+/* Add button */
 
-/* ===============================
-   FORM LAYOUT
-================================ */
-
-form {
+.add-btn {
+  background: #ff9a00;
   border: none;
-  padding: 0;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.form-row {
-  display: flex;
-  gap: 25px;
+
+/* Nominee card */
+
+.nominee-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
   margin-bottom: 25px;
-  flex-wrap: wrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  position: relative;
 }
 
-.form-col {
-  flex: 1;
-  min-width: 220px;
+
+/* Delete */
+
+.delete-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
-/* ===============================
-   LABELS
-================================ */
+  .delete-btn button {
+    background: #ff4d4f;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
 
-label {
+
+/* Form grid */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  margin-top: 10px;
+}
+
+
+/* Field */
+
+.field label {
   font-size: 13px;
-  font-weight: 500;
   color: #667085;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   display: block;
 }
 
-/* ===============================
-   INPUT FIELDS
-================================ */
-
-input {
+.field input {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 8px;
   border: 1px solid #d6dce5;
   font-size: 14px;
-  transition: all 0.3s ease;
-  background: #ffffff;
 }
 
-  input:focus {
-    border-color: #ff6a00;
-    box-shadow: 0 0 0 3px rgba(255,106,0,0.15);
-    outline: none;
-    transform: translateY(-1px);
+
+/* Guardian section */
+
+.guardian-section {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+  .guardian-section h4 {
+    font-size: 15px;
+    color: #0b2c5f;
+    margin-bottom: 15px;
   }
 
-/* Minor section highlight */
-span b {
-  color: #0b2c5f;
-  font-size: 14px;
+
+/* Buttons */
+
+.form-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-/* ===============================
-   BUTTON STYLE
-================================ */
+.back-btn {
+  background: none;
+  border: none;
+  color: #ff6a00;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-.next-btn {
-  background: linear-gradient(135deg, #ff6a00, #ff8c00);
-  padding: 12px 28px;
-  border-radius: 10px;
+  .back-btn:hover {
+    text-decoration: underline;
+  }
+
+
+.submit-btn {
+  background: #0b3d91;
   border: none;
   color: white;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+/* Responsive */
+
+@media(max-width:900px) {
+
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width:600px) {
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   SOCIAL ICONS
+======================================== */
+
+.classdiv {
+  background: #ffffff !important;
+  padding: 15px;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 60%;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
   transition: 0.3s ease;
 }
 
-  .next-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255,106,0,0.3);
-  }
 
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 992px) {
-  .form-row {
-    flex-direction: column;
-  }
-
-  .main-wrapper {
-    padding: 30px;
-  }
-}
-
-/* ===============================
-   ANIMATION
-================================ */
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/*date */
-.date-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.custom-date {
-  width: 100%;
-  padding: 12px 45px 12px 16px;
-  border: 1.5px solid #dbe2ea;
-  border-radius: 12px;
-  background: #f9fbff;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-  .custom-date:hover {
-    border-color: #0b2c5f;
-  }
-
-  .custom-date:focus {
-    outline: none;
-    border-color: #ff7a00;
-    box-shadow: 0 0 0 3px rgba(255,122,0,0.1);
-  }
-
-.calendar-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #0b2c5f;
-  font-size: 16px;
-}
-
-
-/* change-nominee.css */
-.cloned-form {
-  margin-top: 30px; /* Adjust gap as needed */
-  border-top: 1px solid #ccc; /* optional separator */
-  padding-top: 15px; /* optional padding */
-}
-
-
-.nominee-block {
-  margin-bottom: 35px;
-  padding: 25px;
-  border-radius: 10px;
-  background: #fafafa;
-  border: 1px solid #e8e8e8;
-}
-
-
-.nominee-block {
-  position: relative;
-  padding: 15px;
-  border: 1px solid #ccc;
+.social-icons a {
+  background: #eef2f7;
+  padding: 10px 14px;
   border-radius: 8px;
-  margin-bottom: 20px;
-  background: #f9f9f9;
+  transition: 0.3s;
+  color: #ff7a00;
 }
 
-.delete-btn-wrapper {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  .social-icons a:hover {
+    background: #ff7a00;
+    color: white;
+  }
+
+
+
+.nominee-note {
+  font-size: 12px;
+  color: #555;
+  background: #f8f9fa;
+  padding: 10px 14px;
+  border-left: 4px solid #ff7a00;
+  border-radius: 6px;
+  line-height: 1.6;
+  margin-top: 10px;
 }

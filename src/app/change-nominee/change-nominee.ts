@@ -196,6 +196,12 @@ export class ChangeNominee implements OnInit {
         // Just remove from form array if it's a new, unsaved nominee
         this.nominees.removeAt(index);
       }
-    }
+  }
+
+  BACK() {
+    this.router.navigate(['./view-nominee'])
+  }
+
+
   }
 

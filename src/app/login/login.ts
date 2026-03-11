@@ -55,4 +55,11 @@ export class Login {
       }
     });
   }
+
+
+  showPassword = false;
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 }
