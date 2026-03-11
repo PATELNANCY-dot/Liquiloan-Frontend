@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RegistrationDataService } from '../services/ client-registration.service';
 
 @Component({
   selector: 'app-registration1',
@@ -13,8 +14,8 @@ import { CommonModule } from '@angular/common';
 export class Registration1 {
   registrationForm: FormGroup;
   step = 1;
-  constructor(private router: Router, private fb: FormBuilder) {
-     localStorage.removeItem('clientRegistration');
+  constructor(private router: Router, private fb: FormBuilder, private registrationService: RegistrationDataService) {
+
     this.registrationForm = this.fb.group(
       {
         name: [
@@ -58,17 +59,17 @@ export class Registration1 {
   }
 
   goNext() {
+
     if (this.registrationForm.invalid) {
       this.registrationForm.markAllAsTouched();
       return;
     }
 
-    const existingData = JSON.parse(localStorage.getItem('clientRegistration') || '{}');
-    const updatedData = { ...existingData, ...this.registrationForm.value };
+    this.registrationService.setData(this.registrationForm.value);
 
-    localStorage.setItem('clientRegistration', JSON.stringify(updatedData));
     this.router.navigate(['/registration2']);
   }
+
   goBack() {
     this.router.navigate(['/new-invester-page']);
   }

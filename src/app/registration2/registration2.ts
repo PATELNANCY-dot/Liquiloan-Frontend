@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import flatpickr from 'flatpickr';
+import { RegistrationDataService } from '../services/ client-registration.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class Registration2 {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private registrationService: RegistrationDataService
   ) {
 
     this.registrationForm = this.fb.group({
@@ -122,6 +124,9 @@ export class Registration2 {
   //
 
   ngOnInit() {
+
+    const savedData = this.registrationService.getData();
+    this.registrationForm.patchValue(savedData);
     this.loadCountries();
   }
 
@@ -138,16 +143,27 @@ export class Registration2 {
   // ===============================
   // When Country Changes → Load States
   // ===============================
-  onCountryChange() {
-    const countryId = this.registrationForm.get('nationality')?.value;
+  onCountryChange(countryId: number) {
+
     if (!countryId) return;
+
     this.http.get<any[]>(`${this.apiUrl}/states/${countryId}`).subscribe(res => {
+
       this.states = res;
       this.correspondingStates = res;
+
       this.cities = [];
       this.correspondingCities = [];
-      this.registrationForm.patchValue({ stateID: null, cityID: null, correspondingState: null, correspondingCity: null });
+
+      this.registrationForm.patchValue({
+        stateID: null,
+        cityID: null,
+        correspondingState: null,
+        correspondingCity: null
+      });
+
     });
+
   }
 
   // State changed → load cities
@@ -177,32 +193,22 @@ export class Registration2 {
       return;
     }
 
-    const existingData = JSON.parse(localStorage.getItem('clientRegistration') || '{}');
     const formValue = this.registrationForm.value;
 
-    const selectedCountry = this.countries.find(
-      c => c.countryID == formValue.nationality
-    );
-
     const updatedData: any = {
-      ...existingData,
       pan: formValue.pan,
       dob: formValue.dob,
       aadhar: formValue.aadhar,
-      nationality: selectedCountry ? selectedCountry.countryName : null,
+      nationality: formValue.nationality,
       placeOfBirth: formValue.placeOfBirth,
       gender: formValue.gender,
-
-      //  FORCE NUMBERS HERE
-      stateID: formValue.stateID ? Number(formValue.stateID) : null,
-      cityID: formValue.cityID ? Number(formValue.cityID) : null,
-      correspondingState: formValue.correspondingState ? Number(formValue.correspondingState) : null,
-      correspondingCity: formValue.correspondingCity ? Number(formValue.correspondingCity) : null,
-
+      stateID: Number(formValue.stateID),
+      cityID: Number(formValue.cityID),
+      correspondingState: Number(formValue.correspondingState),
+      correspondingCity: Number(formValue.correspondingCity),
       permanentAddress: formValue.permanentAddress,
       correspondingAddress: formValue.correspondingAddress,
       pincode: formValue.pincode
-      
     };
 
     if (this.selectedPanFile)
@@ -214,11 +220,11 @@ export class Registration2 {
     if (this.selectedCorrespondingAddressFile)
       updatedData.correspondingFile = await this.fileToBase64(this.selectedCorrespondingAddressFile);
 
-    localStorage.setItem('clientRegistration', JSON.stringify(updatedData));
+    this.registrationService.setData(updatedData);
 
     this.router.navigate(['/registration3']);
-
   }
+
   fileToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
 
@@ -358,9 +364,14 @@ export class Registration2 {
   }
 
   selectCountry(country: any) {
-    this.registrationForm.patchValue({ nationality: country.countryID });
+
+    this.registrationForm.patchValue({
+      nationality: country.countryName
+    });
+
+    this.onCountryChange(country.countryID);
+
     this.countryDropdownOpen = false;
-    this.onCountryChange();
   }
 
   selectState(state: any) {
@@ -391,8 +402,8 @@ export class Registration2 {
   // ================= DISPLAY HELPERS =================
 
   getSelectedCountryName(): string {
-    const id = this.registrationForm.get('nationality')?.value;
-    const country = this.countries.find(c => c.countryID == id);
+    const name = this.registrationForm.get('nationality')?.value;
+    const country = this.countries.find(c => c.countryName == name);
     return country ? country.countryName : 'Select Country';
   }
 

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import flatpickr from 'flatpickr';
+import { RegistrationDataService } from '../services/ client-registration.service';
 
 @Component({
   selector: 'app-registration4',
@@ -21,7 +22,8 @@ export class Registration4 {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private registrationService: RegistrationDataService
   ) {
 
     this.registrationForm = this.fb.group({
@@ -155,10 +157,18 @@ export class Registration4 {
 
       this.isMinor = true;
 
+      // Disable nominee PAN and clear value
+      this.registrationForm.get('nomineePan')?.disable();
+      this.registrationForm.patchValue({
+        nomineePan: ''
+      });
+
+      // Guardian fields required
       this.registrationForm.get('guardianName')?.setValidators([Validators.required]);
       this.registrationForm.get('guardianDob')?.setValidators([Validators.required]);
       this.registrationForm.get('guardianRelation')?.setValidators([Validators.required]);
 
+      // Initialize guardian calendar
       setTimeout(() => {
         this.initGuardianCalendar();
       });
@@ -168,6 +178,11 @@ export class Registration4 {
 
       this.isMinor = false;
 
+      // Enable nominee PAN again
+      this.registrationForm.get('nomineePan')?.enable();
+      this.registrationForm.get('nomineePan')?.updateValueAndValidity();
+
+      // Clear guardian fields
       this.registrationForm.patchValue({
         guardianName: '',
         guardianDob: '',
@@ -175,12 +190,13 @@ export class Registration4 {
         guardianPan: ''
       });
 
+      // Remove guardian validators
       this.registrationForm.get('guardianName')?.clearValidators();
       this.registrationForm.get('guardianDob')?.clearValidators();
       this.registrationForm.get('guardianRelation')?.clearValidators();
-
     }
 
+    // Update validation state
     this.registrationForm.get('guardianName')?.updateValueAndValidity();
     this.registrationForm.get('guardianDob')?.updateValueAndValidity();
     this.registrationForm.get('guardianRelation')?.updateValueAndValidity();
@@ -212,7 +228,7 @@ export class Registration4 {
       return;
     }
 
-    const existingData = JSON.parse(localStorage.getItem('clientRegistration') || '{}');
+    const existingData = this.registrationService.getData();
     const formData = new FormData();
 
     /* ---------- BASIC DETAILS ---------- */
@@ -245,15 +261,7 @@ export class Registration4 {
     formData.append("BranchAddress", existingData.branchAddress || '');
     formData.append("MicrCode", existingData.micrCode || '');
 
-    /* ---------- NOMINEE ---------- */
-
-    formData.append("NomineeName", this.registrationForm.value.nomineeName);
-    formData.append("NomineeRelation", this.registrationForm.value.nomineeRelation);
-
-    const nomineeDob = this.formatToISO(this.registrationForm.value.nomineeDob);
-    if (nomineeDob) formData.append("NomineeDob", nomineeDob);
-
-    formData.append("NomineePan", this.registrationForm.value.nomineePan);
+  
 
     //STATE AND CITY ID
     // State
@@ -280,6 +288,12 @@ export class Registration4 {
 
     if (this.isMinor) {
 
+      formData.append("NomineeName", this.registrationForm.value.nomineeName);
+      formData.append("NomineeRelation", this.registrationForm.value.nomineeRelation);
+
+      const nomineeDob = this.formatToISO(this.registrationForm.value.nomineeDob);
+      if (nomineeDob) formData.append("NomineeDob", nomineeDob);
+
       formData.append("GuardianName", this.registrationForm.value.guardianName);
       formData.append("GuardianRelation", this.registrationForm.value.guardianRelation);
       formData.append("GuardianPan", this.registrationForm.value.guardianPan || '');
@@ -287,6 +301,16 @@ export class Registration4 {
       const guardianDob = this.formatToISO(this.registrationForm.value.guardianDob);
       if (guardianDob) formData.append("GuardianDob", guardianDob);
 
+    }
+    else {
+
+      formData.append("NomineeName", this.registrationForm.value.nomineeName);
+      formData.append("NomineeRelation", this.registrationForm.value.nomineeRelation);
+
+      const nomineeDob = this.formatToISO(this.registrationForm.value.nomineeDob);
+      if (nomineeDob) formData.append("NomineeDob", nomineeDob);
+
+      formData.append("NomineePan", this.registrationForm.value.nomineePan);
     }
 
     /* ---------- FILES ---------- */
@@ -308,6 +332,8 @@ export class Registration4 {
 
     /* ---------- API ---------- */
 
+    console.log(existingData);
+
     this.http.post<any>('http://localhost:5048/api/clientregistrations', formData)
       .subscribe({
         next: res => {
@@ -324,7 +350,7 @@ export class Registration4 {
             .subscribe({
               next: () => {
                 alert('Registration successful!');
-                localStorage.removeItem('clientRegistration');
+                this.registrationService.clearData();
                 this.router.navigate(['/login']);
               },
               error: err => {

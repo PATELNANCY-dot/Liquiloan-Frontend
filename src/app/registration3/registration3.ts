@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { RegistrationDataService } from '../services/ client-registration.service';
 
 @Component({
   selector: 'app-registration3',
@@ -78,7 +79,7 @@ export class Registration3 {
 
 
 
-  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient, private registrationService: RegistrationDataService) {
     this.registrationForm = this.fb.group({
       bankName: ['', Validators.required],
       accountNumber: ['', Validators.required],
@@ -90,31 +91,19 @@ export class Registration3 {
 
 
   }
-
   async goNext() {
-
 
     if (this.registrationForm.invalid) {
       this.registrationForm.markAllAsTouched();
       return;
     }
-  
 
     const formData = this.registrationForm.getRawValue();
 
-    // Find selected bank name
-    const selectedBank = this.banks.find(
-      b => b.bankId == formData.bankName
-    );
+    const selectedBank = this.banks.find(b => b.bankId == formData.bankName);
+    const selectedBranch = this.bankBranches.find(b => b.id == formData.branchName);
 
-    // Find selected branch name
-    const selectedBranch = this.bankBranches.find(
-      b => b.id == formData.branchName
-    );
-
-
-    const updatedData = {
-      ...JSON.parse(localStorage.getItem('clientRegistration') || '{}'),
+    const updatedData: any = {
       ...formData,
       bankName: selectedBank ? selectedBank.bankName : '',
       branchName: selectedBranch ? selectedBranch.bankBranch : ''
@@ -126,10 +115,11 @@ export class Registration3 {
     if (this.selectedCancelChequeFile)
       updatedData.cancelChequeFile = await this.fileToBase64(this.selectedCancelChequeFile);
 
-    localStorage.setItem('clientRegistration', JSON.stringify(updatedData));
+    this.registrationService.setData(updatedData);
 
     this.router.navigate(['/registration4']);
   }
+
   fileToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
 
