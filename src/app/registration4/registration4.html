@@ -36,11 +36,10 @@
         <span style="color:navy">Nominee Details</span>
       </h1>
       <br />
-      <h3 style="color:darkorange">Nominee Details</h3>
-      <br />
 
-      <!--Nominee Name-->
-      <div>
+
+      <!--Nominee line1-->
+      <div class="form-row">
         <div class="form-col">
           <label>Nominee Name:</label>
           <input type="text" formControlName="nomineeName">
@@ -50,26 +49,7 @@
             Nominee Name is required
           </small>
         </div>
-      </div>
 
-      <br />
-      <!--Nominee Relation-->
-      <div>
-        <div class="form-col">
-          <label>Nominee Relation:</label>
-          <input type="text" formControlName="nomineeRelation">
-          <small class="text-danger"
-                 *ngIf="registrationForm.get('nomineeRelation')?.touched &&
-    registrationForm.get('nomineeRelation')?.errors?.['required']">
-            Nominee Relation is required
-          </small>
-        </div>
-      </div>
-
-      <br />
-
-      <!--Nominee Date Of Birth-->
-      <div>
         <div class="form-col">
           <label> Date Of Birth:</label>
           <div class="date-wrapper">
@@ -90,60 +70,192 @@ registrationForm.get('nomineeDob')?.errors?.['required']">
             Nominee  Date Of Birth is required
           </small>
         </div>
+
+        <div class="form-col">
+          <label>Nominee Relation:</label>
+          <input type="text" formControlName="nomineeRelation">
+          <small class="text-danger"
+                 *ngIf="registrationForm.get('nomineeRelation')?.touched &&
+    registrationForm.get('nomineeRelation')?.errors?.['required']">
+            Nominee Relation is required
+          </small>
+        </div>
+
+        <div class="form-col">
+          <label>Percentage:</label>
+          <input type="text" inputmode="numeric" formControlName="nomineePercentage" />
+        </div>
+
+       
+
       </div>
 
-      <br />
 
-      <!--Pan Number-->
-      <div>
+      <!--Nominee line 2-->
+      <div class="form-row">
+
+
+        <div class="form-col">
+          <label>Address:</label>
+          <input type="text" formControlName="nomineeAddress" />
+        </div>
+
         <div class="form-col">
           <label>Pan Number:</label>
           <input type="text" inputmode="numeric" formControlName="nomineePan" />
-
         </div>
+
+
+        <div class="form-col">
+          <label>Gender:</label>
+          <input type="text" formControlName="nomineeGender" />
+        </div>
+
+
       </div>
 
-      <br />
-      <br />
-      <div *ngIf="isMinor">
-        <span>[Your nominee is minor please add Gurdian Details]</span>
-        <div class="form-row">
-          <div class="form-col">
-            <label>Guardian Pan(Optional)</label>
-            <input type="text" placeholder="Guardian Pan(Optional)"  formControlName="guardianPan">
-          </div>
-          <br />
-          <div class="form-col">
-            <label>Name of parent/Guardian</label>
-            <input type="text" placeholder="Name of parent/Guardian"  formControlName="guardianName">
-          </div>
+
+
+      <!--Nominee Date Of Birth-->
+      <div class="form-row">
+        <div class="form-col">
+          <label>Country:</label>
+          <input type="text" formControlName="nomineeCountry" />
         </div>
 
+
+        <div class="form-col">
+          <label>State:</label>
+          <input type="text" formControlName="nomineeState" />
+        </div>
+
+        <div class="form-col">
+          <label>City:</label>
+          <input type="text" formControlName="nomineeCity" />
+        </div>
+
+        <div class="form-col">
+          <label>Pincode:</label>
+          <input type="text" formControlName="nomineePincode" />
+        </div>
+
+
+      </div>
+
+
+
+      <!--nominee line 3-->
+      <div class="form-row">
+
+        <div class="form-col">
+          <label>EmailId:</label>
+          <input type="text" formControlName="nomineeEmailId" />
+        </div>
+
+        <div class="form-col">
+          <label>Mobile No:</label>
+          <input type="text" inputmode="numeric" formControlName="nomineeMobileNo" />
+        </div>
+
+      </div>
+
+
+
+
+      <!--if moner codeeeeeee-->
+      <div *ngIf="isMinor">
+        <br />
+        <div class="guardian-title">
+          <span>IF NOMINEE IS MINOR</span>
+        </div>
         <br />
 
+        <!--gurdian line1-->
         <div class="form-row">
+
+          <div class="form-col">
+            <label>Guardian Name</label>
+            <input type="text" formControlName="guardianName">
+          </div>
+
           <div class="form-col">
             <label>Guardian Dob</label>
             <div class="date-wrapper">
               <input type="text"
                      formControlName="guardianDob"
-                      (click)="toggleGuardianCalendar()"
+                     (click)="toggleGuardianCalendar()"
                      #guardianDobInput
                      class="custom-date"
                      placeholder="Select Date" />
 
-              <span class="calendar-icon"  (click)="toggleGuardianCalendar()">
+              <span class="calendar-icon" (click)="toggleGuardianCalendar()">
                 <i class="bi bi-calendar3"></i>
               </span>
             </div>
           </div>
 
-          <br />
           <div class="form-col">
-            <label>Relationship of Guardian with minor</label>
-            <input type="text" placeholder="Relationship of Guardian with minor"  formControlName="guardianRelation">
+            <label>Relationship of Guardian</label>
+            <input type="text"  formControlName="guardianRelation">
           </div>
+
+          <div class="form-col">
+            <label>Guardian Pan(Optional)</label>
+            <input type="text"  formControlName="guardianPan">
+          </div>
+
         </div>
+
+        <!--gurdian line 2-->
+        <div class="form-row">
+          <div class="form-col">
+            <label>Address:</label>
+            <input type="text" formControlName="guardianAddress" />
+          </div>
+
+
+        </div>
+
+        <!--gurdian line 3-->
+        <div class="form-row">
+          <div class="form-col">
+            <label>Country:</label>
+            <input type="text" formControlName="guardianCountry" />
+          </div>
+
+
+          <div class="form-col">
+            <label>State:</label>
+            <input type="text" formControlName="guardianState" />
+          </div>
+
+          <div class="form-col">
+            <label>City:</label>
+            <input type="text" formControlName="guardianCity" />
+          </div>
+
+          <div class="form-col">
+            <label>Pincode:</label>
+            <input type="text" formControlName="guardianPincode" />
+          </div>
+
+        </div>
+
+        <!--nominee line 4-->
+        <div class="form-row">
+
+          <div class="form-col">
+            <label>EmailId:</label>
+            <input type="text" formControlName="guardianEmailId" />
+          </div>
+
+          <div class="form-col">
+            <label>Mobile No:</label>
+            <input type="text" inputmode="numeric" formControlName="guardianMobileNo" />
+          </div>
+
+        </div>
+
       </div>
         <!--next button-->
         <div class="form-actions">

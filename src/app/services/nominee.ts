@@ -4,16 +4,38 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface UpdateNominee {
-  id?: number | null; // optional for new nominees
+
+  id?: number | null;
   clientId: number;
-  nomineeName: string | null;
-  nomineeRelation: string | null;
+
+  nomineeName?: string | null;
+  nomineeRelation?: string | null;
   nomineeDob?: string | null;
   nomineePan?: string | null;
+
+  nomineePersentage?: number | null;
+  nomineeGender?: string | null;
+  nomineeAddress?: string | null;
+  nomineeCountry?: string | null;
+  nomineeState?: string | null;
+  nomineeCity?: string | null;
+  nomineePincode?: string | null;
+  nomineeDocumentType?: string | null;
+  nomineeEmailId?: string | null;
+  MobileNo?: string | null;
+
   guardianName?: string | null;
   guardianRelation?: string | null;
   guardianDob?: string | null;
   guardianPan?: string | null;
+
+  guardianAddress?: string | null;
+  guardianCity?: string | null;
+  guardianState?: string | null;
+  guardianCountry?: string | null;
+  guardianPincode?: string | null;
+  guardianEmailId?: string | null;
+  guardianMobileNo?: string | null;   // add this
 }
 
 @Injectable({

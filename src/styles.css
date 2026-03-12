@@ -1,3 +1,31 @@
+/* Smaller SweetAlert popup */
+.swal2-popup {
+  width: 320px !important; /* controls box size */
+  padding: 1.2rem !important; /* reduce spacing */
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+body.swal2-shown {
+  padding-right: 0 !important;
+}
+/* Title size */
+.swal2-title {
+  font-size: 18px !important;
+  color: #333;
+}
+
+/* Text size */
+.swal2-html-container {
+  font-size: 14px !important;
+}
+
+/* Button style */
+.swal2-confirm {
+  background-color: #2f4f9d !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  padding: 6px 16px !important;
+}
 
 
 /* Hide scrollbar for Chrome, Edge, Safari */

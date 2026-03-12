@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AccountDetails } from '../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
+import { NomineeService, UpdateNominee } from '../services/nominee';
 
 
 
@@ -23,8 +24,9 @@ export class ManageAccount implements OnInit {
   isLoading: boolean = true;
 
   private apiUrl: string = 'http://localhost:5048/api/AccountDetails';
+  nomineesList: UpdateNominee[] = [];
 
-  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef, private nomineeService: NomineeService) { }
 
   ngOnInit(): void {
     const storedClientId = localStorage.getItem('userId');
@@ -46,6 +48,22 @@ export class ManageAccount implements OnInit {
     }
 
     this.loadAccount(clientId);
+    this.fetchNominees();
+  }
+
+
+  fetchNominees() {
+    const clientId = Number(localStorage.getItem('userId'));
+    if (!clientId) return;
+
+    this.nomineeService.getNominee().subscribe({
+      next: (data) => {
+        this.nomineesList = data;
+      },
+      error: (err) => {
+        console.error('Error fetching nominees', err);
+      }
+    });
   }
 
   loadAccount(clientId: number) {
@@ -71,12 +89,5 @@ export class ManageAccount implements OnInit {
     this.activeTab = tab;
   }
 
-  logout() {
-    localStorage.removeItem('userId');
-    this.router.navigate(['/login']);
-  }
-
-
-  
 
 }

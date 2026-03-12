@@ -1,20 +1,24 @@
-/* Page */
+/* =========================
+   PAGE
+========================= */
 
 .nominee-page {
   max-width: 1200px;
   margin: 40px auto;
-  padding: 30px;
-  font-family: 'Poppins',sans-serif;
+  padding: 25px;
+  font-family: 'Poppins', sans-serif;
 }
 
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
   .page-header h2 {
@@ -23,7 +27,9 @@
   }
 
 
-/* Add button */
+/* =========================
+   ADD BUTTON
+========================= */
 
 .add-btn {
   background: #ff9a00;
@@ -33,27 +39,37 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  transition: 0.2s;
 }
 
+  .add-btn:hover {
+    background: #ff7a00;
+  }
 
-/* Nominee card */
+
+/* =========================
+   NOMINEE CARD
+========================= */
 
 .nominee-card {
   background: white;
   border-radius: 12px;
   padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   position: relative;
 }
 
 
-/* Delete */
+/* =========================
+   DELETE BUTTON
+========================= */
 
 .delete-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 12px;
+  right: 12px;
 }
 
   .delete-btn button {
@@ -66,53 +82,109 @@
   }
 
 
-/* Form grid */
+/* =========================
+   FORM GRID
+========================= */
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 20px;
-  margin-top: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 14px;
 }
 
 
-/* Field */
+/* =========================
+   FIELD
+========================= */
 
 .field label {
   font-size: 13px;
   color: #667085;
   margin-bottom: 5px;
   display: block;
+  font-weight: 500;
 }
 
-.field input {
+.field input,
+.field select {
   width: 100%;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 9px 11px;
+  border-radius: 6px;
   border: 1px solid #d6dce5;
   font-size: 14px;
+  background: white;
+  transition: all 0.2s ease;
 }
 
-
-/* Guardian section */
-
-.guardian-section {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-}
-
-  .guardian-section h4 {
-    font-size: 15px;
-    color: #0b2c5f;
-    margin-bottom: 15px;
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 2px rgba(255,122,0,0.1);
   }
 
 
-/* Buttons */
+  /* =========================
+   ADDRESS FIELD FIX
+========================= */
+
+  .field input[formControlName="nomineeAddress"],
+  .field input[formControlName="guardianAddress"] {
+    grid-column: span 2;
+  }
+
+
+/* =========================
+   MOBILE INPUT GROUP
+========================= */
+
+.mobile-group {
+  display: flex;
+  gap: 6px;
+}
+
+  .mobile-group select {
+    width: 90px;
+  }
+
+  .mobile-group input {
+    flex: 1;
+  }
+
+
+/* =========================
+   GUARDIAN SECTION
+========================= */
+
+.guardian-section {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eaeaea;
+}
+
+.guardian-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0b2c5f;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+  .guardian-title span {
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #d6dce5;
+  }
+
+
+/* =========================
+   FORM ACTIONS
+========================= */
 
 .form-actions {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
@@ -123,7 +195,7 @@
   border: none;
   color: #ff6a00;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -131,70 +203,78 @@
     text-decoration: underline;
   }
 
-
 .submit-btn {
   background: #0b3d91;
   border: none;
   color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 7px;
   cursor: pointer;
 }
 
 
-/* Responsive */
+/* =========================
+   NOTE SECTION
+========================= */
 
-@media(max-width:900px) {
+.nominee-note {
+  font-size: 13px;
+  color: #555;
+  background: #f8f9fa;
+  padding: 12px 14px;
+  border-left: 4px solid #ff7a00;
+  border-radius: 6px;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.classdiv {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.social-icons a {
+  background: #eef2f7;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  transition: 0.3s;
+  color: #ff7a00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons i {
+  font-size: 1.4rem;
+}
+
+.social-icons {
+  flex-wrap: wrap;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
 
   .form-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media(max-width:600px) {
+@media (max-width: 600px) {
 
   .form-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* ========================================
-   SOCIAL ICONS
-======================================== */
-
-.classdiv {
-  background: #ffffff !important;
-  padding: 15px;
-  border-radius: 20px;
-  margin: 40px auto;
-  max-width: 60%;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
-}
-
-
-.social-icons a {
-  background: #eef2f7;
-  padding: 10px 14px;
-  border-radius: 8px;
-  transition: 0.3s;
-  color: #ff7a00;
-}
-
-  .social-icons a:hover {
-    background: #ff7a00;
-    color: white;
-  }
-
-
-
-.nominee-note {
-  font-size: 12px;
-  color: #555;
-  background: #f8f9fa;
-  padding: 10px 14px;
-  border-left: 4px solid #ff7a00;
-  border-radius: 6px;
-  line-height: 1.6;
-  margin-top: 10px;
 }

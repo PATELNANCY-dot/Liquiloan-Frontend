@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-changepassword',
@@ -15,7 +14,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class Changepassword {
   form: FormGroup;
-  message: string = '';
+
+  showCurrent = false;
+  showNew = false;
+  showConfirm = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.form = this.fb.group({
@@ -31,68 +33,92 @@ export class Changepassword {
   }
 
   submit() {
+    // ===== Form validations =====
     if (this.form.invalid) {
-      this.message = 'Password must be 8–25 characters and include alphabet, number & special character';
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid Password',
+        text: 'Password must be 8–25 characters and include alphabet, number & special character',
+        confirmButtonColor: '#ff7a00'
+      });
       return;
     }
 
     if (this.form.value.newPassword !== this.form.value.confirmPassword) {
-      this.message = 'New passwords do not match';
+      Swal.fire({
+        icon: 'error',
+        title: 'Password Mismatch',
+        text: 'New passwords do not match',
+        confirmButtonColor: '#d80000'
+      });
       return;
     }
 
     const clientId = localStorage.getItem('userId');
-
     if (!clientId) {
-      this.message = 'User not logged in';
+      Swal.fire({
+        icon: 'warning',
+        title: 'Not Logged In',
+        text: 'User not logged in',
+        confirmButtonColor: '#ff7a00'
+      });
       return;
     }
 
-    //  Password cannot be same as User ID
     if (this.form.value.newPassword === clientId) {
-      this.message = 'Password cannot be same as User ID';
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Password',
+        text: 'Password cannot be same as User ID',
+        confirmButtonColor: '#d80000'
+      });
       return;
     }
 
-
+    // ===== Payload =====
     const payload = {
       clientId: parseInt(clientId),
       currentPassword: this.form.value.currentPassword,
       newPassword: this.form.value.newPassword
     };
 
+    // ===== API Call =====
     this.http.post('http://localhost:5048/api/PasswordChange', payload)
       .subscribe({
         next: (res: any) => {
           console.log('API response:', res);
-          this.message = res.message;
+
           if (res.message === 'Password changed successfully') {
-            alert("Password Changed sucessfully")
-            this.router.navigate(['/login']);
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: res.message,
+              confirmButtonColor: '#00a651'
+            }).then(() => {
+              this.router.navigate(['/login']);
+            });
+          } else {
+            Swal.fire({
+              icon: 'info',
+              title: 'Info',
+              text: res.message,
+              confirmButtonColor: '#0b2c5f'
+            });
           }
         },
         error: (err) => {
-          console.log('API error:', err);
-          this.message = err.error?.message || 'Error changing password';
+          console.error('API error:', err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err.error?.message || 'Error changing password',
+            confirmButtonColor: '#d80000'
+          });
         }
       });
   }
 
-
-
-  showCurrent = false;
-  showNew = false;
-  showConfirm = false;
-
-  toggleCurrent() {
-    this.showCurrent = !this.showCurrent;
-  }
-
-  toggleNew() {
-    this.showNew = !this.showNew;
-  }
-
-  toggleConfirm() {
-    this.showConfirm = !this.showConfirm;
-  }
+  toggleCurrent() { this.showCurrent = !this.showCurrent; }
+  toggleNew() { this.showNew = !this.showNew; }
+  toggleConfirm() { this.showConfirm = !this.showConfirm; }
 }

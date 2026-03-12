@@ -31,5 +31,8 @@ export class NavBar {
     this.dropdownOpen[menu] = !this.dropdownOpen[menu];
   }
 
-
+  logout() {
+    localStorage.removeItem('userId');
+    this.router.navigate(['/login']);
+  }
 }

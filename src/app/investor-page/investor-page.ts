@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NomineeService, UpdateNominee } from '../services/nominee';
 import { ChangeDetectorRef } from '@angular/core';
+import Swal from 'sweetalert2';
+import { AccountDetails } from '../models/account-details.model';
 
 
 declare var bootstrap: any;
@@ -22,6 +24,7 @@ export class InvestorPage implements OnInit {
   withdrawAmount: number = 0;
   selectedBank: string = '';
   totalWithdrawable: number = 5000;
+  account?: AccountDetails;
 
   constructor(private router: Router, private nomineeService: NomineeService, private cdr: ChangeDetectorRef) { }
 
@@ -87,7 +90,11 @@ export class InvestorPage implements OnInit {
   }
 
   WithDraw() {
-    alert('Withdrawal Request Sent Successfully!');
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'WithDrawel Request Send Sucessfully'
+    });
     this.showWithdrawPopup = false;
   }
 

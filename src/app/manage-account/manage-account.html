@@ -12,13 +12,13 @@
   <!-- Main Content -->
   <div class="flex-grow-1 p-4">
 
-   <!-- Heading -->
- <div class="page-header text-center">
-   <h1>
-     <span class="orange">Manage</span>
-     <span class="navy">Account</span>
-   </h1>
- </div>
+    <!-- Heading -->
+    <div class="page-header text-center">
+      <h1>
+        <span class="orange">Manage</span>
+        <span class="navy">Account</span>
+      </h1>
+    </div>
     <!-- Small Navigation Tabs -->
     <div class="manage-nav mb-4 text-center">
       <button class="nav-btn"
@@ -118,42 +118,77 @@
 
 
     <!-- NOMINEE TABLE -->
-    <div *ngIf="activeTab === 'nominee'  && !isLoading   && account" class="modern-card">
-      <table class="table table-bordered">
-        <tr>
-          <th>Nominee Name</th>
-          <td>{{ account.nomineeName }}</td>
-        </tr>
-        <tr>
-          <th>Nominee Relation</th>
-          <td>{{ account.nomineeRelation }}</td>
-        </tr>
-        <tr>
-          <th>Date Of Birth(Nominee)</th>
-          <td>{{ account.nomineeDob | date:'dd/MM/yyyy' }}</td>
-        </tr>
-        <tr>
-          <th>Pan NumberNominee(Nominee)</th>
-          <td>{{ account.nomineePan }}</td>
-        </tr>
-        <tr>
-          <th>Guardian Name</th>
-          <td>{{account.guardianName}}</td>
-        </tr>
-        <tr>
-          <th>Guardian Relation</th>
-          <td>{{account.guardianRelation}}</td>
-        </tr>
-        <tr>
-          <th>Date Of Birth(Guardian)</th>
-          <td>{{account.guardianDob | date:'dd/MM/yyyy'}}</td>
-        </tr>
-        <tr>
-          <th>Pan NumberNominee(Guardian)</th>
-          <td>{{account.guardianPan}}</td>
-        </tr>
-      </table>
+    <div *ngIf="activeTab === 'nominee' && !isLoading">
+
+      <!-- If no nominees -->
+      <div *ngIf="nomineesList.length === 0" class="text-center">
+        No nominee details available.
+      </div>
+
+      <!-- Loop through nominees -->
+      <div *ngFor="let nominee of nomineesList; let i = index" class="modern-card mb-4">
+
+        <h5 class="nominee-title">
+          Nominee {{ i + 1 }}
+
+          <!-- Minor badge -->
+          <span *ngIf="nominee.guardianName"
+                class="badge bg-warning text-dark ms-2">
+            Minor
+          </span>
+        </h5>
+
+        <table class="table table-bordered">
+
+          <!-- Nominee Name -->
+          <tr *ngIf="nominee.nomineeName">
+            <th>Nominee Name</th>
+            <td>{{ nominee.nomineeName }}</td>
+          </tr>
+
+          <!-- Relation -->
+          <tr *ngIf="nominee.nomineeRelation">
+            <th>Relation</th>
+            <td>{{ nominee.nomineeRelation }}</td>
+          </tr>
+
+          <!-- DOB -->
+          <tr *ngIf="nominee.nomineeDob">
+            <th>Date Of Birth</th>
+            <td>{{ nominee.nomineeDob | date:'dd/MM/yyyy' }}</td>
+          </tr>
+
+          <!-- PAN (Only if NOT minor) -->
+          <tr *ngIf="nominee.nomineePan && !nominee.guardianName">
+            <th>PAN Number</th>
+            <td>{{ nominee.nomineePan }}</td>
+          </tr>
+
+          <!-- Guardian Section (only for minors) -->
+          <tr *ngIf="nominee.guardianName">
+            <th>Guardian Name</th>
+            <td>{{ nominee.guardianName }}</td>
+          </tr>
+
+          <tr *ngIf="nominee.guardianRelation">
+            <th>Guardian Relation</th>
+            <td>{{ nominee.guardianRelation }}</td>
+          </tr>
+
+          <tr *ngIf="nominee.guardianDob">
+            <th>Guardian DOB</th>
+            <td>{{ nominee.guardianDob | date:'dd/MM/yyyy' }}</td>
+          </tr>
+
+          <tr *ngIf="nominee.guardianPan">
+            <th>Guardian PAN</th>
+            <td>{{ nominee.guardianPan }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
+
+
 
   </div>
 

@@ -1,6 +1,7 @@
 /* =================================
    HOST (CENTERED + NO SCROLL)
 ================================= */
+
 :host {
   display: flex;
   justify-content: center;
@@ -11,6 +12,7 @@
   overflow-y: auto;
   padding: 40px 0;
 }
+
 /* =================================
    CONTAINER CARD
 ================================= */
@@ -24,73 +26,125 @@
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.4s ease-in-out;
 }
-
-/* =================================
-   HEADINGS
+/* ===============================
+   HEADING
 ================================= */
 
 h1 {
-  font-size: 22px;
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
-h3 {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 25px;
-  color: #ff7a00;
-}
-
-/* =================================
-   FORM GROUP
+/* ===============================
+   FORM STRUCTURE
 ================================= */
 
-.form-group {
-  margin-bottom: 20px;
+form {
+  width: 100%;
 }
 
-/* =================================
-   LABEL
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-col {
+  flex: 1;
+}
+
+/* ===============================
+   LABELS
 ================================= */
 
 label {
   display: block;
-  font-size: 13px;
+  margin-bottom: 5px;
   font-weight: 600;
-  color: #334155;
-  margin-bottom: 6px;
+  font-size: 13px;
+  color: #333;
 }
 
-/* =================================
-   INPUT
+/* ===============================
+   INPUTS + SELECT + TEXTAREA
 ================================= */
 
-input {
+input,
+select,
+textarea {
   width: 100%;
-  padding: 11px 14px;
+  height: 50px;
+  padding: 8px 10px;
   border-radius: 12px;
-  border: 1.5px solid #e2e8f0;
-  font-size: 14px;
   background: #f9fbff;
-  transition: all 0.25s ease;
+  border: 1px solid #d6dbe3;
+  font-size: 13px;
+  transition: all 0.2s ease;
   box-sizing: border-box;
 }
 
-  input:hover {
-    border-color: #cbd5e1;
-  }
-
-  input:focus {
-    border-color: #ff7a00;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.15);
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: orangered;
     outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 69, 0, 0.1);
   }
 
-/* =================================
-   SUBMIT BUTTON
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* ===============================
+   FILE UPLOAD ROW
 ================================= */
+
+.otp-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d6dbe3;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+  .otp-row button {
+    border: none;
+    padding: 7px 12px;
+    background: #f1f3f6;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+    .otp-row button:hover {
+      background: #e2e6ea;
+    }
+
+  .otp-row input {
+    border: none;
+    padding: 7px;
+    font-size: 12px;
+    background: #fff;
+  }
+
+  .otp-row button.confirm {
+    background: navy;
+    color: white;
+  }
+
+    .otp-row button.confirm:hover {
+      opacity: 0.9;
+    }
+
+  .otp-row button:first-child {
+    border-right: 1px solid #d6dbe3;
+  }
+
+  .otp-row button:last-child {
+    border-left: 1px solid #d6dbe3;
+  }
 
 /* ===============================
    NEXT BUTTON
@@ -145,6 +199,131 @@ input {
   }
 
 
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
+
+/* =========================
+   MODERN FILE UPLOAD
+========================= */
+
+.file-upload {
+  position: relative;
+  width: 100%;
+}
+
+  .file-upload input[type="file"] {
+    display: none;
+  }
+
+.file-label {
+  display: block;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 16px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 10px;
+  background: #f9fbfd;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  transition: 0.3s ease;
+}
+
+  .file-label i {
+    font-size: 18px;
+    color: #0b2c5f;
+  }
+
+  /* Hover */
+  .file-label:hover {
+    border-color: #ff7a00;
+    background: #fff7f0;
+  }
+
+/* When File Selected (Optional JS needed later) */
+.file-upload input[type="file"]:focus + .file-label {
+  border-color: #ff7a00;
+}
+
+
+
+/*custom dropdown*/
+
+.custom-dropdown {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-selected {
+  padding: 12px 16px;
+  border: 1.5px solid #dbe2ea;
+  border-radius: 12px;
+  background: #f9fbff;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+  .dropdown-selected:hover {
+    border-color: #0b2c5f;
+  }
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #f9fbff;
+  border-radius: 12px;
+  margin-top: 6px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  max-height: 220px; /* scroll inside dropdown */
+  overflow-y: auto;
+  z-index: 9999; /* prevent clipping */
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+  .dropdown-item:hover {
+    background: #fff7f0;
+    color: #ff7a00;
+  }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 /*date */
 .date-wrapper {
   position: relative;
@@ -180,6 +359,20 @@ input {
   color: #0b2c5f;
   font-size: 16px;
 }
+
+
+.file-upload .file-label > div:first-child {
+  display: flex;
+  align-items: center;
+  color: #6c757d;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
 
 .progress-container {
   display: flex;
@@ -237,4 +430,9 @@ input {
   color: #0b2c5f;
   font-weight: 600;
 }
-
+.guardian-title span {
+  background: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #d6dce5;
+}

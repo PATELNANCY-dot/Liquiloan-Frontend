@@ -27,17 +27,38 @@ export class Registration4 {
   ) {
 
     this.registrationForm = this.fb.group({
+
+      /* Nominee */
       nomineeName: ['', Validators.required],
       nomineeRelation: ['', Validators.required],
       nomineeDob: ['', Validators.required],
-      nomineePan: ['', Validators.required],
+      nomineePan: [''],
 
-      guardianPan: [''],
+      nomineePercentage: [''],
+      nomineeAddress: [''],
+      nomineeGender: [''],
+      nomineeCountry: [''],
+      nomineeState: [''],
+      nomineeCity: [''],
+      nomineePincode: [''],
+      nomineeEmailId: [''],
+      nomineeMobileNo: [''],
+
+      /* Guardian (Minor Case) */
       guardianName: [''],
-      guardianDob: ['', Validators.required], 
-      guardianRelation: ['']
-    });
+      guardianDob: [''],
+      guardianRelation: [''],
+      guardianPan: [''],
 
+      guardianAddress: [''],
+      guardianCountry: [''],
+      guardianState: [''],
+      guardianCity: [''],
+      guardianPincode: [''],
+      guardianEmailId: [''],
+      guardianMobileNo: ['']
+
+    });
     const savedData = JSON.parse(localStorage.getItem('clientRegistration') || '{}');
     this.registrationForm.patchValue(savedData);
   }
@@ -49,6 +70,26 @@ export class Registration4 {
 
   nomineeFp: any;
   guardianFp: any;
+
+  ngOnInit(): void {
+
+    this.registrationForm.get('nomineeDob')?.valueChanges.subscribe(dob => {
+
+      if (!dob) {
+        this.isMinor = false;
+        return;
+      }
+
+      const parts = dob.split('-');
+      if (parts.length !== 3) return;
+
+      const date = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+
+      this.checkNomineeAge(date);
+
+    });
+
+  }
 
   ngAfterViewInit(): void {
 
@@ -291,6 +332,15 @@ export class Registration4 {
       formData.append("NomineeName", this.registrationForm.value.nomineeName);
       formData.append("NomineeRelation", this.registrationForm.value.nomineeRelation);
 
+      formData.append("NomineePercentage", this.registrationForm.value.nomineePercentage || '');
+      formData.append("NomineeAddress", this.registrationForm.value.nomineeAddress || '');
+      formData.append("NomineeGender", this.registrationForm.value.nomineeGender || '');
+      formData.append("NomineeCountry", this.registrationForm.value.nomineeCountry || '');
+      formData.append("NomineeState", this.registrationForm.value.nomineeState || '');
+      formData.append("NomineeCity", this.registrationForm.value.nomineeCity || '');
+      formData.append("NomineePincode", this.registrationForm.value.nomineePincode || '');
+      formData.append("NomineeEmailId", this.registrationForm.value.nomineeEmailId || '');
+      formData.append("NomineeMobileNo", this.registrationForm.value.nomineeMobileNo || '');
       const nomineeDob = this.formatToISO(this.registrationForm.value.nomineeDob);
       if (nomineeDob) formData.append("NomineeDob", nomineeDob);
 
@@ -300,6 +350,13 @@ export class Registration4 {
 
       const guardianDob = this.formatToISO(this.registrationForm.value.guardianDob);
       if (guardianDob) formData.append("GuardianDob", guardianDob);
+      formData.append("GuardianAddress", this.registrationForm.value.guardianAddress || '');
+      formData.append("GuardianCountry", this.registrationForm.value.guardianCountry || '');
+      formData.append("GuardianState", this.registrationForm.value.guardianState || '');
+      formData.append("GuardianCity", this.registrationForm.value.guardianCity || '');
+      formData.append("GuardianPincode", this.registrationForm.value.guardianPincode || '');
+      formData.append("GuardianEmailId", this.registrationForm.value.guardianEmailId || '');
+      formData.append("GuardianMobileNo", this.registrationForm.value.guardianMobileNo || '');
 
     }
     else {
@@ -311,6 +368,16 @@ export class Registration4 {
       if (nomineeDob) formData.append("NomineeDob", nomineeDob);
 
       formData.append("NomineePan", this.registrationForm.value.nomineePan);
+      formData.append("NomineePercentage", this.registrationForm.value.nomineePercentage || '');
+      formData.append("NomineeAddress", this.registrationForm.value.nomineeAddress || '');
+      formData.append("NomineeGender", this.registrationForm.value.nomineeGender || '');
+      formData.append("NomineeCountry", this.registrationForm.value.nomineeCountry || '');
+      formData.append("NomineeState", this.registrationForm.value.nomineeState || '');
+      formData.append("NomineeCity", this.registrationForm.value.nomineeCity || '');
+      formData.append("NomineePincode", this.registrationForm.value.nomineePincode || '');
+      formData.append("NomineeEmailId", this.registrationForm.value.nomineeEmailId || '');
+      formData.append("NomineeMobileNo", this.registrationForm.value.nomineeMobileNo || '');
+
     }
 
     /* ---------- FILES ---------- */

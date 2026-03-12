@@ -140,27 +140,27 @@ body {
 /* ========================================
    SOCIAL ICONS
 ======================================== */
-
 .classdiv {
   background: #ffffff !important;
   padding: 25px;
   border-radius: 20px;
-  margin: 40px auto;
-  max-width:  68%;
+  margin: 20px auto;
   box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
 }
-
-
 .social-icons a {
   background: #eef2f7;
-  padding: 10px 14px;
-  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
   transition: 0.3s;
   color: #ff7a00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-  .social-icons a:hover {
-    background: #ff7a00;
-    color: white;
-  }
+.social-icons i {
+  font-size: 1.4rem;
+}
+.social-icons {
+  flex-wrap: wrap;
+}

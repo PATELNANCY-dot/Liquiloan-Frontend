@@ -63,14 +63,14 @@ export class InvestmentPage implements OnInit {
   // -----------------------------
   selectedFile: File | null = null;
   filePreview: string | ArrayBuffer | null = null;
-   
+
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
-    private transactionService: TransactionService 
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit(): void {

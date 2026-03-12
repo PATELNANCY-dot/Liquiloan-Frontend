@@ -200,3 +200,17 @@ body {
   max-width: 900px;
   margin: 0 auto;
 }
+
+
+.nominee-title {
+  font-weight: 600;
+  color: #ff7a00;
+  margin-bottom: 10px;
+}
+
+.modern-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}

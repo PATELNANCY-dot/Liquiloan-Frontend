@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import flatpickr from 'flatpickr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-factor-auth',
@@ -33,11 +34,22 @@ export class FactorAuth implements AfterViewInit {
       { Dob: this.dob, Pan: this.pan })
       .subscribe({
         next: () => {
-          alert('Verified Successfully');
+          Swal.fire({
+            icon: 'success',
+            title: 'Vrified  Successful!',
+            text: 'Redirecting...',
+            timer: 1500,
+            showConfirmButton: false
+          });
           this.router.navigate(['/dashboard']);
         },
         error: () => {
-          alert('Invalid DOB or PAN');
+          Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Please enter Valid Pan and DOB',
+            confirmButtonColor: '#ff7a00'
+          });
         }
       });
   }

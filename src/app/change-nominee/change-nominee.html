@@ -20,7 +20,7 @@
             <i class="bi bi-trash"></i>
           </button>
         </div>
-
+        <!--first line-->
         <div class="form-grid">
 
           <div class="field">
@@ -38,27 +38,93 @@
             <input formControlName="nomineeRelation">
           </div>
 
+
+          <div class="field">
+            <label>Percentage</label>
+            <input formControlName="nomineePersentage">
+          </div>
+
+          <div class="field">
+            <label>Gender</label>
+            <input formControlName="nomineeGender">
+          </div>
+
+        </div>
+
+        <!--seond line-->
+        <div class="form-grid">
+
+          <div class="field">
+            <label>Address</label>
+            <input formControlName="nomineeAddress">
+          </div>
+
+          <div class="field">
+            <label>Country</label>
+            <input formControlName="nomineeCountry">
+          </div>
+
+          <div class="field">
+            <label>State</label>
+            <input formControlName="nomineeState">
+          </div>
+
+          <div class="field">
+            <label>City</label>
+            <input formControlName="nomineeCity">
+          </div>
+
+          <div class="field">
+            <label>Pincode</label>
+            <input formControlName="nomineePincode">
+          </div>
+
+        </div>
+
+        <!--Third line-->
+        <div class="form-grid">
+
+          <div class="field">
+            <label>Document Type </label>
+            <input formControlName="nomineeDocumentType">
+          </div>
+
           <div class="field">
             <label>Nominee PAN</label>
             <input formControlName="nomineePan" [disabled]="disablePan(nominee.value)">
           </div>
 
+          <div class="field">
+            <label>EmailId</label>
+            <input formControlName="nomineeEmailId">
+          </div>
+
+          <div class="field">
+            <label>Mobile No</label>
+            <div class="mobile-group">
+              <select>
+                <option>IN (+91)</option>
+              </select>
+
+              <input type="text" formControlName="MobileNo">
+            </div>
+          </div>
+
         </div>
 
+    
+        <!--if minor  (*ngIf="isMinor(nominee.value.nomineeDob)")-->
         <div *ngIf="isMinor(nominee.value.nomineeDob)" class="guardian-section">
+          <div class="guardian-title">
+            <span>IF NOMINEE IS MINOR</span>
+          </div>
 
-          <h4>Guardian Details</h4>
 
           <div class="form-grid">
 
             <div class="field">
               <label>Guardian Name</label>
               <input formControlName="guardianName">
-            </div>
-
-            <div class="field">
-              <label>Guardian PAN</label>
-              <input formControlName="guardianPan">
             </div>
 
             <div class="field">
@@ -70,6 +136,61 @@
               <label>Guardian Relation</label>
               <input formControlName="guardianRelation">
             </div>
+
+            <div class="field">
+              <label>Address</label>
+              <input formControlName="guardianAddress">
+            </div>
+
+            <div class="field">
+              <label>City</label>
+              <input formControlName="guardianCity">
+            </div>
+
+
+          </div>
+
+          <!--IF NOMINEEE 2-->
+          <div class="form-grid">
+
+            <div class="field">
+              <label>Pincodee</label>
+              <input formControlName="guardianPincode">
+            </div>
+
+            <div class="field">
+              <label>State</label>
+              <input formControlName="guardianState">
+            </div>
+
+            <div class="field">
+              <label>Country</label>
+              <input formControlName="guardianCountry">
+            </div>
+
+
+            <div class="field">
+              <label>Guardian PAN</label>
+              <input formControlName="guardianPan">
+            </div>
+
+            <div class="field">
+              <label>EmailId</label>
+              <input formControlName="guardianEmailId">
+            </div>
+
+            <div class="field">
+              <label>Mobile No</label>
+              <div class="mobile-group">
+                <select>
+                  <option>IN (+91)</option>
+                </select>
+
+                <input type="text" formControlName="guardianMobileNo">
+              </div>
+            </div>
+
+
 
           </div>
 
@@ -87,7 +208,7 @@
       <i class="bi bi-dot"></i> As per the default system configuration, the nominee display preference shall be set to 'Always Display'. Accordingly, the nominee's name will be reflected in the Statement of Account (SOA).<br>
       <i class="bi bi-dot"></i> In case the investor wishes to modify this preference, a formal written request must be submitted in physical form to the respective Asset Management Company (AMC).
     </p>
- 
+
 
     <div class="form-actions">
       <button type="button" class="back-btn" (click)="BACK()"><b>← Back</b></button>
@@ -100,27 +221,32 @@
 
 
 
-<div class="classdiv text-left">
-  <!-- Social Icons -->
-  <div class="social-icons d-flex gap-3">
-    <a href="https://www.facebook.com" target="_blank" class="facebook">
-      <i class="bi bi-facebook fs-3"></i>
-    </a>
-    <a href="https://www.twitter.com" target="_blank" class="twitter">
-      <i class="bi bi-twitter fs-3"></i>
-    </a>
-    <a href="https://www.linkedin.com" target="_blank" class="linkedin">
-      <i class="bi bi-linkedin fs-3"></i>
-    </a>
-    <a href="https://www.youtube.com" target="_blank" class="youtube">
-      <i class="bi bi-youtube fs-3"></i>
-    </a>
-    <a href="https://www.instagram.com" target="_blank" class="instagram">
-      <i class="bi bi-instagram fs-3"></i>
-    </a>
-    <a>
-      |
-    </a>
 
+<div class="container">
+  <div class="classdiv text-left">
+    <!-- Social Icons -->
+    <div class="social-icons d-flex gap-3">
+      <a href="https://www.facebook.com" target="_blank" class="facebook">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="https://www.twitter.com" target="_blank" class="twitter">
+        <i class="bi bi-twitter"></i>
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" class="linkedin">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" class="youtube">
+        <i class="bi bi-youtube"></i>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" class="instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a>
+        |
+      </a>
+
+    </div>
   </div>
 </div>
+
+

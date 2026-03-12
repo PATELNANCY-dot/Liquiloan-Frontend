@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\angular\\angular-app2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\payment-page\\payment-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\payment-page\\payment-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\shared\\nav-bar\\nav-bar.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\nav-bar\\nav-bar.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\investor-page\\investor-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\payment-page\\payment-page.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\payment-page\\payment-page.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\shared\\nav-bar\\nav-bar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\nav-bar\\nav-bar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "investor-page.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.css",
-              "RelativeDocumentMoniker": "src\\app\\investor-page\\investor-page.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.css",
-              "RelativeToolTip": "src\\app\\investor-page\\investor-page.css",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAEcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-11T07:33:13.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "payment-page.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\payment-page\\payment-page.html",
-              "RelativeDocumentMoniker": "src\\app\\payment-page\\payment-page.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\payment-page\\payment-page.html",
-              "RelativeToolTip": "src\\app\\payment-page\\payment-page.html",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABwAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-11T07:29:46.96Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "payment-page.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\payment-page\\payment-page.css",
-              "RelativeDocumentMoniker": "src\\app\\payment-page\\payment-page.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\payment-page\\payment-page.css",
-              "RelativeToolTip": "src\\app\\payment-page\\payment-page.css",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAAQAAAAAAAAAA==",
+              "Title": "nav-bar.html",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\shared\\nav-bar\\nav-bar.html",
+              "RelativeDocumentMoniker": "src\\app\\shared\\nav-bar\\nav-bar.html",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\shared\\nav-bar\\nav-bar.html",
+              "RelativeToolTip": "src\\app\\shared\\nav-bar\\nav-bar.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-03-12T11:33:16.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "nav-bar.css",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\shared\\nav-bar\\nav-bar.css",
+              "RelativeDocumentMoniker": "src\\app\\shared\\nav-bar\\nav-bar.css",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\shared\\nav-bar\\nav-bar.css",
+              "RelativeToolTip": "src\\app\\shared\\nav-bar\\nav-bar.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-11T07:29:44.861Z",
+              "WhenOpened": "2026-03-12T11:33:15.694Z",
               "EditorCaption": ""
             }
           ]

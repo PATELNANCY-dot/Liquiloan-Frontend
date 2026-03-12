@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\changepassword",
-    "\\src\\app\\dashboard",
+    "\\src\\app\\change-nominee",
     "\\src\\app\\investment-page",
-    "\\src\\app\\investor-page",
     "\\src\\app\\manage-account",
-    "\\src\\app\\payment-page",
-    "\\src\\app\\view-nominee"
+    "\\src\\app\\registration2",
+    "\\src\\app\\registration4",
+    "\\src\\app\\services",
+    "\\src\\app\\shared"
   ],
-  "SelectedNode": "\\src\\app\\investor-page\\investor-page.css",
+  "SelectedNode": "\\src\\app\\shared\\nav-bar\\nav-bar.html",
   "PreviewInSolutionExplorer": false
 }

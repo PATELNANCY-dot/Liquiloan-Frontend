@@ -5,6 +5,8 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { TransactionService } from '../services/transaction.service';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-payment-page',
@@ -71,16 +73,14 @@ export class PaymentPage {
 
   // -----------------------------
   // Payment Methods
-  // -----------------------------
   continuePayment() {
+    this.showConfirm = false
     this.transactionId = this.generateTransactionId();
     const storedClientId = localStorage.getItem('userId');
     const clientId = storedClientId ? Number(storedClientId) : 0;
     const queryParams = this.route.snapshot.queryParams;
 
-    // ---------------------
     // Generate PDF BEFORE sending to backend
-    // ---------------------
     const doc = new jsPDF();
     doc.setFontSize(22);
     doc.setTextColor(37, 99, 235);
@@ -103,9 +103,6 @@ export class PaymentPage {
     const pdfBlob = doc.output('blob');
     const pdfFile = new File([pdfBlob], `transaction-${this.transactionId}.pdf`, { type: 'application/pdf' });
 
-    // ---------------------
-    // Send to backend
-    // ---------------------
     const formData = new FormData();
     formData.append('clientId', clientId.toString());
     formData.append('transactionId', this.transactionId);
@@ -116,35 +113,48 @@ export class PaymentPage {
     formData.append('MHP', queryParams['MHP'] || '');
     formData.append('option1', queryParams['option1'] || '');
     formData.append('status', 'success');
-
-    // Attach PDF as paymentDocFile
     formData.append('PaymentDocPath', pdfFile);
 
     this.transactionService.createTransaction(formData).subscribe({
       next: () => {
-        alert('Transaction Successful!');
-        this.router.navigate(['/transaction-status'], {
-          queryParams: {
-            status: 'success',
-            amount: this.amount,
-            txn: this.transactionId
-          }
+        Swal.fire({
+          icon: 'success',
+          title: 'Transaction Successful!',
+          text: `Transaction ID: ${this.transactionId}`,
+          confirmButtonColor: '#00a651'
+        }).then(() => {
+          this.router.navigate(['/transaction-status'], {
+            queryParams: {
+              status: 'success',
+              amount: this.amount,
+              txn: this.transactionId
+            }
+          });
         });
       },
       error: (err) => {
         console.error('Transaction Save Failed', err);
-        alert('Transaction Failed!');
-        this.router.navigate(['/transaction-status'], {
-          queryParams: {
-            status: 'failed',
-            amount: this.amount,
-            txn: this.transactionId
-          }
+        Swal.fire({
+          icon: 'error',
+          title: 'Transaction Failed!',
+          text: `Transaction ID: ${this.transactionId}`,
+          confirmButtonColor: '#d80000'
+        }).then(() => {
+          this.router.navigate(['/transaction-status'], {
+            queryParams: {
+              status: 'failed',
+              amount: this.amount,
+              txn: this.transactionId
+            }
+          });
         });
       }
     });
   }
+
+  // Cancel Payment
   cancelPayment() {
+    this.showConfirm = false
     this.transactionId = this.generateTransactionId();
     const storedClientId = localStorage.getItem('userId');
     const clientId = storedClientId ? Number(storedClientId) : 0;
@@ -183,18 +193,22 @@ export class PaymentPage {
     formData.append('MHP', queryParams['MHP'] || '');
     formData.append('option1', queryParams['option1'] || '');
     formData.append('status', 'failed');
-
-    // Attach PDF as paymentDocFile
     formData.append('PaymentDocPath', pdfFile);
 
     this.transactionService.createTransaction(formData).subscribe(() => {
-      alert('Transaction Cancelled!');
-      this.router.navigate(['/transaction-status'], {
-        queryParams: {
-          status: 'failed',
-          amount: this.amount,
-          txn: this.transactionId
-        }
+      Swal.fire({
+        icon: 'error',
+        title: 'Transaction Cancelled',
+        text: `Transaction ID: ${this.transactionId}`,
+        confirmButtonColor: '#d80000'
+      }).then(() => {
+        this.router.navigate(['/transaction-status'], {
+          queryParams: {
+            status: 'failed',
+            amount: this.amount,
+            txn: this.transactionId
+          }
+        });
       });
     });
   }
