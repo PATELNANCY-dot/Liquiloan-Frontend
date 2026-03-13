@@ -13,30 +13,52 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class LoginOtp {
 
   email: string = '';
-  generatedOtp: string = '';
   enteredOtp: string = '';
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  // SEND OTP
+  // SEND OTP via backend
   sendOtp() {
-    this.http.post<any>('http://localhost:5048/api/send-otp', { email: this.email })
-      .subscribe(res => {
-        this.generatedOtp = res.otp;
-        alert("OTP sent to email");
+    if (!this.email) {
+      alert("Please enter your email");
+      return;
+    }
+
+    this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email: this.email })
+      .subscribe({
+        next: () => {
+          alert("OTP sent to your email");
+        },
+        error: (err) => {
+          console.error(err);
+          alert("Failed to send OTP");
+        }
       });
   }
 
-  // VERIFY OTP
+  // VERIFY OTP via backend
   verifyOtp() {
-    if (this.enteredOtp === this.generatedOtp) {
-      alert("Login Successful");
-      this.router.navigate(['/dashboard']);
-    } else {
-      alert("Invalid OTP");
+    if (!this.enteredOtp || this.enteredOtp.length !== 6) {
+      alert("Please enter the 6-digit OTP");
+      return;
     }
+
+    this.http.post<any>('http://localhost:5048/api/Otp/verify-otp', {
+      email: this.email,
+      otp: this.enteredOtp
+    }).subscribe({
+      next: () => {
+        alert("Login Successful");
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert(err.error || "Invalid OTP");
+      }
+    });
   }
 
+  // Move to next input box
   moveNext(event: any) {
     const input = event.target;
     if (input.value && input.nextElementSibling) {
@@ -44,6 +66,7 @@ export class LoginOtp {
     }
   }
 
+  // Move to previous input box
   moveBack(event: any) {
     const input = event.target;
     if (!input.value && input.previousElementSibling) {
@@ -51,6 +74,7 @@ export class LoginOtp {
     }
   }
 
+  // Collect OTP from 6 boxes
   collectOtp() {
     const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
     this.enteredOtp = '';

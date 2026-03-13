@@ -4,7 +4,6 @@
     <!-- LEFT SIDE -->
     <div class="box left">
       <h2 style="text-align:center">Sign Up</h2>
-      <br /><br /><br /><br /><br /><br /><br /><br />
       <button routerLink="/registration1">Join Now</button>
     </div>
 
@@ -13,48 +12,23 @@
       <form>
         <h2 style="text-align:center">Sign In</h2>
 
-        <!-- Mobile number -->
+        <!-- Email -->
         <input class="textf"
                type="email"
-                name="email"
-               placeholder="email"
+               name="email"
+               placeholder="Email"
                [(ngModel)]="email">
 
         <!-- OTP BOXES -->
         <div class="otp-container">
-          <input type="text"
-                 maxlength="1"
-                 class="otp-input"
-                 (input)="moveNext($event); collectOtp()"
-                 (keydown.backspace)="moveBack($event)" />
-          <input type="text"
-                 maxlength="1"
-                 class="otp-input"
-                 (input)="moveNext($event); collectOtp()"
-                 (keydown.backspace)="moveBack($event)" />
-          <input type="text"
-                 maxlength="1"
-                 class="otp-input"
-                 (input)="moveNext($event); collectOtp()"
-                 (keydown.backspace)="moveBack($event)" />
-          <input type="text"
-                 maxlength="1"
-                 class="otp-input"
-                 (input)="moveNext($event); collectOtp()"
-                 (keydown.backspace)="moveBack($event)" />
-          <input type="text"
-                 maxlength="1"
-                 class="otp-input"
-                 (input)="moveNext($event); collectOtp()"
-                 (keydown.backspace)="moveBack($event)" />
-          <input type="text"
-                 maxlength="1"
-                 class="otp-input"
-                 (input)="moveNext($event); collectOtp()"
-                 (keydown.backspace)="moveBack($event)" />
+          <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
+          <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
+          <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
+          <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
+          <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
+          <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
         </div>
 
-        <br />
         <!-- RESEND -->
         <div style="text-align:center; margin-bottom:15px;">
           <button type="button" id="bt1" (click)="sendOtp()">Send</button>
@@ -66,10 +40,11 @@
         </div>
         <br /><br />
 
-        <!-- SUBMIT -->
-              <div style="text-align:center; margin-bottom:15px;">
-                <button type="button" (click)="verifyOtp()">Submit</button>
-              </div>
+        <!-- Submit OTP -->
+        <div style="text-align:center; margin-bottom:15px;">
+          <button type="button" (click)="verifyOtp()">Submit</button>
+        </div>
+
       </form>
     </div>
 

@@ -1,0 +1,31 @@
+.classdiv {
+  background-color: transparent; /* No dark block */
+  color: #000; /* Icon color default black */
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s;
+}
+
+  .social-icons a:hover.facebook {
+    color: #3b5998;
+  }
+  /* Facebook blue */
+  .social-icons a:hover.twitter {
+    color: #1DA1F2;
+  }
+  /* Twitter blue */
+  .social-icons a:hover.linkedin {
+    color: #0077B5;
+  }
+  /* LinkedIn blue */
+  .social-icons a:hover.youtube {
+    color: #FF0000;
+  }
+  /* YouTube red */
+  .social-icons a:hover.instagram {
+    color: #C13584;
+  }
+/* Instagram pink */

@@ -6,6 +6,10 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-root',
   standalone: true,
   imports: [RouterModule, TranslateModule],
-  template: `<router-outlet></router-outlet>`
+  template: `
+    <div class="app-container">
+      <router-outlet></router-outlet>
+    </div>
+  `
 })
 export class AppComponent { }

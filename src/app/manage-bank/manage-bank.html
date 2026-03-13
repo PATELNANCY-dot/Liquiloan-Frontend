@@ -1,58 +1,58 @@
 <div class="page-container">
 
-  <div class="container nominee-page mt-4">
+  <div class="container bank-page mt-4">
 
     <!-- Heading -->
     <div class="page-header text-center">
       <h1>
-        <span class="orange">Change</span>
-        <span class="navy">Nominee</span>
+        <span class="orange">Bank</span>
+        <span class="navy">Accounts</span>
       </h1>
-      <p class="subtitle">Manage and update nominee details</p>
+      <p class="subtitle">View your account holder and bank details</p>
     </div>
 
-    <!-- Nominee Card -->
-    <div class="nominee-card">
+    <!-- Bank Card -->
+    <div class="bank-card">
 
       <!-- Header -->
-      <div class="row nominee-header">
-        <div class="col-md-8">
-          Account Holder Name
+      <div class="row bank-header">
+        <div class="col-md-4">
+          Bank Name
         </div>
 
-        <div class="col-md-4 text-end">
-          Action
+        <div class="col-md-4">
+          Account Number
         </div>
+
       </div>
 
       <div class="divider"></div>
 
-      <div *ngIf="nominees.length === 0" class="text-center empty-msg">
-        No nominees found
+      <div *ngIf="banks.length === 0" class="text-center empty-msg">
+        No bank details found
       </div>
 
-      <div *ngFor="let nominee of nominees" class="row nominee-row align-items-center">
+      <div *ngFor="let bank of banks" class="row bank-row align-items-center">
 
-        <div class="col-md-8 nominee-name">
-          {{ nominee.nomineeName }}
+        <div class="col-md-4">
+          {{ bank.bankName }}
         </div>
 
-        <div class="col-md-4 text-end">
-          <button class="change-btn" (click)="changeNominee(nominee.id)">
-            Change
-          </button>
+        <div class="col-md-4">
+          {{ bank.accountNumber }}
         </div>
 
       </div>
 
     </div>
 
-    <!-- Back button -->
-    <div class="form-actions">
-      <button class="back-btn" type="button" (click)="back()">← Back</button>
+
+    <div class="form-actions mt-3">
+      <button class="add-btn">Add Bank</button>
     </div>
 
   </div>
+
 
   <div class="container">
     <div class="classdiv text-left">
@@ -81,4 +81,5 @@
     </div>
   </div>
 
-  </div>
+
+</div>

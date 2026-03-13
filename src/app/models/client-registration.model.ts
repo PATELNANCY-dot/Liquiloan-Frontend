@@ -5,7 +5,6 @@ export interface ClientRegistration {
   email: string;
   mobile: string;
   pan: string;
-  aadhar: string;
   dob: string;
   gender: string;
   placeOfBirth: string;

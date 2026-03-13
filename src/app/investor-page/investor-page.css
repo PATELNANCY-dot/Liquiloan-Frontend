@@ -28,9 +28,11 @@
 .classdiv {
   background: #ffffff !important;
   padding: 35px;
-  border-radius: 20px;
+  border-radius: 12px;
   margin: 40px auto;
-  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 35px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.08);
   transition: 0.3s ease;
 }
@@ -411,3 +413,5 @@ label {
   .nominee-table th {
     white-space: nowrap;
   }
+
+

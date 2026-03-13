@@ -105,17 +105,17 @@
         </div>
 
         <div class="form-col">
-          <label>Aadhar Number:</label>
-          <input type="text" inputmode="numeric" formControlName="aadhar">
+          <label>Place of Birth:</label>
+          <input type="text" formControlName="placeOfBirth">
           <small class="text-danger"
-                 *ngIf="registrationForm.get('aadhar')?.touched &&
-         registrationForm.get('aadhar')?.errors?.['required']">
-            Aadhaar is required
+                 *ngIf="registrationForm.get('placeOfBirth')?.touched &&
+registrationForm.get('placeOfBirth')?.errors?.['required']">
+            Place of Birth is required
           </small>
 
           <small class="text-danger"
-                 *ngIf="registrationForm.get('aadhar')?.errors?.['pattern']">
-            Aadhaar must be 12 digits
+                 *ngIf="registrationForm.get('placeOfBirth')?.errors?.['pattern']">
+            Only alphabets allowed
           </small>
         </div>
       </div>
@@ -150,17 +150,12 @@
         </div>
 
         <div class="form-col">
-          <label>Place of Birth:</label>
-          <input type="text" formControlName="placeOfBirth">
+          <label>Gender:</label>
+          <input type="text" formControlName="gender">
           <small class="text-danger"
-                 *ngIf="registrationForm.get('placeOfBirth')?.touched &&
-         registrationForm.get('placeOfBirth')?.errors?.['required']">
-            Place of Birth is required
-          </small>
-
-          <small class="text-danger"
-                 *ngIf="registrationForm.get('placeOfBirth')?.errors?.['pattern']">
-            Only alphabets allowed
+                 *ngIf="registrationForm.get('gender')?.touched &&
+registrationForm.get('gender')?.errors">
+            Date of Birth is required
           </small>
         </div>
       </div>
@@ -376,13 +371,9 @@ registrationForm.get('correspondingAddress')?.errors">
 
 
         <div class="form-col">
-          <label>Gender:</label>
-          <input type="text" formControlName="gender">
-          <small class="text-danger"
-                 *ngIf="registrationForm.get('gender')?.touched &&
-registrationForm.get('gender')?.errors">
-            Date of Birth is required
-          </small>
+
+          <br /> <br />
+          [Pincode for  Permanent Address Only] *
         </div>
 
 

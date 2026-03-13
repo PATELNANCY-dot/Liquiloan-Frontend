@@ -1,0 +1,113 @@
+body {
+  background: #EEF2F8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+  .page-header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+.subtitle {
+  color: #6b7a99;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.orange {
+  color: #f26522;
+}
+
+.navy {
+  color: #0b2c5f;
+}
+
+.bank-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.bank-header {
+  font-weight: 600;
+  color: #4a5c7a;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.divider {
+  height: 1px;
+  background: #e5ebf5;
+  margin-bottom: 10px;
+}
+
+.bank-row {
+  padding: 12px 0;
+  border-bottom: 1px solid #eef2f8;
+  font-weight: 500;
+  color: #1f2a44;
+}
+
+.empty-msg {
+  color: #8b98b6;
+  padding: 20px;
+}
+
+
+.form-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+
+
+
+.add-btn {
+  background: #2f4f9d;
+  color: white;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+
+/* ========================================
+   SOCIAL ICONS
+======================================== */
+.classdiv {
+  background: #ffffff !important;
+  padding: 25px;
+  border-radius: 20px;
+  margin: 20px auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.social-icons a {
+  background: #eef2f7;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  transition: 0.3s;
+  color: #ff7a00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons i {
+  font-size: 1.4rem;
+}
+
+.social-icons {
+  flex-wrap: wrap;
+}

@@ -20,7 +20,7 @@ import { FactorAuth } from './factor-auth/factor-auth'
 import { TransactionStatus } from './transaction-status/transaction-status'
 import { MainLayoutComponent } from './main-layout-component/main-layout-component'
 import { ViewNominee } from './view-nominee/view-nominee'
-
+import { ManageBank } from './manage-bank/manage-bank'
 
 
 
@@ -56,6 +56,7 @@ export const routes: Routes = [
       { path: 'investment-page', component: InvestmentPage },
       { path: 'transaction-status', component: TransactionStatus },
       { path: 'view-nominee', component: ViewNominee },
+      { path: 'manage-bank', component: ManageBank },
       {
         path: 'change-nominee/:id',
         loadComponent: () => import('./change-nominee/change-nominee')

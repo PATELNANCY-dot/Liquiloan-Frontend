@@ -48,13 +48,6 @@ export class Registration2 {
     
 
 
-      aadhar: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^[0-9]{12}$/)
-        ]
-      ],
 
       nationality: ['', Validators.required],
 
