@@ -28,29 +28,29 @@
 
 
 
-    <div class="classdiv text-center" style="margin-block-start:40px;margin-block-end:40px;background-color:lightgray">
+    <div  *ngIf="liquiloan && isActivated()"  class="classdiv text-center" style="margin-block:40px; background-color:lightgray">
       <form>
         <!--1-->
         <div class="form-row">
           <div class="form-col">
-            <label> Client Name:</label>
+            <label> Client Name: <b>{{ account?.name }} </b> </label>
 
           </div>
 
           <div class="form-col">
             <label>Investor ID:</label>
-
+            <p> <b>{{ liquiloan.clientId }}</b> </p>
           </div>
 
           <div class="form-col">
             <label>Agreement Status:</label>
-
+            <p>           </p>
           </div>
 
 
           <div class="form-col">
             <label>Status:</label>
-
+            <p> <b> {{ liquiloan.activationStatus }} </b> </p>
           </div>
 
           <div class="form-col">
@@ -60,39 +60,15 @@
         </div>
 
 
-        <!--2-->
-        <div class="form-row">
-          <div class="form-col">
-            <label></label>
-
-          </div>
-
-          <div class="form-col">
-
-
-          </div>
-
-          <div class="form-col">
-            <p>Complete</p>
-
-          </div>
-
-
-          <div class="form-col">
-            <p>Activated</p>
-
-          </div>
-
-          <div class="form-col">
-
-
-          </div>
-        </div>
+      
 
         <!--3-->
-        <div class="form-row">
+        <div class="form-row ">
           <div class="form-col">
-            <label>Date Of Birth | PAN:</label>
+            <label>
+              Date Of Birth: <b>{{ account?.dob | date:'dd/MM/yyyy' }} </b>
+              <span>| PAN: <b>{{ account?.pan }}  </b> </span>
+            </label>
 
           </div>
 
@@ -113,7 +89,7 @@
           </div>
 
           <div class="form-col">
-            <button class="btn1">Add/View Bank</button>
+            <button class="btn1" (click)="openBankModal()">Add/View Bank</button>
 
           </div>
         </div>
@@ -122,97 +98,73 @@
     </div>
 
 
-    <div class="classdiv text-center" style="margin-block-start:40px;margin-block-end:40px;background-color:lightgray">
-      <form>
-        <!--1-->
-        <div class="form-row">
-          <div class="form-col">
-            <label> Client Name:</label>
+    <div   *ngIf="liquiloan && isPending()" class="classdiv text-center" style="margin-block:40px; background-color:lightgray">
+      
+        <form>
+          <!--1-->
+          <div class="form-row">
+            <div class="form-col">
+              <label> Client Name: <b>{{ account?.name }} </b> </label>
+            </div>
 
-          </div>
+            <div class="form-col">
+              <label>Investor ID:</label>
+              <p> <b>{{ liquiloan.clientId }}</b> </p>
+            
+            </div>
 
-          <div class="form-col">
-            <label>Investor ID:</label>
+            <div class="form-col">
+              <label>Agreement Status:</label>
 
-          </div>
-
-          <div class="form-col">
-            <label>Agreement Status:</label>
-
-          </div>
-
-
-          <div class="form-col">
-            <label>Status:</label>
-
-          </div>
-
-          <div class="form-col">
-            <label>-</label>
-
-          </div>
-        </div>
+            </div>
 
 
-        <!--2-->
-        <div class="form-row">
-          <div class="form-col">
-            <label></label>
+            <div class="form-col">
+              <label>Status:</label>
+              <p> <b> {{ liquiloan.activationStatus }} </b> </p>
+            </div>
 
-          </div>
+            <div class="form-col">
+              <label>-</label>
 
-          <div class="form-col">
-
-
-          </div>
-
-          <div class="form-col">
-            <p>Complete</p>
-
+            </div>
           </div>
 
 
-          <div class="form-col">
-            <p>Activated</p>
 
+          <!--3-->
+          <div class="form-row">
+            <div class="form-col">
+              <label>
+                Date Of Birth: <b>{{ account?.dob | date:'dd/MM/yyyy' }} </b>
+                <span>| PAN: <b>{{ account?.pan }}  </b> </span>
+              </label>
+
+            </div>
+
+            <div class="form-col">
+              <button class="btn1" (click)="createAccount()">Create Account</button>
+
+            </div>
+
+            <div class="form-col">
+
+
+            </div>
+
+
+            <div class="form-col">
+
+
+            </div>
+
+            <div class="form-col">
+
+
+            </div>
           </div>
-
-          <div class="form-col">
-
-
-          </div>
-        </div>
-
-        <!--3-->
-        <div class="form-row">
-          <div class="form-col">
-            <label>Date Of Birth | PAN:</label>
-
-          </div>
-
-          <div class="form-col">
-            <button class="btn1" (click)="createAccount()">Create Account</button>
-
-          </div>
-
-          <div class="form-col">
-
-
-          </div>
-
-
-          <div class="form-col">
-
-
-          </div>
-
-          <div class="form-col">
-
-
-          </div>
-        </div>
-      </form>
-      <br />
+        </form>
+        <br />
     </div>
 
 
@@ -292,9 +244,11 @@
         <label class="form-label">Payout Bank</label>
         <select class="form-select" [(ngModel)]="selectedBank">
           <option value="">Select Bank</option>
-          <option>HDFC Bank</option>
-          <option>ICICI Bank</option>
-          <option>SBI Bank</option>
+
+          <option *ngFor="let bank of banksList" [value]="bank.id">
+            {{ bank.bankName }} 
+          </option>
+
         </select>
       </div>
 
@@ -353,7 +307,7 @@
               <td></td>
               <td>{{ n.nomineeRelation }}</td>
               <td>
-              <td>
+             
 
                 <button class="btn btn-sm btn-outline-primary" (click)="editNominee(n)">
                   Edit
@@ -364,6 +318,55 @@
 
         </table>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!--bank model-->
+
+<div class="modal fade" id="bankModal">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Client Bank Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <table class="table table-bordered table-sm w-100 nominee-table">
+          <thead>
+            <tr>
+              <th>Bank Name</th>
+              <th>Account Number</th>
+              <th>Branch</th>
+              <th>IFSC</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let b of banksList">
+              <td>{{b.bankName}}</td>
+              <td>{{b.accountNumber}}</td>
+              <td>{{b.branchName}}</td>
+              <td>{{b.ifscCode}}</td>
+
+              <td>
+                <button class="btn btn-sm btn-outline-primary"
+                        (click)="editBank({id:0})">
+                  ADD
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
     </div>
   </div>
 </div>

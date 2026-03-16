@@ -1,194 +1,135 @@
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
 
-
-
-
-  <!-- Main Content -->
 <div class="page-container">
+  <div class="page-container-vertical">
 
-  <!-- Heading -->
-  <div class="page-header text-center">
-    <h1>
-      <span class="orange">Account</span>
-      <span class="navy">Details</span>
-    </h1>
-  </div>
-  <!-- Small Navigation Tabs -->
-  <div class="manage-nav mb-4 text-center">
-    <button class="nav-btn"
-            [class.active]="activeTab === 'basic'"
-            (click)="activeTab = 'basic'">
-      Basic Information
-    </button>
-
-    <button class="nav-btn"
-            [class.active]="activeTab === 'address'"
-            (click)="activeTab = 'address'">
-      Address Information
-    </button>
-
-    <button class="nav-btn"
-            [class.active]="activeTab === 'bank'"
-            (click)="activeTab = 'bank'">
-      Bank Details
-    </button>
-
-    <button class="nav-btn"
-            [class.active]="activeTab === 'nominee'"
-            (click)="activeTab = 'nominee'">
-      Nominee Information
-    </button>
-  </div>
-
-
-  <div *ngIf="isLoading" class="text-center my-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <p>Loading account details...</p>
-  </div>
-
-  <!-- BASIC INFO TABLE -->
-  <div *ngIf="activeTab === 'basic'  && !isLoading  && account" class="modern-card">
-    <table class="table table-bordered">
-      <tr><th>Full Name</th><td>{{ account.name }}</td></tr>
-      <tr><th>Email</th><td>{{ account.email }}</td></tr>
-      <tr><th>Mobile</th><td>{{ account.mobile }}</td></tr>
-      <tr><th>PAN</th><td>{{ account.pan }}</td></tr>
-      <tr><th>Date Of Birth</th><td>{{ account.dob | date:'dd/MM/yyyy' }}</td></tr>
-      <tr><th>Place Of Birth</th><td>{{ account.placeOfBirth }}</td></tr>
-      <tr><th>Nationality</th><td>{{ account.nationality }}</td></tr>
-      <tr><th>Gender</th><td>{{ account.gender }}</td></tr>
-    </table>
-  </div>
-
-  <!-- ADDRESS TABLE -->
-  <div *ngIf="activeTab === 'address'  && !isLoading   && account" class="modern-card">
-    <table class="table table-bordered">
-      <tr>
-        <th>State</th>
-        <td> {{ account.stateName }}</td>
-      </tr>
-      <tr>
-        <th>Corressponding State</th>
-        <td> {{ account.correspondingStateName }}</td>
-      </tr>
-      <tr>
-        <th>City</th>
-        <td>{{ account.cityName }}</td>
-      </tr>
-      <tr>
-        <th>Corressponding City</th>
-        <td>{{ account.correspondingCityName }}</td>
-      </tr>
-      <tr>
-        <th>Permenent Address</th>
-        <td>{{ account.permanentAddress }}</td>
-      </tr>
-      <tr>
-        <th>Corressponding Address</th>
-        <td>{{ account.correspondingAddress }}</td>
-      </tr>
-      <tr>
-        <th>Pincode</th>
-        <td>{{ account.pincode }}</td>
-      </tr>
-    </table>
-  </div>
-
-
-  <!-- BANK TABLE -->
-  <div *ngIf="activeTab === 'bank'  && !isLoading  && account" class="modern-card">
-    <table class="table table-bordered">
-      <tr><th>Bank Name</th><td>{{ account.bankName }}</td></tr>
-      <tr><th>Account Number</th><td>{{ account.accountNumber }}</td></tr>
-      <tr><th>Branch Name</th><td>{{ account.branchName }}</td></tr>
-      <tr><th>Branch Address</th><td>{{ account.branchAddress }}</td></tr>
-      <tr><th>IFSC Code</th><td>{{ account.ifscCode }}</td></tr>
-      <tr><th>MICR Code</th><td>{{ account.micrCode }}</td></tr>
-    </table>
-  </div>
-
-
-  <!-- NOMINEE TABLE -->
-  <div *ngIf="activeTab === 'nominee' && !isLoading">
-
-    <!-- If no nominees -->
-    <div *ngIf="nomineesList.length === 0" class="text-center">
-      No nominee details available.
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <button class="nav-btn" [class.active]="activeTab === 'basic'" (click)="activeTab = 'basic'">
+        <i class="bi bi-person"></i> Basic Information
+      </button>
+      <button class="nav-btn" [class.active]="activeTab === 'address'" (click)="activeTab = 'address'">
+        <i class="bi bi-geo-alt"></i> Address Information
+      </button>
+      <button class="nav-btn" [class.active]="activeTab === 'bank'" (click)="activeTab = 'bank'">
+        <i class="bi bi-bank"></i> Bank Details
+      </button>
+      <button class="nav-btn" [class.active]="activeTab === 'nominee'" (click)="activeTab = 'nominee'">
+        <i class="bi bi-people"></i> Nominee Information
+      </button>
     </div>
 
-    <!-- Loop through nominees -->
-    <div *ngFor="let nominee of nomineesList; let i = index" class="modern-card mb-4">
+    <!-- Main Content -->
+    <div class="main-content">
 
-      <h5 class="nominee-title">
-        Nominee {{ i + 1 }}
+      <!-- Heading -->
+      <div class="page-header">
+        <h1>
+          <span class="orange">Account</span>
+          <span class="navy">Details</span>
+        </h1>
+      </div>
 
-        <!-- Minor badge -->
-        <span *ngIf="nominee.guardianName"
-              class="badge bg-warning text-dark ms-2">
-          Minor
-        </span>
-      </h5>
+      <!-- Loader -->
+      <div *ngIf="isLoading" class="text-center my-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p>Loading account details...</p>
+      </div>
 
-      <table class="table table-bordered">
+      <!-- Data Card -->
+      <div *ngIf="!isLoading && account" class="modern-card data-card">
 
-        <!-- Nominee Name -->
-        <tr *ngIf="nominee.nomineeName">
-          <th>Nominee Name</th>
-          <td>{{ nominee.nomineeName }}</td>
-        </tr>
+        <!-- BASIC INFO -->
+        <div *ngIf="activeTab === 'basic'">
+          <table class="table table-bordered table-striped">
+            <tr><th>Full Name</th><td>{{ account.name }}</td></tr>
+            <tr><th>Email</th><td>{{ account.email }}</td></tr>
+            <tr><th>Mobile</th><td>{{ account.mobile }}</td></tr>
+            <tr><th>PAN</th><td>{{ account.pan }}</td></tr>
+            <tr><th>Date Of Birth</th><td>{{ account.dob | date:'dd/MM/yyyy' }}</td></tr>
+            <tr><th>Place Of Birth</th><td>{{ account.placeOfBirth }}</td></tr>
+            <tr><th>Nationality</th><td>{{ account.nationality }}</td></tr>
+            <tr><th>Gender</th><td>{{ account.gender }}</td></tr>
+          </table>
+        </div>
 
-        <!-- Relation -->
-        <tr *ngIf="nominee.nomineeRelation">
-          <th>Relation</th>
-          <td>{{ nominee.nomineeRelation }}</td>
-        </tr>
+        <!-- ADDRESS INFO -->
+        <div *ngIf="activeTab === 'address'">
+          <table class="table table-bordered table-striped">
+            <tr><th>State</th><td>{{ account.stateName }}</td></tr>
+            <tr><th>Corresponding State</th><td>{{ account.correspondingStateName }}</td></tr>
+            <tr><th>City</th><td>{{ account.cityName }}</td></tr>
+            <tr><th>Corresponding City</th><td>{{ account.correspondingCityName }}</td></tr>
+            <tr><th>Permanent Address</th><td>{{ account.permanentAddress }}</td></tr>
+            <tr><th>Corresponding Address</th><td>{{ account.correspondingAddress }}</td></tr>
+            <tr><th>Pincode</th><td>{{ account.pincode }}</td></tr>
+          </table>
+        </div>
 
-        <!-- DOB -->
-        <tr *ngIf="nominee.nomineeDob">
-          <th>Date Of Birth</th>
-          <td>{{ nominee.nomineeDob | date:'dd/MM/yyyy' }}</td>
-        </tr>
+        <!-- BANK INFO -->
+        <div *ngIf="activeTab === 'bank'">
+          <table class="table table-bordered table-striped">
+            <tr><th>Bank Name</th><td>{{ account.bankName }}</td></tr>
+            <tr><th>Account Number</th><td>{{ account.accountNumber }}</td></tr>
+            <tr><th>Branch Name</th><td>{{ account.branchName }}</td></tr>
+            <tr><th>Branch Address</th><td>{{ account.branchAddress }}</td></tr>
+            <tr><th>IFSC Code</th><td>{{ account.ifscCode }}</td></tr>
+            <tr><th>MICR Code</th><td>{{ account.micrCode }}</td></tr>
+          </table>
+        </div>
 
-        <!-- PAN (Only if NOT minor) -->
-        <tr *ngIf="nominee.nomineePan && !nominee.guardianName">
-          <th>PAN Number</th>
-          <td>{{ nominee.nomineePan }}</td>
-        </tr>
+        <!-- NOMINEE INFO -->
+        <div *ngIf="activeTab === 'nominee'">
+          <div *ngIf="nomineesList.length === 0" class="text-center my-3">
+            No nominee details available.
+          </div>
 
-        <!-- Guardian Section (only for minors) -->
-        <tr *ngIf="nominee.guardianName">
-          <th>Guardian Name</th>
-          <td>{{ nominee.guardianName }}</td>
-        </tr>
-
-        <tr *ngIf="nominee.guardianRelation">
-          <th>Guardian Relation</th>
-          <td>{{ nominee.guardianRelation }}</td>
-        </tr>
-
-        <tr *ngIf="nominee.guardianDob">
-          <th>Guardian DOB</th>
-          <td>{{ nominee.guardianDob | date:'dd/MM/yyyy' }}</td>
-        </tr>
-
-        <tr *ngIf="nominee.guardianPan">
-          <th>Guardian PAN</th>
-          <td>{{ nominee.guardianPan }}</td>
-        </tr>
-
-      </table>
+          <div *ngFor="let nominee of nomineesList; let i = index" class="modern-card nominee-card mb-3">
+            <h5 class="nominee-title">
+              Nominee {{ i + 1 }}
+              <span *ngIf="nominee.guardianName" class="badge bg-warning text-dark ms-2">Minor</span>
+            </h5>
+            <table class="table table-bordered table-striped">
+              <tr *ngIf="nominee.nomineeName"><th>Nominee Name</th><td>{{ nominee.nomineeName }}</td></tr>
+              <tr *ngIf="nominee.nomineeRelation"><th>Relation</th><td>{{ nominee.nomineeRelation }}</td></tr>
+              <tr *ngIf="nominee.nomineeDob"><th>Date Of Birth</th><td>{{ nominee.nomineeDob | date:'dd/MM/yyyy' }}</td></tr>
+              <tr *ngIf="nominee.nomineePan && !nominee.guardianName"><th>PAN Number</th><td>{{ nominee.nomineePan }}</td></tr>
+              <tr *ngIf="nominee.guardianName"><th>Guardian Name</th><td>{{ nominee.guardianName }}</td></tr>
+              <tr *ngIf="nominee.guardianRelation"><th>Guardian Relation</th><td>{{ nominee.guardianRelation }}</td></tr>
+              <tr *ngIf="nominee.guardianDob"><th>Guardian DOB</th><td>{{ nominee.guardianDob | date:'dd/MM/yyyy' }}</td></tr>
+              <tr *ngIf="nominee.guardianPan"><th>Guardian PAN</th><td>{{ nominee.guardianPan }}</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- Social Icons -->
+  <div class="classdiv text-left">
+    <!-- Social Icons -->
+    <div class="social-icons d-flex gap-3">
+      <a href="https://www.facebook.com" target="_blank" class="facebook">
+        <i class="bi bi-facebook fs-3"></i>
+      </a>
+      <a href="https://www.twitter.com" target="_blank" class="twitter">
+        <i class="bi bi-twitter fs-3"></i>
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" class="linkedin">
+        <i class="bi bi-linkedin fs-3"></i>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" class="youtube">
+        <i class="bi bi-youtube fs-3"></i>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" class="instagram">
+        <i class="bi bi-instagram fs-3"></i>
+      </a>
+      <a>
+        |
+      </a>
 
-
+    </div>
+  </div>
 
 </div>
-
-

@@ -1,111 +1,58 @@
-/* =========================
-   GLOBAL STYLING
-========================= */
-
-body {
-  background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
-  font-family: 'Poppins', sans-serif;
+.page-container-vertical {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
 }
 
-/*HEADING SECTION */
+.sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+  .sidebar .nav-btn {
+    text-align: left;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #f1f5fb;
+    color: #001f5b;
+    font-weight: 500;
+    border: none;
+    transition: 0.3s;
+  }
+
+    .sidebar .nav-btn.active {
+      background: #ff7a00;
+      color: white;
+    }
+
+    .sidebar .nav-btn:hover {
+      background: #e36a00;
+      color: white;
+    }
+
+.main-content {
+  flex: 1; /* take remaining width */
+}
 
 .page-header {
-  margin-top: 30px;
   margin-bottom: 30px;
 }
 
-  .page-header h1 {
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
-/* Heading colors */
-
-.orange {
-  color: #f26522;
-}
-
-.navy {
-  color: #0b2c5f;
-}
-/* =========================
-   PAGE TITLE
-========================= */
-
-.underline {
-  font-weight: 700;
-  font-size: 32px;
-  letter-spacing: 1px;
-}
-
-/* =========================
-   MODERN CARD CONTAINER
-========================= */
-
 .modern-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-  animation: fadeIn 0.4s ease-in-out;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
-/* Smooth fade animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* =========================
-   MODERN TABS
-========================= */
-
-.manage-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.nav-btn {
-  padding: 10px 22px;
-  border: none;
-  background: white;
-  color: #001f5b;
-  border-radius: 50px;
-  font-weight: 500;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-  .nav-btn:hover {
-    background: #001f5b;
-    color: white;
-    transform: translateY(-3px);
-  }
-
-  .nav-btn.active {
-    background: linear-gradient(90deg, #001f5b, #003f8a);
-    color: white;
-  }
-
-
-/* =========================
-   MODERN TABLE
-========================= */
-
+/* Tables remain the same */
 .table {
   border-radius: 12px;
   overflow: hidden;
+  width: 100%;
+  margin-bottom: 0;
 }
 
   .table th {
@@ -113,104 +60,51 @@ body {
     color: #001f5b;
     font-weight: 600;
     padding: 14px;
-    width: 30%;
+    width: 35%;
   }
 
   .table td {
     padding: 14px;
-    color: #444;
+    color: #2d3748;
+    font-weight: 500;
   }
 
-.table-bordered {
-  border: none;
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #e3e8f0;
 }
-
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #e3e8f0;
-  }
 
 .table-striped tbody tr:nth-child(odd) {
   background-color: #f9fbff;
 }
 
 
-/* =========================
-   LOADER
-========================= */
+/* ========================================
+   SOCIAL ICONS
+======================================== */
 
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-
-  .modern-card {
-    padding: 20px;
-  }
-
-  .underline {
-    font-size: 24px;
-  }
-
-  .nav-btn {
-    padding: 8px 15px;
-    font-size: 13px;
-  }
-}
-
-
-/* =========================
-   FIX EMPTY RIGHT SIDE ISSUE
-========================= */
-
-/* Make table take full width */
-.table {
-  width: 100%;
-  margin-bottom: 0;
-}
-
-  /* Better column proportion */
-  .table th {
-    width: 35%;
-    background: #f4f7fc;
-    font-weight: 600;
-    color: #001f5b;
-  }
-
-  .table td {
-    width: 65%;
-    font-weight: 500;
-    color: #2d3748;
-  }
-
-/* Add subtle row spacing feel */
-.table-bordered th,
-.table-bordered td {
-  padding: 18px 22px;
-}
-
-/* Make card slightly centered and premium width */
-.modern-card {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-
-.nominee-title {
-  font-weight: 600;
+.social-icons a {
+  background: #eef2f7;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
   color: #ff7a00;
-  margin-bottom: 10px;
 }
 
-.modern-card {
-  background: white;
+  .social-icons a:hover {
+    background: #ff7a00;
+    color: white;
+  }
+
+
+.classdiv {
+  background: #ffffff !important;
+  padding: 35px;
   border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 35px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
 }

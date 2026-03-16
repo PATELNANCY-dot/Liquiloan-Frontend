@@ -71,4 +71,27 @@ export class InvestorDetailsPage {
     this.router.navigate(['/investor-page'])
   }
 
+  activateLoan() {
+    if (!this.account) return;
+
+    const clientId = this.account.clientId; // make sure your AccountDetails has clientId
+
+    this.http.put(`http://localhost:5048/api/liquiloan/activate/${clientId}`, {}).subscribe({
+      next: (res: any) => {
+        console.log('Loan activated:', res);
+        alert('Your loan status has been updated to Activated!');
+        
+        // Optionally update the local account object if you have ActivationStatus
+        if (this.account) {
+          (this.account as any).ActivationStatus = 'Activated';
+        }
+        this.router.navigate(['./investor-page'])
+      },
+      error: (err) => {
+        console.error('Error activating loan:', err);
+        alert('Failed to update loan status. Please try again.');
+      }
+    });
+  }
+
 }

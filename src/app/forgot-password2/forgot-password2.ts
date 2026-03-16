@@ -1,53 +1,53 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-forgot-password',
+  selector: 'app-forgot-password2',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './forgot-password2.html',
-  styleUrl: './forgot-password2.css',
+  styleUrls: ['./forgot-password2.css'],
 })
 export class ForgotPassword2 {
+  enteredOtp: string = '';
+  email: string = '';
+  private apiUrl = 'http://localhost:5048/api/Otp';
 
-  constructor(private router: Router) {
-    this.generateOtp();
-  }
-
-  [x: string]: any;
-
-  generatedOtp: string = '';
-
-
-  generateOtp() {
-    this.generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-    alert('Your OTP is: ' + this.generatedOtp);
+  constructor(private router: Router, private http: HttpClient) {
+    const storedEmail = localStorage.getItem('fpEmail');
+    if (!storedEmail) {
+      alert('No email found. Start from email entry.');
+      this.router.navigate(['/forgot-password']);
+    } else {
+      this.email = storedEmail;
+    }
   }
 
   verifyOtp() {
-    const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
-    let enteredOtp = '';
-
-    inputs.forEach(input => {
-      enteredOtp += input.value;
-    });
-
-    if (enteredOtp.length !== 6) {
-      alert('Please enter complete OTP');
+    if (!this.enteredOtp || this.enteredOtp.length !== 6) {
+      alert('Enter 6-digit OTP');
       return;
     }
 
-    if (enteredOtp === this.generatedOtp) {
-      alert('OTP Verified ✅');
-      this.router.navigate(['/changepassword2']);
-    } else {
-      alert('Invalid OTP ❌');
-    }
+    this.http.post<any>(`${this.apiUrl}/verify-otp`, {
+      email: this.email,
+      otp: this.enteredOtp
+    }).subscribe({
+      next: (res) => {
+        alert('OTP Verified ✅');
+        localStorage.setItem('fpClientId', res.clientId.toString());
+        this.router.navigate(['/changepassword2']);
+      },
+      error: (err) => {
+        console.error('OTP verify error:', err);
+        alert(err.error || 'Invalid OTP');
+      }
+    });
   }
 
   goBack() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/forgot-password']);
   }
-
 }

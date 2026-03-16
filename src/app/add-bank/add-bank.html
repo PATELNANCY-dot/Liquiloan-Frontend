@@ -1,0 +1,53 @@
+<div class="page-container">
+
+  <div class="nominee-page">
+
+    <div class="page-header">
+      <h2>Bank Details</h2>
+    </div>
+
+    <div class="bank-card">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Bank Name</label>
+          <input type="text" [(ngModel)]="bank.bankName" name="bankName">
+        </div>
+
+        <div class="field">
+          <label>Account Number</label>
+          <input type="text" [(ngModel)]="bank.accountNumber" name="accountNumber">
+        </div>
+
+        <div class="field">
+          <label>Branch Name</label>
+          <input type="text" [(ngModel)]="bank.branchName" name="branchName">
+        </div>
+
+        <div class="field">
+          <label>IFSC Code</label>
+          <input type="text" [(ngModel)]="bank.ifscCode" name="ifscCode">
+        </div>
+
+        <div class="field">
+          <label>MICR Code</label>
+          <input type="text" [(ngModel)]="bank.micrCode" name="micrCode">
+        </div>
+
+        <div class="field full">
+          <label>Branch Address</label>
+          <input type="text" [(ngModel)]="bank.branchAddress" name="branchAddress">
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button class="back-btn" (click)="back()">← Back</button>
+        <button class="submit-btn" (click)="saveBank()">Add</button>
+      </div>
+
+    </div>
+
+  </div>
+  </div>

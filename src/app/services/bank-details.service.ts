@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export interface BankDetails {
   id?: number;
   bankName: string;
-  accountNumber: bigint;
+  accountNumber: string; // better as string
   branchName: string;
   ifscCode: string;
   micrCode: string;
@@ -23,10 +23,15 @@ export class BankDetailsService {
   constructor(private http: HttpClient) { }
 
   getBankDetails(clientId: number): Observable<BankDetails[]> {
-    return this.http.get<BankDetails[]>(`${this.apiUrl}/${clientId}`);
+    return this.http.get<BankDetails[]>(`${this.apiUrl}/client/${clientId}`);
   }
 
   saveBankDetails(clientId: number, bankDetails: BankDetails[]): Observable<any> {
     return this.http.post(`${this.apiUrl}/${clientId}`, bankDetails);
   }
+
+  addBank(bank: BankDetails): Observable<any> {
+    return this.http.post(this.apiUrl, bank);
+  }
+
 }

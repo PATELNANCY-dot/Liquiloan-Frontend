@@ -36,8 +36,12 @@ export class LoginOtp {
       });
   }
 
-  // VERIFY OTP via backend
   verifyOtp() {
+
+    const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
+    this.enteredOtp = '';
+    inputs.forEach(input => this.enteredOtp += input.value);
+
     if (!this.enteredOtp || this.enteredOtp.length !== 6) {
       alert("Please enter the 6-digit OTP");
       return;
@@ -47,15 +51,25 @@ export class LoginOtp {
       email: this.email,
       otp: this.enteredOtp
     }).subscribe({
-      next: () => {
+
+      next: (res) => {
+
+        console.log("API Response:", res); 
+      
+        localStorage.setItem("userId", res.clientId.toString());
+
         alert("Login Successful");
+
         this.router.navigate(['/dashboard']);
       },
+
       error: (err) => {
         console.error(err);
-        alert(err.error || "Invalid OTP");
+        alert(err.error?.message || "Invalid OTP");
       }
+
     });
+
   }
 
   // Move to next input box

@@ -41,15 +41,15 @@
               <a class="dropdown-item"
                  routerLink="/manage-account"
                  (click)="accountDropdownOpen = false">
-                <i class="bi bi-person me-2"></i> Account Details
+                <i class="bi bi-person-circle me-2"></i> Account Details
               </a>
             </li>
-
+           
             <li>
               <a class="dropdown-item"
                  routerLink="/view-nominee"
                  (click)="accountDropdownOpen = false">
-                <i class="bi bi-people me-2"></i> Manage Nominee
+                <i class="bi bi-people-fill me-2"></i> Manage Nominee
               </a>
             </li>
 
@@ -91,7 +91,12 @@
 
             <!-- MOBILE + CHANGE PASSWORD -->
             <div class="profile-section">
-              <div class="profile-mobile">{{ account?.mobile }}</div>
+              <div class="profile-mobile">
+                <span class="icon-box">
+                  <i class="bi bi-telephone-fill"></i>
+                </span>
+                {{ account?.mobile }}
+              </div>
 
               <a class="profile-link" routerLink="/changepassword"
                  (click)="profileOpen=false">

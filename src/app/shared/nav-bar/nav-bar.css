@@ -176,3 +176,23 @@
   font-weight: 900;
   font-size: 30px;
 }
+
+/*profilw mobile*/
+
+.profile-mobile {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  font-size: 14px;
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px; /* square width */
+  height: 24px; /* square height */
+  background-color: #f0f0f0; /* box color */
+  border-radius: 4px; /* slightly rounded corners */
+  font-size: 12px; /* icon size */
+}

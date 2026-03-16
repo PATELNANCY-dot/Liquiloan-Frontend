@@ -3,9 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login-otp",
-    "\\src\\app\\shared\\nav-bar"
+    "\\src\\app\\investor-page",
+    "\\src\\app\\manage-account",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\login-otp\\login-otp.ts",
+  "SelectedNode": "\\src\\app\\investor-page\\investor-page.css",
   "PreviewInSolutionExplorer": false
 }

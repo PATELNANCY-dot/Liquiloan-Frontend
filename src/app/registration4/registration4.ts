@@ -302,7 +302,7 @@ export class Registration4 {
     formData.append("BranchAddress", existingData.branchAddress || '');
     formData.append("MicrCode", existingData.micrCode || '');
 
-  
+
 
     //STATE AND CITY ID
     // State
@@ -400,10 +400,10 @@ export class Registration4 {
     /* ---------- API ---------- */
 
     console.log(existingData);
-
     this.http.post<any>('http://localhost:5048/api/clientregistrations', formData)
       .subscribe({
         next: res => {
+          console.log("SUCCESS RESPONSE:", res);
 
           const clientId = res.clientId;
 
@@ -421,15 +421,26 @@ export class Registration4 {
                 this.router.navigate(['/login']);
               },
               error: err => {
-                console.error(err);
+                console.error("Auth Store Error:", err);
+                console.error("Server Response:", err.error);
                 alert('Login store failed.');
               }
             });
 
         },
         error: err => {
-          console.error(err);
-          alert('Registration failed.');
+
+          console.error("FULL ERROR OBJECT:", err);
+
+          if (err.error) {
+            console.error("SERVER ERROR MESSAGE:", err.error);
+          }
+
+          if (err.message) {
+            console.error("ANGULAR ERROR MESSAGE:", err.message);
+          }
+
+          alert("Registration failed. Check console.");
         }
       });
   }

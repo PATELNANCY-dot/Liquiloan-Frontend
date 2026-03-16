@@ -21,8 +21,7 @@ import { TransactionStatus } from './transaction-status/transaction-status'
 import { MainLayoutComponent } from './main-layout-component/main-layout-component'
 import { ViewNominee } from './view-nominee/view-nominee'
 import { ManageBank } from './manage-bank/manage-bank'
-
-
+import { AddBank } from './add-bank/add-bank'
 
 
 export const routes: Routes = [
@@ -57,6 +56,7 @@ export const routes: Routes = [
       { path: 'transaction-status', component: TransactionStatus },
       { path: 'view-nominee', component: ViewNominee },
       { path: 'manage-bank', component: ManageBank },
+      { path: 'add-bank', component: AddBank },
       {
         path: 'change-nominee/:id',
         loadComponent: () => import('./change-nominee/change-nominee')
