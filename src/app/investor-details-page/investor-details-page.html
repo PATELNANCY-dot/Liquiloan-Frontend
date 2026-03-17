@@ -234,7 +234,7 @@
       </form>
     </div>
     <div class="modern-section container btnalign">
-      <button class="mordenbtn" (click)="activateLoan()">Continue</button>
+      <button class="mordenbtn" (click)="openOtpModal()">Continue</button>
     </div>
 
 
@@ -268,4 +268,37 @@
     </div>
   </div>
 
+</div>
+
+
+
+
+
+
+
+<!-- OTP MODAL -->
+<div class="modal fade" id="otpModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+
+      <h5 class="mb-3">Email Verification</h5>
+
+      <p *ngIf="account">OTP sent to {{ account.email }}</p>
+
+      <input type="text"
+             maxlength="6"
+             class="form-control mb-3"
+             placeholder="Enter 6-digit OTP"
+             [(ngModel)]="emailOtp" />
+
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+        <button class="btn btn-primary" (click)="verifyOtp()">
+          Verify & Activate
+        </button>
+      </div>
+
+    </div>
+  </div>
 </div>

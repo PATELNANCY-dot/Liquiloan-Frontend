@@ -1,3 +1,4 @@
+
 <div class="page-container">
 
   <div class="container bank-page mt-4">
@@ -43,13 +44,16 @@
         </div>
 
       </div>
-
+      <div class="form-actions mt-3">
+        <button class="add-btn" (click)="addBank()">Add Bank</button>
+      </div>
     </div>
 
-
-    <div class="form-actions mt-3">
-      <button class="add-btn" (click)="addBank()">Add Bank</button>
+    <!-- Back button -->
+    <div class="form-actions">
+      <button class="back-btn" type="button" routerLink="/manage-account">← Back</button>
     </div>
+
 
   </div>
 

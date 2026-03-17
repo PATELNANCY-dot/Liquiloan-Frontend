@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\angular\\angular-app2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\manage-account\\manage-account.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\manage-account\\manage-account.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\change-nominee\\change-nominee.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\change-nominee\\change-nominee.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\manage-account\\manage-account.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\manage-account\\manage-account.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\change-nominee\\change-nominee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\change-nominee\\change-nominee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\investor-page\\investor-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\view-nominee\\view-nominee.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\view-nominee\\view-nominee.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\investor-page\\investor-page.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\view-nominee\\view-nominee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\view-nominee\\view-nominee.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\services\\nominee.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\services\\nominee.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +38,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "investor-page.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.css",
-              "RelativeDocumentMoniker": "src\\app\\investor-page\\investor-page.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.css",
-              "RelativeToolTip": "src\\app\\investor-page\\investor-page.css",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAmwBsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-16T12:26:56.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "investor-page.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.html",
-              "RelativeDocumentMoniker": "src\\app\\investor-page\\investor-page.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\investor-page\\investor-page.html",
-              "RelativeToolTip": "src\\app\\investor-page\\investor-page.html",
-              "ViewState": "AgIAALUAAAAAAAAAAAAmwNcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-16T12:26:29.534Z",
+              "DocumentIndex": 4,
+              "Title": "nominee.ts",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\services\\nominee.ts",
+              "RelativeDocumentMoniker": "src\\app\\services\\nominee.ts",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\services\\nominee.ts",
+              "RelativeToolTip": "src\\app\\services\\nominee.ts",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAUwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-17T10:33:36.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "manage-account.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\manage-account\\manage-account.css",
-              "RelativeDocumentMoniker": "src\\app\\manage-account\\manage-account.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\manage-account\\manage-account.css",
-              "RelativeToolTip": "src\\app\\manage-account\\manage-account.css",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAAAG4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-16T12:16:47.464Z",
+              "Title": "change-nominee.html",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\change-nominee\\change-nominee.html",
+              "RelativeDocumentMoniker": "src\\app\\change-nominee\\change-nominee.html",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\change-nominee\\change-nominee.html",
+              "RelativeToolTip": "src\\app\\change-nominee\\change-nominee.html",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAUwO0AAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-03-17T10:08:57.295Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "manage-account.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\manage-account\\manage-account.html",
-              "RelativeDocumentMoniker": "src\\app\\manage-account\\manage-account.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\manage-account\\manage-account.html",
-              "RelativeToolTip": "src\\app\\manage-account\\manage-account.html",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAIQAAAAIAAAAAAAAAA==",
+              "Title": "change-nominee.ts",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\change-nominee\\change-nominee.ts",
+              "RelativeDocumentMoniker": "src\\app\\change-nominee\\change-nominee.ts",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\change-nominee\\change-nominee.ts",
+              "RelativeToolTip": "src\\app\\change-nominee\\change-nominee.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-17T10:08:49.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "view-nominee.html",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\view-nominee\\view-nominee.html",
+              "RelativeDocumentMoniker": "src\\app\\view-nominee\\view-nominee.html",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\view-nominee\\view-nominee.html",
+              "RelativeToolTip": "src\\app\\view-nominee\\view-nominee.html",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwDwAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-16T12:16:27.736Z",
+              "WhenOpened": "2026-03-17T10:07:03.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "view-nominee.ts",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\view-nominee\\view-nominee.ts",
+              "RelativeDocumentMoniker": "src\\app\\view-nominee\\view-nominee.ts",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\view-nominee\\view-nominee.ts",
+              "RelativeToolTip": "src\\app\\view-nominee\\view-nominee.ts",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-17T10:06:42.109Z",
               "EditorCaption": ""
             }
           ]

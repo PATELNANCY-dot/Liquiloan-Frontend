@@ -64,8 +64,10 @@
       <div class="form-row">
         <div class="form-col">
           <label>Email</label>
-          <input type="email" formControlName="email" class="form-control">
-
+          <input type="email"
+                 formControlName="email"
+                 class="form-control"
+                 (blur)="onEmailBlur()">
           <small class="text-danger"
                  *ngIf="registrationForm.get('email')?.touched &&
                 registrationForm.get('email')?.errors?.['required']">
@@ -83,7 +85,8 @@
           <input type="text"
                  formControlName="mobile"
                  maxlength="10"
-                 class="form-control">
+                 class="form-control"
+                 >
 
           <small class="text-danger"
                  *ngIf="registrationForm.get('mobile')?.touched &&
@@ -99,10 +102,7 @@
 
       </div>
 
-      <p class="note note-row" style="color:red">
-        <span>* Verify authentication of your email by entering OTP</span>
-        <span>* Verify authentication of your mobile number by entering OTP</span>
-      </p>
+      <div id="recaptcha"></div>
 
 
       <!-- OTP EMAIL + OTP MOBILE -->
@@ -110,19 +110,34 @@
 
         <div class="form-col">
           <div class="otp-clean">
-            <input type="text" placeholder="Enter Mobile OTP">
-            <span class="otp-link">Verify</span>
-            <span class="divider">|</span>
-            <span class="otp-link strong">Confirm</span>
+            <input type="text"
+                   placeholder="Enter Email OTP"
+                   formControlName="emailOtp"
+                   class="form-control">
+
+            <span class="otp-link" (click)="verifyEmailOtp()">Verify</span>
+
+            <span *ngIf="otpVerified" class="text-success ms-2">
+              ✔ Verified
+            </span>
+
           </div>
         </div>
 
         <div class="form-col">
           <div class="otp-clean">
-            <input type="text" placeholder="Enter Email OTP">
-            <span class="otp-link">Verify</span>
-            <span class="divider">|</span>
-            <span class="otp-link strong">Confirm</span>
+
+            <input type="text"
+                   placeholder="Enter Mobile OTP"
+                   formControlName="mobileOtp"
+                   class="form-control">
+
+            <span class="otp-link" >Verify</span>
+
+            <span *ngIf="mobileOtpVerified" class="text-success ms-2">
+              ✔ Verified
+            </span>
+
           </div>
         </div>
 

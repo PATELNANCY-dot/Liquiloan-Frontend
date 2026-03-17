@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AccountDetails } from '../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -71,27 +71,113 @@ export class InvestorDetailsPage {
     this.router.navigate(['/investor-page'])
   }
 
-  activateLoan() {
+  accountActivation() {
     if (!this.account) return;
 
-    const clientId = this.account.clientId; // make sure your AccountDetails has clientId
+    const clientId = this.account.clientId;
 
-    this.http.put(`http://localhost:5048/api/liquiloan/activate/${clientId}`, {}).subscribe({
-      next: (res: any) => {
-        console.log('Loan activated:', res);
-        alert('Your loan status has been updated to Activated!');
-        
-        // Optionally update the local account object if you have ActivationStatus
-        if (this.account) {
-          (this.account as any).ActivationStatus = 'Activated';
+    this.http.put(`http://localhost:5048/api/liquiloan/activate/${clientId}`, {})
+      .subscribe({
+        next: () => {
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Activated',
+            text: ' activated successfully!',
+            timer: 2000,
+            showConfirmButton: false
+          });
+
+          this.router.navigate(['/investor-page']);
+        },
+        error: () => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: 'Failed to activate loan'
+          });
         }
-        this.router.navigate(['./investor-page'])
+      });
+  }
+
+
+  //otp varification
+
+  emailOtp: string = '';
+  otpSent: boolean = false;
+  openOtpModal() {
+    if (!this.account) return;
+
+    const email = this.account.email;
+
+    this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email })
+      .subscribe({
+        next: () => {
+
+          Swal.fire({
+            icon: 'success',
+            title: 'OTP Sent',
+            text: 'OTP sent to your email',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            // 👇 modal opens ONLY after clicking OK
+            const modal = new (window as any).bootstrap.Modal(
+              document.getElementById('otpModal')
+            );
+            modal.show();
+          });
+
+        },
+        error: () => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: 'Failed to send OTP'
+          });
+        }
+      });
+  }
+  verifyOtp() {
+    if (!this.account) return;
+
+    const email = this.account.email;
+
+    if (!this.emailOtp || this.emailOtp.length !== 6) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid OTP',
+        text: 'Enter valid 6-digit OTP'
+      });
+      return;
+    }
+
+    this.http.post<any>('http://localhost:5048/api/Otp/verify-otp', {
+      email: email,
+      otp: this.emailOtp
+    }).subscribe({
+      next: () => {
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Verified',
+          text: 'OTP verified successfully'
+        });
+
+        const modalEl = document.getElementById('otpModal');
+        const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+
+        this.accountActivation();
       },
-      error: (err) => {
-        console.error('Error activating loan:', err);
-        alert('Failed to update loan status. Please try again.');
+      error: () => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Invalid or expired OTP'
+        });
       }
     });
   }
+
 
 }

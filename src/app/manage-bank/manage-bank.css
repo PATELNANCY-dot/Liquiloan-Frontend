@@ -111,3 +111,26 @@ body {
 .social-icons {
   flex-wrap: wrap;
 }
+
+
+
+/* Back button */
+
+.form-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #2f4f9d;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  .back-btn:hover {
+    text-decoration: underline;
+  }
+

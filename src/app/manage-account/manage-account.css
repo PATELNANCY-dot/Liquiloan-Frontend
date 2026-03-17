@@ -108,3 +108,47 @@
   box-shadow: 0 15px 40px rgba(0,0,0,0.08);
   transition: 0.3s ease;
 }
+
+
+/* Next button */
+
+.form-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.next-btn {
+  background: none;
+  border: none;
+  color: #2f4f9d;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+  .next-btn:hover {
+    text-decoration: underline;
+  }
+
+
+/*HEADING SECTION */
+
+.page-header {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+  .page-header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+
+/* Text Colors */
+.orange {
+  color: #f26522; /* soft orange (not too bright) */
+}
+
+.navy {
+  color: #0b2c5f;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -9,10 +9,11 @@ import { NomineeService, UpdateNominee } from '../services/nominee';
 
 
 
+
 @Component({
   selector: 'app-manage-account',
   standalone: true,
-  imports: [ CommonModule, FormsModule, ],
+  imports: [CommonModule, FormsModule, RouterModule ],
   templateUrl: './manage-account.html',
   styleUrls: ['./manage-account.css'],
 })
@@ -87,6 +88,10 @@ export class ManageAccount implements OnInit {
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
+  }
+
+  Next() {
+
   }
 
 

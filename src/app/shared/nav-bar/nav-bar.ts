@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { AccountDetails } from '../../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, RouterModule],
   templateUrl: './nav-bar.html',
   styleUrls: ['./nav-bar.css'],
 })
@@ -85,6 +86,8 @@ export class NavBar {
     localStorage.removeItem('userId');
     this.router.navigate(['/login']);
   }
+
+
 
   /* CLOSE DROPDOWN WHEN CLICKING OUTSIDE */
 

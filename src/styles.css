@@ -3,8 +3,8 @@ html, body {
 }
 
 body {
-
   background: #f1f4f9 !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 70px;
 }
 
@@ -178,4 +178,6 @@ body::-webkit-scrollbar {
 router-outlet + app-footer {
   margin-top: auto;
 }
+
+
 

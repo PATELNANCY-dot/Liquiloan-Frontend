@@ -435,6 +435,7 @@ label {
 /* DOB and PAN on one line with proper spacing */
 .form-col label span {
   margin-left: 10px;
+   color: #334155;
 }
 
 /* Optional: if you want a small gap between labels and buttons */
@@ -454,19 +455,19 @@ label {
 }
 
 /* Slightly adjust font size for Investor ID, Agreement Status, Status */
-.form-row:nth-child(2) .form-col p {
-  font-size: 13px;
-  color: #1f2937;
-  font-weight: 600;
-}
+  .form-row:nth-child(2) .form-col p {
+    font-size: 13px;
+    color: #334155;
+    font-weight: 600;
+  }
 
 /* Make date and PAN line compact and readable */
-.form-row:last-child .form-col label {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 8px;
-  font-size: 13px;
-  color: #1f2937;
-  font-weight: 600;
-}
+  .form-row:last-child .form-col label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #334155;
+    font-weight: 600;
+  }

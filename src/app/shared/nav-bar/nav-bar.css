@@ -196,3 +196,21 @@
   border-radius: 4px; /* slightly rounded corners */
   font-size: 12px; /* icon size */
 }
+
+
+.navbar {
+  color: #ff7a00 !important;
+  font-weight: 800;
+  background: rgba(255, 122, 0, 0.1);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+
+ .nav-item.active-link .nav-link {
+  color: #ff7a00 !important;
+  font-weight: 900;
+  background: rgba(255, 122, 0, 0.1);
+  border-radius: 8px;
+  padding: 6px 10px;
+}

@@ -51,6 +51,6 @@ export class ViewNominee implements OnInit {
 
 
   back() {
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/manage-account'])
   }
 }

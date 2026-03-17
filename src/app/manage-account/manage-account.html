@@ -25,8 +25,8 @@
       <!-- Heading -->
       <div class="page-header">
         <h1>
-          <span class="orange">Account</span>
-          <span class="navy">Details</span>
+          <span class="orange">Manage</span>
+          <span class="navy">Account</span>
         </h1>
       </div>
 
@@ -78,6 +78,11 @@
             <tr><th>IFSC Code</th><td>{{ account.ifscCode }}</td></tr>
             <tr><th>MICR Code</th><td>{{ account.micrCode }}</td></tr>
           </table>
+          <div class="form-actions">
+            <button class="next-btn" type="button" routerLink="/manage-bank">
+              Next →
+            </button>
+          </div>
         </div>
 
         <!-- NOMINEE INFO -->
@@ -102,10 +107,17 @@
               <tr *ngIf="nominee.guardianPan"><th>Guardian PAN</th><td>{{ nominee.guardianPan }}</td></tr>
             </table>
           </div>
+          <div class="form-actions">
+            <button class="next-btn" type="button" routerLink="/view-nominee">
+              Next →
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+ 
   <!-- Social Icons -->
   <div class="classdiv text-left">
     <!-- Social Icons -->

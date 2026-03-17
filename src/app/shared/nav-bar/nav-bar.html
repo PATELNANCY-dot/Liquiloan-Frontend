@@ -15,23 +15,24 @@
 
 
         <!-- Investments -->
-        <li class="nav-item">
+        <li class="nav-item"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }">
+
           <a class="nav-link" routerLink="/investor-page">
-            <span class="icon-circle">
-              <i class="bi bi-compass"></i>
-            </span>
+            Liquiloan Details
           </a>
         </li>
 
         <!-- Menu -->
-        <li class="nav-item dropdown" [ngClass]="{'show': accountDropdownOpen}">
+        <li class="nav-item dropdown"  routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link"
              href="javascript:void(0)"
-             (click)="toggleAccountDropdown()">
+             routerLink="/manage-account">
 
-            <span class="icon-circle">
-              <i class="bi bi-list "></i>
-            </span>
+
+            <span class="nav-text">Manage Account</span>
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end"
@@ -44,7 +45,7 @@
                 <i class="bi bi-person-circle me-2"></i> Account Details
               </a>
             </li>
-           
+
             <li>
               <a class="dropdown-item"
                  routerLink="/view-nominee"
@@ -74,7 +75,7 @@
              (click)="toggleProfileDropdown()">
 
             <span class="icon-circle">
-              <i class="bi bi-person-fill"></i> 
+              <i class="bi bi-person-fill "></i>
             </span>
 
           </a>
@@ -104,13 +105,15 @@
               </a>
             </div>
 
+
+
             <hr>
 
             <!-- LOGOUT -->
             <div class="profile-section">
               <button class="logout-btn"
                       (click)="logout(); profileOpen=false">
-                Logout
+               <b> Logout </b>
               </button>
             </div>
 
