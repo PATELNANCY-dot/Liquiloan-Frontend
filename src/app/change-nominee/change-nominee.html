@@ -4,7 +4,9 @@
 
     <div class="page-header">
       <h2>Nominee Information</h2>
-      <button class="add-btn" (click)="addNominee()">
+      <button *ngIf="nominees.length < 3"
+              class="add-btn"
+              (click)="addNominee()">
         <i class="bi bi-plus-circle"></i> Add Nominee
       </button>
     </div>

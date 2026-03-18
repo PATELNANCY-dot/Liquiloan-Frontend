@@ -6,23 +6,24 @@ import { Registration1 } from './registration1/registration1';
 import { Registration2 } from './registration2/registration2';
 import { Registration3 } from './registration3/registration3';
 import { Registration4 } from './registration4/registration4';
-import { Changepassword } from './changepassword/changepassword'
+import { Changepassword } from './changepassword/changepassword';
 import { ForgotPassword } from './forgot-password/forgot-password'
-import { ForgotPassword2 } from './forgot-password2/forgot-password2'
-import { Changepassword2 } from './changepassword2/changepassword2'
-import { ManageAccount } from './manage-account/manage-account'
-import { ChangeNominee } from './change-nominee/change-nominee'
-import { InvestorDetailsPage } from './investor-details-page/investor-details-page'
-import { InvestorPage } from './investor-page/investor-page'
-import { InvestmentPage } from './investment-page/investment-page'
-import { PaymentPage } from './payment-page/payment-page'
-import { FactorAuth } from './factor-auth/factor-auth'
-import { TransactionStatus } from './transaction-status/transaction-status'
-import { MainLayoutComponent } from './main-layout-component/main-layout-component'
-import { ViewNominee } from './view-nominee/view-nominee'
-import { ManageBank } from './manage-bank/manage-bank'
-import { AddBank } from './add-bank/add-bank'
-
+import { ForgotPassword2 } from './forgot-password2/forgot-password2';
+import { Changepassword2 } from './changepassword2/changepassword2';
+import { ManageAccount } from './manage-account/manage-account';
+import { ChangeNominee } from './change-nominee/change-nominee';
+import { InvestorDetailsPage } from './investor-details-page/investor-details-page';
+import { InvestorPage } from './investor-page/investor-page';
+import { InvestmentPage } from './investment-page/investment-page';
+import { PaymentPage } from './payment-page/payment-page';
+import { FactorAuth } from './factor-auth/factor-auth';
+import { TransactionStatus } from './transaction-status/transaction-status';
+import { MainLayoutComponent } from './main-layout-component/main-layout-component';
+import { ViewNominee } from './view-nominee/view-nominee';
+import { ManageBank } from './manage-bank/manage-bank';
+import { AddBank } from './add-bank/add-bank';
+import { ChangeEmail } from './change-email/change-email'
+import { ChangeMobile } from './change-mobile/change-mobile'
 
 export const routes: Routes = [
 
@@ -57,6 +58,8 @@ export const routes: Routes = [
       { path: 'view-nominee', component: ViewNominee },
       { path: 'manage-bank', component: ManageBank },
       { path: 'add-bank', component: AddBank },
+      { path: 'change-email', component: ChangeEmail },
+      { path: 'change-mobile', component: ChangeMobile },
       {
         path: 'change-nominee/:id',
         loadComponent: () => import('./change-nominee/change-nominee')

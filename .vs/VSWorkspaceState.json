@@ -3,11 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\change-nominee",
+    "\\src\\app\\manage-account",
     "\\src\\app\\services",
     "\\src\\app\\shared\\nav-bar",
     "\\src\\app\\view-nominee"
   ],
-  "SelectedNode": "\\src\\app\\services\\nominee.ts",
+  "SelectedNode": "\\src\\app\\manage-account\\manage-account.css",
   "PreviewInSolutionExplorer": false
 }

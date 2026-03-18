@@ -3,7 +3,7 @@
 ========================= */
 
 .nominee-page {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 25px;
   font-family: 'Poppins', sans-serif;
@@ -28,58 +28,16 @@
 
 
 /* =========================
-   ADD BUTTON
+   CARD
 ========================= */
 
-.add-btn {
-  background: #ff9a00;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-  .add-btn:hover {
-    background: #ff7a00;
-  }
-
-
-/* =========================
-   NOMINEE CARD
-========================= */
-
-.bank-card {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 30px;
+.nominee-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px;
   border: 1px solid #e6e6e6;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  position: relative;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
-
-
-/* =========================
-   DELETE BUTTON
-========================= */
-
-.delete-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-}
-
-  .delete-btn button {
-    background: #ff4d4f;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    padding: 6px 10px;
-    cursor: pointer;
-  }
 
 
 /* =========================
@@ -88,9 +46,8 @@
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
 
 
@@ -101,93 +58,43 @@
 .field label {
   font-size: 13px;
   color: #667085;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   display: block;
   font-weight: 500;
 }
 
-.field input,
-.field select {
+.field input {
   width: 100%;
-  padding: 9px 11px;
-  border-radius: 6px;
+  padding: 10px 12px;
+  border-radius: 8px;
   border: 1px solid #d6dce5;
   font-size: 14px;
-  background: white;
+  background: #ffffff;
   transition: all 0.2s ease;
 }
 
-  .field input:focus,
-  .field select:focus {
+  /* readonly style */
+  .field input[readonly] {
+    background: #f5f7fb;
+    cursor: not-allowed;
+  }
+
+  /* focus */
+  .field input:focus {
     outline: none;
     border-color: #ff7a00;
     box-shadow: 0 0 0 2px rgba(255,122,0,0.1);
   }
 
 
-  /* =========================
-   ADDRESS FIELD FIX
-========================= */
-
-  .field input[formControlName="nomineeAddress"],
-  .field input[formControlName="guardianAddress"] {
-    grid-column: span 2;
-  }
-
-
 /* =========================
-   MOBILE INPUT GROUP
-========================= */
-
-.mobile-group {
-  display: flex;
-  gap: 6px;
-}
-
-  .mobile-group select {
-    width: 90px;
-  }
-
-  .mobile-group input {
-    flex: 1;
-  }
-
-
-/* =========================
-   GUARDIAN SECTION
-========================= */
-
-.guardian-section {
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 1px solid #eaeaea;
-}
-
-.guardian-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #0b2c5f;
-  margin-bottom: 15px;
-  position: relative;
-}
-
-  .guardian-title span {
-    background: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid #d6dce5;
-  }
-
-
-/* =========================
-   FORM ACTIONS
+   ACTION BUTTONS
 ========================= */
 
 .form-actions {
   margin-top: 30px;
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: right;
 }
 
 .back-btn {
@@ -207,14 +114,20 @@
   background: #0b3d91;
   border: none;
   color: white;
-  padding: 10px 20px;
-  border-radius: 7px;
+  padding: 10px 22px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
+
 }
+
+  .submit-btn:hover {
+    background: #082c6c;
+  }
 
 
 /* =========================
-   NOTE SECTION
+   NOTE
 ========================= */
 
 .nominee-note {
@@ -225,8 +138,51 @@
   border-left: 4px solid #ff7a00;
   border-radius: 6px;
   line-height: 1.6;
-  margin-top: 20px;
+  margin-top: 25px;
 }
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+/* OTP box styling same as registration form */
+.otp-clean {
+  background: #f4f4f5;
+  border: 1.5px dashed #d4d4d8;
+  border-radius: 12px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+  .otp-clean input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: 13px;
+    outline: none;
+    color: #3f3f46;
+  }
+
+.otp-link {
+  font-size: 12px;
+  cursor: pointer;
+  color: #52525b;
+  transition: 0.2s ease;
+}
+
+  .otp-link:hover {
+    color: #111;
+  }
+
+.text-success {
+  color: green;
+  font-weight: 600;
+}
+
+
+
 
 
 /* =========================
@@ -261,23 +217,8 @@
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media (max-width: 900px) {
 
-  .form-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 
@@ -354,23 +295,23 @@ label {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-  /*  HOW TO REGISTER SECTION */
+/*  HOW TO REGISTER SECTION */
 
-  .classdiv.text-left {
-    background: linear-gradient(135deg, #ffffff, #f8fbff) !important;
-  }
+.classdiv.text-left {
+  background: linear-gradient(135deg, #ffffff, #f8fbff) !important;
+}
 
-  .classdiv h5 {
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #001f5b;
-  }
+.classdiv h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #001f5b;
+}
 
-  .classdiv p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #555;
-  }
+.classdiv p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+}
 
 .bi-check-circle-fill {
   color: #00b894;

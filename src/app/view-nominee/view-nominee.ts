@@ -45,10 +45,10 @@ export class ViewNominee implements OnInit {
     });
   }
 
-  changeNominee(id: number) {
-    this.router.navigate(['/change-nominee', id]);
+  changeNominee() {
+    this.nomineeService.setNominees(this.nominees); //  store data
+    this.router.navigate(['/change-nominee']);       //  navigate only
   }
-
 
   back() {
     this.router.navigate(['/manage-account'])

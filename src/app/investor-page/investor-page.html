@@ -28,18 +28,18 @@
 
 
 
-    <div  *ngIf="liquiloan && isActivated()"  class="classdiv text-center" style="margin-block:40px; background-color:lightgray">
+    <div  *ngIf="liquiloan && isActivated()"  class="classdiv text-center" >
       <form>
         <!--1-->
         <div class="form-row">
           <div class="form-col">
-            <label> Client Name: <b>{{ account?.name }} </b> </label>
+           <label> Client Name: <b>{{ account?.name }} </b> </label>
 
           </div>
 
           <div class="form-col">
-            <label>Investor ID:</label>
-            <p> <b>{{ liquiloan.clientId }}</b> </p>
+            <label>Investor ID: <b>{{ liquiloan.clientId }}</b> </label>
+          
           </div>
 
           <div class="form-col">
@@ -49,8 +49,8 @@
 
 
           <div class="form-col">
-            <label>Status:</label>
-            <p> <b> {{ liquiloan.activationStatus }} </b> </p>
+            <label>Status: <b> {{ liquiloan.activationStatus }} </b></label>
+            
           </div>
 
           <div class="form-col">
@@ -66,8 +66,8 @@
         <div class="form-row ">
           <div class="form-col">
             <label>
-              Date Of Birth: <b>{{ account?.dob | date:'dd/MM/yyyy' }} </b>
-              <span>| PAN: <b>{{ account?.pan }}  </b> </span>
+                Date Of Birth | Pan: 
+              <span><b>{{ account?.dob | date:'dd/MM/yyyy' }} </b> |  <b>{{ account?.pan }}  </b> </span>
             </label>
 
           </div>
@@ -109,7 +109,7 @@
 
             <div class="form-col">
               <label>Investor ID:</label>
-              <p> <b>{{ liquiloan.clientId }}</b> </p>
+             
             
             </div>
 
@@ -136,8 +136,8 @@
           <div class="form-row">
             <div class="form-col">
               <label>
-                Date Of Birth: <b>{{ account?.dob | date:'dd/MM/yyyy' }} </b>
-                <span>| PAN: <b>{{ account?.pan }}  </b> </span>
+                Date Of Birth | Pan:
+                <span><b>{{ account?.dob | date:'dd/MM/yyyy' }} </b> |  <b>{{ account?.pan }}  </b> </span>
               </label>
 
             </div>

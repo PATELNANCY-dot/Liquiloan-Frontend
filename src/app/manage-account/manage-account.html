@@ -5,11 +5,11 @@
 
     <!-- Sidebar Navigation -->
     <div class="sidebar">
-      <button class="nav-btn" [class.active]="activeTab === 'basic'" (click)="activeTab = 'basic'">
-        <i class="bi bi-person"></i> Basic Information
+      <button class="nav-btn" [class.active]="activeTab === 'email'" (click)="activeTab = 'email'">
+        <i class="bi bi-envelope"></i> Change Email
       </button>
-      <button class="nav-btn" [class.active]="activeTab === 'address'" (click)="activeTab = 'address'">
-        <i class="bi bi-geo-alt"></i> Address Information
+      <button class="nav-btn" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'">
+        <i class="bi bi-phone"></i>  Change Mobile
       </button>
       <button class="nav-btn" [class.active]="activeTab === 'bank'" (click)="activeTab = 'bank'">
         <i class="bi bi-bank"></i> Bank Details
@@ -30,54 +30,92 @@
         </h1>
       </div>
 
-      <!-- Loader -->
-      <div *ngIf="isLoading" class="text-center my-5">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <p>Loading account details...</p>
-      </div>
 
       <!-- Data Card -->
-      <div *ngIf="!isLoading && account" class="modern-card data-card">
+      <div *ngIf="!isLoading && account" >
 
-        <!-- BASIC INFO -->
-        <div *ngIf="activeTab === 'basic'">
-          <table class="table table-bordered table-striped">
-            <tr><th>Full Name</th><td>{{ account.name }}</td></tr>
-            <tr><th>Email</th><td>{{ account.email }}</td></tr>
-            <tr><th>Mobile</th><td>{{ account.mobile }}</td></tr>
-            <tr><th>PAN</th><td>{{ account.pan }}</td></tr>
-            <tr><th>Date Of Birth</th><td>{{ account.dob | date:'dd/MM/yyyy' }}</td></tr>
-            <tr><th>Place Of Birth</th><td>{{ account.placeOfBirth }}</td></tr>
-            <tr><th>Nationality</th><td>{{ account.nationality }}</td></tr>
-            <tr><th>Gender</th><td>{{ account.gender }}</td></tr>
-          </table>
+        <!-- email INFO -->
+        <div *ngIf="activeTab === 'email'" class="info-card">
+          <h6><i class="bi bi-envelope"></i> CHANGE OF EMAIL ID</h6>
+
+          <p class="info-text">
+            Change email id on Liquiloan – Online process
+          </p>
+
+          <ul>
+            <li>Enter your new email id</li>
+            <li>Enter OTP received on new email id</li>
+            <li>On entering OTP, new email id will be updated in Liquiloan</li>
+          </ul>
+
+          <div class="note">
+            <i class="bi bi-info-circle"></i>
+            <strong>Note:</strong> Make sure your new email id is active and accessible to receive OTP.
+          </div>
+        
+          <div class="form-actions">
+            <button class="next-btn" type="button" routerLink="/change-email">
+              Next →
+            </button>
+          </div>
         </div>
 
-        <!-- ADDRESS INFO -->
-        <div *ngIf="activeTab === 'address'">
-          <table class="table table-bordered table-striped">
-            <tr><th>State</th><td>{{ account.stateName }}</td></tr>
-            <tr><th>Corresponding State</th><td>{{ account.correspondingStateName }}</td></tr>
-            <tr><th>City</th><td>{{ account.cityName }}</td></tr>
-            <tr><th>Corresponding City</th><td>{{ account.correspondingCityName }}</td></tr>
-            <tr><th>Permanent Address</th><td>{{ account.permanentAddress }}</td></tr>
-            <tr><th>Corresponding Address</th><td>{{ account.correspondingAddress }}</td></tr>
-            <tr><th>Pincode</th><td>{{ account.pincode }}</td></tr>
-          </table>
+
+
+
+
+        <!-- mobile INFO -->
+        <div *ngIf="activeTab === 'mobile'" class="info-card">
+          <h6><i class="bi bi-phone"></i> CHANGE OF MOBILE NUMBER</h6>
+
+          <p class="info-text">
+            Change mobile number on Liquiloan – Online process
+          </p>
+
+          <ul>
+            <li>Enter your new mobile number</li>
+            <li>Enter OTP received on new mobile number</li>
+            <li>On entering OTP, your mobile number will be updated in Liquiloan</li>
+          </ul>
+
+          <div class="note">
+            <i class="bi bi-info-circle"></i>
+            <strong>Note:</strong> Make sure your new mobile number is active to receive OTP.
+          </div>
+ 
+          <div class="form-actions">
+            <button class="next-btn" type="button" routerLink="/change-mobile">
+              Next →
+            </button>
+          </div>
         </div>
+
+
+
 
         <!-- BANK INFO -->
         <div *ngIf="activeTab === 'bank'">
-          <table class="table table-bordered table-striped">
-            <tr><th>Bank Name</th><td>{{ account.bankName }}</td></tr>
-            <tr><th>Account Number</th><td>{{ account.accountNumber }}</td></tr>
-            <tr><th>Branch Name</th><td>{{ account.branchName }}</td></tr>
-            <tr><th>Branch Address</th><td>{{ account.branchAddress }}</td></tr>
-            <tr><th>IFSC Code</th><td>{{ account.ifscCode }}</td></tr>
-            <tr><th>MICR Code</th><td>{{ account.micrCode }}</td></tr>
-          </table>
+
+          <div class="info-card">
+            <h6><i class="bi bi-bank"></i> CHANGE OF BANK DETAILS</h6>
+
+            <p class="info-text">
+              Update your bank details on Liquiloan – Online process
+            </p>
+
+            <ul>
+              <li>Enter your new bank account details</li>
+              <li>Provide correct IFSC and branch information</li>
+              <li>Verify your bank details before submission</li>
+              <li>Submit the updated bank details</li>
+            </ul>
+
+            <div class="note">
+              <i class="bi bi-info-circle"></i>
+              <strong>Note:</strong> Ensure the bank account belongs to you to avoid transaction issues.
+            </div>
+          </div>
+
           <div class="form-actions">
             <button class="next-btn" type="button" routerLink="/manage-bank">
               Next →
@@ -85,27 +123,31 @@
           </div>
         </div>
 
+
+
+
         <!-- NOMINEE INFO -->
         <div *ngIf="activeTab === 'nominee'">
-          <div *ngIf="nomineesList.length === 0" class="text-center my-3">
-            No nominee details available.
-          </div>
 
-          <div *ngFor="let nominee of nomineesList; let i = index" class="modern-card nominee-card mb-3">
-            <h5 class="nominee-title">
-              Nominee {{ i + 1 }}
-              <span *ngIf="nominee.guardianName" class="badge bg-warning text-dark ms-2">Minor</span>
-            </h5>
-            <table class="table table-bordered table-striped">
-              <tr *ngIf="nominee.nomineeName"><th>Nominee Name</th><td>{{ nominee.nomineeName }}</td></tr>
-              <tr *ngIf="nominee.nomineeRelation"><th>Relation</th><td>{{ nominee.nomineeRelation }}</td></tr>
-              <tr *ngIf="nominee.nomineeDob"><th>Date Of Birth</th><td>{{ nominee.nomineeDob | date:'dd/MM/yyyy' }}</td></tr>
-              <tr *ngIf="nominee.nomineePan && !nominee.guardianName"><th>PAN Number</th><td>{{ nominee.nomineePan }}</td></tr>
-              <tr *ngIf="nominee.guardianName"><th>Guardian Name</th><td>{{ nominee.guardianName }}</td></tr>
-              <tr *ngIf="nominee.guardianRelation"><th>Guardian Relation</th><td>{{ nominee.guardianRelation }}</td></tr>
-              <tr *ngIf="nominee.guardianDob"><th>Guardian DOB</th><td>{{ nominee.guardianDob | date:'dd/MM/yyyy' }}</td></tr>
-              <tr *ngIf="nominee.guardianPan"><th>Guardian PAN</th><td>{{ nominee.guardianPan }}</td></tr>
-            </table>
+
+          <div class="info-card">
+            <h6><i class="bi bi-people"></i> CHANGE OF NOMINEE</h6>
+
+            <p class="info-text">
+              Update nominee details on Liquiloan – Online process
+            </p>
+
+            <ul>
+              <li>Add or update nominee information</li>
+              <li>Ensure total nominee percentage equals 100%</li>
+              <li>Provide guardian details if nominee is a minor (below 18)</li>
+              <li>Submit the updated nominee details</li>
+            </ul>
+
+            <div class="note">
+              <i class="bi bi-info-circle"></i>
+              <strong>Note:</strong> You can add up to 3 nominees. For minors, guardian details are mandatory.
+            </div>
           </div>
           <div class="form-actions">
             <button class="next-btn" type="button" routerLink="/view-nominee">
@@ -113,6 +155,11 @@
             </button>
           </div>
         </div>
+
+
+
+
+       
       </div>
     </div>
   </div>

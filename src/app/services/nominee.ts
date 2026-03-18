@@ -44,6 +44,16 @@ export interface UpdateNominee {
 export class NomineeService {
   private apiUrl = 'http://localhost:5048/api/Nominee';
 
+  private nomineesData: any[] = [];
+
+  setNominees(data: any[]) {
+    this.nomineesData = data;
+  }
+
+  getStoredNominees() {
+    return this.nomineesData;
+  }
+
   constructor(private http: HttpClient) { }
 
   deleteNominee(id: number) {

@@ -35,4 +35,6 @@ export class AccountDetailsService {
   getAccount(clientId: number): Observable<AccountDetails> {
     return this.http.get<AccountDetails>(`${this.apiUrl}/account/${clientId}`);
   }
+
+
 }

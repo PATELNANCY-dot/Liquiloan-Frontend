@@ -20,7 +20,7 @@ export class AddBank {
     ifscCode: '',
     micrCode: '',
     branchAddress: '',
-    clientId: Number(localStorage.getItem('clientId'))
+    clientId: Number(localStorage.getItem('userId'))
   };
 
   constructor(

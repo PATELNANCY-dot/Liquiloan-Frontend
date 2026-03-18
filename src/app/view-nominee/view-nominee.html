@@ -17,7 +17,7 @@
       <!-- Header -->
       <div class="row nominee-header">
         <div class="col-md-8">
-          Account Holder Name
+          Nominee  Name
         </div>
 
         <div class="col-md-4 text-end">
@@ -36,13 +36,10 @@
         <div class="col-md-8 nominee-name">
           {{ nominee.nomineeName }}
         </div>
+      </div>
 
-        <div class="col-md-4 text-end">
-          <button class="change-btn" (click)="changeNominee(nominee.id)">
-            Change
-          </button>
-        </div>
-
+      <div class="form-actions">
+        <button class="change-btn" type="button" (click)="changeNominee()">Change</button>
       </div>
 
     </div>

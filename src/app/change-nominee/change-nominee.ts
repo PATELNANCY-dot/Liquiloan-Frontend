@@ -30,47 +30,32 @@ export class ChangeNominee implements OnInit {
     this.nomineeForm = this.fb.group({
       nominees: this.fb.array([])
     });
-    this.addNominee(); // add first empty row
 
-    const nomineeId = this.route.snapshot.paramMap.get('id');
-    if (nomineeId) {
-      this.nomineeService.getNomineeById(nomineeId).subscribe((data: any) => {
-        // patch form including backend Id
-        this.nominees.at(0).patchValue({
+    const storedNominees = this.nomineeService.getStoredNominees();
 
-          id: data.id,
+    if (storedNominees && storedNominees.length > 0) {
 
-          nomineeName: data.nomineeName,
-          nomineeRelation: data.nomineeRelation,
-          nomineeDob: data.nomineeDob?.slice(0, 10),
-          nomineePan: data.nomineePan,
+      console.log("Using stored nominees");
+      storedNominees.forEach((nominee: any) => {
+        this.addNominee(nominee);
+      });
 
-          nomineePersentage: data.nomineePersentage,
-          nomineeGender: data.nomineeGender,
-          nomineeAddress: data.nomineeAddress,
-          nomineeCountry: data.nomineeCountry,
-          nomineeState: data.nomineeState,
-          nomineeCity: data.nomineeCity,
-          nomineePincode: data.nomineePincode,
-          nomineeDocumentType: data.nomineeDocumentType,
-          nomineeEmailId: data.nomineeEmailId,
-          MobileNo: data.mobileNo,
+    } else {
 
-          guardianName: data.guardianName,
-          guardianRelation: data.guardianRelation,
-          guardianDob: data.guardianDob?.slice(0, 10),
-          guardianPan: data.guardianPan,
+      console.log("Fetching from API (refresh case)");
 
-          guardianAddress: data.guardianAddress,
-          guardianCity: data.guardianCity,
-          guardianState: data.guardianState,
-          guardianCountry: data.guardianCountry,
-          guardianPincode: data.guardianPincode,
-          guardianEmailId: data.guardianEmailId,
-          guardianMobileNo: data.guardianMobileNo
+      this.nomineeService.getNominee().subscribe((data: any) => {
 
+        const list = Array.isArray(data) ? data : data?.$values || [];
+
+        //  IMPORTANT: clear existing form array first
+        this.nominees.clear();
+
+        list.forEach((nominee: any) => {
+          this.addNominee(nominee);
         });
 
+        this.cdr.detectChanges(); // force UI update
       });
     }
   }
@@ -147,6 +132,22 @@ export class ChangeNominee implements OnInit {
 
     if (this.nomineeForm.invalid) return;
 
+    // ✅ STEP 1: Calculate total percentage
+    const total = this.nominees.controls
+      .map(c => Number(c.value.nomineePersentage || 0))
+      .reduce((a, b) => a + b, 0);
+
+    // ✅ STEP 2: Validate total = 100
+    if (total !== 100) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Percentage',
+        text: 'Total nominee percentage must be exactly 100%'
+      });
+      return;
+    }
+
+    // ✅ STEP 3: Continue your existing logic
     const clientId = Number(localStorage.getItem('userId'));
     if (!clientId || clientId <= 0) {
       alert('Client ID missing');
@@ -154,12 +155,10 @@ export class ChangeNominee implements OnInit {
     }
 
     const payload: UpdateNominee[] = this.nominees.controls.map(control => {
-
       const n = control.value;
       const isMinor = this.isMinor(n.nomineeDob);
 
       return {
-
         id: n.id,
         clientId: clientId,
 
@@ -177,7 +176,7 @@ export class ChangeNominee implements OnInit {
         nomineePincode: n.nomineePincode || null,
         nomineeDocumentType: n.nomineeDocumentType || null,
         nomineeEmailId: n.nomineeEmailId || null,
-        MobileNo: n.MobileNo || null,
+        MobileNo: n.MobileNo || n.mobileNo || null,
 
         guardianName: isMinor ? n.guardianName || null : null,
         guardianRelation: isMinor ? n.guardianRelation || null : null,
@@ -191,42 +190,33 @@ export class ChangeNominee implements OnInit {
         guardianPincode: isMinor ? n.guardianPincode || null : null,
         guardianEmailId: isMinor ? n.guardianEmailId || null : null,
         guardianMobileNo: isMinor ? n.guardianMobileNo || null : null
-
       };
-
     });
 
     console.log("Payload to backend:", payload);
 
     this.nomineeService.saveNominees(payload).subscribe({
       next: res => {
-
         Swal.fire({
           icon: 'success',
           title: 'Success',
           text: 'Nominee updated successfully',
           confirmButtonColor: '#ff7a00'
         }).then(() => {
-
           this.router.navigate(['/view-nominee']);
-
         });
-
       },
       error: err => {
-
         console.error('Error saving nominees', err);
-
         Swal.fire({
           icon: 'error',
           title: 'Error',
           text: err.error?.message || 'Failed to save nominees'
         });
-
       }
     });
-
   }
+
 
    
   addNominee(existing: any = null) {
@@ -256,7 +246,7 @@ export class ChangeNominee implements OnInit {
       nomineePincode: [existing?.nomineePincode || ''],
       nomineeDocumentType: [existing?.nomineeDocumentType || ''],
       nomineeEmailId: [existing?.nomineeEmailId || ''],
-      MobileNo: [existing?.MobileNo || ''],
+      MobileNo: [existing?.mobileNo || ''],
 
       guardianName: [existing?.guardianName || ''],
       guardianRelation: [existing?.guardianRelation || ''],
@@ -303,6 +293,14 @@ export class ChangeNominee implements OnInit {
   removeNominee(index: number) {
     const nominee = this.nominees.at(index).value;
 
+    // ✅ CASE 1: NEW nominee (no id) → delete directly
+    if (!nominee.id) {
+      this.nominees.removeAt(index);
+      this.cdr.detectChanges();
+      return;
+    }
+
+    // ✅ CASE 2: EXISTING nominee → show confirmation
     Swal.fire({
       title: 'Delete Nominee?',
       text: 'This action cannot be undone.',
@@ -314,47 +312,32 @@ export class ChangeNominee implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        if (nominee.id) {
-          this.nomineeService.deleteNominee(nominee.id).subscribe({
-            next: () => {
-              this.nominees.removeAt(index);
+        this.nomineeService.deleteNominee(nominee.id).subscribe({
+          next: () => {
+            this.nominees.removeAt(index);
+            this.cdr.detectChanges();
 
-              // Force template to update immediately
-              this.cdr.detectChanges();
-
-              Swal.fire({
-                icon: 'success',
-                title: 'Deleted!',
-                text: 'Nominee deleted successfully',
-                confirmButtonColor: '#ff7a00'
-              });
-            },
-            error: err => {
-              console.error('Error deleting nominee', err);
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Failed to delete nominee'
-              });
-            }
-          });
-        } else {
-          this.nominees.removeAt(index);
-
-          // Force template to update immediately
-          this.cdr.detectChanges();
-
-          Swal.fire({
-            icon: 'success',
-            title: 'Deleted!',
-            text: 'Nominee deleted successfully',
-            confirmButtonColor: '#ff7a00'
-          });
-        }
+            Swal.fire({
+              icon: 'success',
+              title: 'Deleted!',
+              text: 'Nominee deleted successfully',
+              confirmButtonColor: '#ff7a00'
+            });
+          },
+          error: err => {
+            console.error('Error deleting nominee', err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Failed to delete nominee'
+            });
+          }
+        });
 
       }
     });
   }
+
   BACK() {
     this.router.navigate(['./view-nominee'])
   }

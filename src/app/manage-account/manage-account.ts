@@ -19,7 +19,7 @@ import { NomineeService, UpdateNominee } from '../services/nominee';
 })
 export class ManageAccount implements OnInit {
 
-  activeTab: string = 'basic';
+  activeTab: string = 'email';
   account?: AccountDetails;
   errorMessage: string = '';
   isLoading: boolean = true;
