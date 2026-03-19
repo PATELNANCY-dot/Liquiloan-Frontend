@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { initializeApp } from 'firebase/app';
 import { getAuth, Auth, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from 'firebase/auth';
 import { firebaseConfig } from '../firebase.config';
+import { AuthService } from '../services/auth';
+
 
 export interface AccountDetails {
   clientId: number;
@@ -46,7 +48,8 @@ export class ChangeMobile implements OnInit {
     private http: HttpClient,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private registrationData: RegistrationDataService
+    private registrationData: RegistrationDataService,
+    private authService: AuthService
   ) {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -59,7 +62,18 @@ export class ChangeMobile implements OnInit {
       this.account = cached;
       this.cdr.detectChanges();
     } else {
-      const clientId = Number(localStorage.getItem('clientId'));
+
+      const userId = this.authService.getUserId();
+      if (!userId) {
+        Swal.fire('Error', 'User session expired. Please login again.', 'error');
+        this.router.navigate(['/login']);
+        return;
+      }
+
+      const clientId = Number(userId);
+
+
+
       if (!clientId) {
         this.errorMessage = 'Client ID not found';
         return;

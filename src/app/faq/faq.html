@@ -1,0 +1,89 @@
+<div class="page-container">
+
+  <div class="faq-container">
+
+    <!-- HEADER -->
+    <div class="faq-header">
+      <h2>FAQs</h2>
+
+      <input class="search-box"
+             type="text"
+             placeholder="Search"
+             [(ngModel)]="searchText"
+             (input)="filter()">
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="faq-layout">
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div *ngFor="let c of categories"
+             (click)="selectCategory(c)"
+             [class.active]="c === selectedCategory">
+          {{c}}
+        </div>
+      </div>
+
+      <!-- FAQ LIST -->
+      <div class="faq-list">
+
+        <div class="faq-item" *ngFor="let f of filteredFaqs">
+
+          <div class="question" (click)="toggle(f)">
+            {{f.question}}
+            <span class="icon">{{f.open ? '▲' : '▼'}}</span>
+          </div>
+
+          <div class="answer" *ngIf="f.open">
+            {{f.answer}}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RAISE QUERY -->
+    <div class="query-section">
+      <button class="raise-btn" (click)="showQuery = true"> Raise Query </button>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- MODAL -->
+<div class="modal-overlay" *ngIf="showQuery">
+
+  <div class="modal-box">
+
+    <!-- HEADER -->
+    <div class="modal-header">
+      <h3>Raise a Query</h3>
+      <span class="close-btn" (click)="showQuery = false">×</span>
+    </div>
+
+    <!-- BODY -->
+    <div class="modal-body">
+
+      <label>Query*</label>
+      <textarea [(ngModel)]="queryText"
+                placeholder="Write your query here..."></textarea>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="modal-footer">
+      <button class="cancel-btn" (click)="showQuery = false">Cancel</button>
+      <button class="submit-btn" (click)="submitQuery()">Submit</button>
+    </div>
+
+  </div>
+
+</div>
+
+

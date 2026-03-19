@@ -6,6 +6,9 @@ import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
+
+
 
 @Component({
   selector: 'app-change-nominee',
@@ -23,7 +26,8 @@ export class ChangeNominee implements OnInit {
     private nomineeService: NomineeService,
     private router: Router,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService 
   ) { }
 
   ngOnInit(): void {
@@ -132,12 +136,12 @@ export class ChangeNominee implements OnInit {
 
     if (this.nomineeForm.invalid) return;
 
-    // ✅ STEP 1: Calculate total percentage
+    //  STEP 1: Calculate total percentage
     const total = this.nominees.controls
       .map(c => Number(c.value.nomineePersentage || 0))
       .reduce((a, b) => a + b, 0);
 
-    // ✅ STEP 2: Validate total = 100
+    //  STEP 2: Validate total = 100
     if (total !== 100) {
       Swal.fire({
         icon: 'error',
@@ -146,13 +150,15 @@ export class ChangeNominee implements OnInit {
       });
       return;
     }
-
-    // ✅ STEP 3: Continue your existing logic
-    const clientId = Number(localStorage.getItem('userId'));
-    if (!clientId || clientId <= 0) {
-      alert('Client ID missing');
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      Swal.fire('Error', 'User session expired. Please login again.', 'error');
+      this.router.navigate(['/login']);
       return;
     }
+
+    const clientId = Number(userId);
+
 
     const payload: UpdateNominee[] = this.nominees.controls.map(control => {
       const n = control.value;

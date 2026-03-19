@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,7 +18,7 @@ export class ForgotPassword {
 
   private apiUrl = 'http://localhost:5048/api/Otp';
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   goBack() {
     this.router.navigate(['/login']);
@@ -35,8 +36,10 @@ export class ForgotPassword {
       .subscribe({
         next: (res) => {
           this.isLoading = false;
+
           // clientId is optional in your backend, so save email to use in OTP verification
-          localStorage.setItem('fpEmail', this.email);
+          this.authService.setFpEmail(this.email);
+
           alert(res.message || 'OTP sent successfully');
           this.router.navigate(['/forgot-password2']);
         },

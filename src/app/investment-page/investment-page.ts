@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { AccountDetails } from '../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
 import { TransactionService } from '../services/transaction.service';
+import { AuthService } from '../services/auth';
+
+
 
 @Component({
   selector: 'app-investment-page',
@@ -70,12 +73,15 @@ export class InvestmentPage implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
 
-    const storedClientId = localStorage.getItem('userId');
+
+    const storedClientId = this.authService.getUserId();
+
     console.log('Stored Client ID:', storedClientId);
 
     if (!storedClientId) {
@@ -176,7 +182,8 @@ export class InvestmentPage implements OnInit {
       return;
     }
 
-    const storedClientId = localStorage.getItem('userId');
+    const storedClientId = this.authService.getUserId();
+
     const clientId = storedClientId ? Number(storedClientId) : 0;
 
     // ✅ GATEWAY

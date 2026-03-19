@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-changepassword2',
@@ -18,8 +19,10 @@ export class Changepassword2 {
   private apiUrl = 'http://localhost:5048/api/PasswordChange'; // <-- your actual API
   private clientId: number | null = null;
 
-  constructor(private router: Router, private http: HttpClient) {
-    const id = localStorage.getItem('fpClientId');
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) {
+
+    const id = this.authService.getFpClientId();
+
     if (!id) {
       Swal.fire({
         icon: 'warning',

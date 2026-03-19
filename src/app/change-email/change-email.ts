@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RegistrationDataService } from '../services/ client-registration.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
+
 
 @Component({
   selector: 'app-change-email',
@@ -28,7 +30,8 @@ export class ChangeEmail implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private http: HttpClient,
-    private registrationData: RegistrationDataService
+    private registrationData: RegistrationDataService,
+    private authService: AuthService
   ) {
     this.changeEmailForm = this.fb.group({
       newEmail: ['', [Validators.required, Validators.email]],
@@ -42,7 +45,17 @@ export class ChangeEmail implements OnInit {
       this.account = cached;
       this.changeEmailForm.patchValue({ newEmail: this.account.email });
     } else {
-      const clientId = Number(localStorage.getItem('userId'));
+
+      const userId = this.authService.getUserId();
+      if (!userId) {
+        Swal.fire('Error', 'User session expired. Please login again.', 'error');
+        this.router.navigate(['/login']);
+        return;
+      }
+
+      const clientId = Number(userId);
+
+
       if (!clientId) {
         Swal.fire('Error', 'Client ID not found', 'error');
         return;

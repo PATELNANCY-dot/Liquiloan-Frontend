@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule]  ,
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
@@ -17,7 +18,11 @@ export class Login {
   password: string = '';
   showPassword = false;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService
+  ) { }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -25,7 +30,6 @@ export class Login {
 
   login() {
     if (!this.username || !this.password) {
-
       Swal.fire({
         icon: 'warning',
         title: 'Oops...',
@@ -35,13 +39,10 @@ export class Login {
       return;
     }
 
-    this.http.post('http://localhost:5048/api/auth/login', {
-      Username: this.username,
-      Password_1: this.password
-    }).subscribe({
+    this.authService.login(this.username, this.password).subscribe({
       next: (res: any) => {
-        localStorage.setItem('userId', res.userId);
-
+        // Store userId in memory (not localStorage)
+        this.authService.setUserId(res.userId);
         Swal.fire({
           icon: 'success',
           title: 'Login Successful!',
@@ -65,4 +66,5 @@ export class Login {
       }
     });
   }
+
 }

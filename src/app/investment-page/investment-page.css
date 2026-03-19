@@ -428,7 +428,7 @@ select {
     transform: translateY(0);
   }
 }
- /*alert*/
+/*alert*/
 /* Overlay to cover entire screen */
 .custom-alert-overlay {
   position: fixed;

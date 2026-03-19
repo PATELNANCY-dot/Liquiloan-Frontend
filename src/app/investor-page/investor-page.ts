@@ -9,6 +9,7 @@ import { NomineeService, UpdateNominee } from '../services/nominee';
 import { BankDetailsService } from '../services/bank-details.service';
 import { LiquiloanService, Liquiloan } from '../services/liquiloan.service';
 import { AccountDetails } from '../models/account-details.model';
+import { AuthService } from '../services/auth';
 
 declare var bootstrap: any;
 
@@ -37,11 +38,24 @@ export class InvestorPage implements OnInit {
     private bankService: BankDetailsService,
     private liquiloanService: LiquiloanService,
     private cdr: ChangeDetectorRef,
-    private http: HttpClient 
+    private http: HttpClient,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-    const clientId = Number(localStorage.getItem('userId'));
+
+
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      Swal.fire('Error', 'User session expired. Please login again.', 'error');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const clientId = Number(userId);
+
+
+
     if (!clientId) return alert('Client ID missing');
 
     this.fetchNominees();
@@ -82,7 +96,15 @@ export class InvestorPage implements OnInit {
 
   // ---------------- Bank ----------------
   loadBanks() {
-    const clientId = Number(localStorage.getItem('userId'));
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      Swal.fire('Error', 'User session expired. Please login again.', 'error');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const clientId = Number(userId);
+
     this.bankService.getBankDetails(clientId).subscribe({
       next: data => this.banksList = data,
       error: err => console.error('Error loading banks', err)
@@ -90,7 +112,14 @@ export class InvestorPage implements OnInit {
   }
 
   openBankModal() {
-    const clientId = Number(localStorage.getItem('userId'));
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      Swal.fire('Error', 'User session expired. Please login again.', 'error');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const clientId = Number(userId);
     if (!clientId) return alert('Client ID missing');
 
     this.bankService.getBankDetails(clientId).subscribe({

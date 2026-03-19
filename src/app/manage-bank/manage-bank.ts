@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BankDetailsService } from '../services/bank-details.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-manage-bank',
@@ -15,25 +16,26 @@ export class ManageBank implements OnInit {
 
   banks: any[] = [];
 
-  constructor(private bankService: BankDetailsService, private cdr: ChangeDetectorRef, private router: Router) { }
+  constructor(private bankService: BankDetailsService, private cdr: ChangeDetectorRef, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadBanks();
   }
 
   loadBanks() {
+    const userId = this.authService.getUserId();
 
-   
-    const clientId = Number(localStorage.getItem("userId"));
-
-    if (!clientId) {
-      console.error("ClientId not found in localStorage");
+    if (!userId) {
+      console.error("User not logged in or session expired");
+      // Optional: redirect to login
+      this.router.navigate(['/login']);
       return;
     }
 
+    const clientId = Number(userId);
+
     this.bankService.getBankDetails(clientId).subscribe({
       next: (data: any[]) => {
-
         this.banks = data.map(b => ({
           clientName: b.clientName || 'Account Holder',
           bankName: b.bankName,
@@ -43,7 +45,6 @@ export class ManageBank implements OnInit {
       },
       error: (err) => console.error("Error loading bank details:", err)
     });
-
   }
 
   addBank() {

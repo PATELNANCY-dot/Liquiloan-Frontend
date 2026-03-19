@@ -214,3 +214,45 @@
   border-radius: 8px;
   padding: 6px 10px;
 }
+
+
+
+/* ACTION ROW (HELP + CHANGE PASSWORD) */
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Row for buttons */
+.action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Improve help button fit */
+.help-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  background: #f1f4f9;
+  color: #1e3a8a;
+  transition: all 0.3s ease;
+}
+
+
+/* Change password alignment */
+.profile-link {
+  font-size: 13px;
+  color: #0b2c5f;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+  .profile-link:hover {
+    text-decoration: underline;
+  }

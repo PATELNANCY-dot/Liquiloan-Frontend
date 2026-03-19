@@ -22,8 +22,9 @@ import { MainLayoutComponent } from './main-layout-component/main-layout-compone
 import { ViewNominee } from './view-nominee/view-nominee';
 import { ManageBank } from './manage-bank/manage-bank';
 import { AddBank } from './add-bank/add-bank';
-import { ChangeEmail } from './change-email/change-email'
-import { ChangeMobile } from './change-mobile/change-mobile'
+import { ChangeEmail } from './change-email/change-email';
+import { ChangeMobile } from './change-mobile/change-mobile';
+import { Faq } from './faq/faq';
 
 export const routes: Routes = [
 
@@ -60,6 +61,7 @@ export const routes: Routes = [
       { path: 'add-bank', component: AddBank },
       { path: 'change-email', component: ChangeEmail },
       { path: 'change-mobile', component: ChangeMobile },
+      { path: 'faq', component: Faq },
       {
         path: 'change-nominee/:id',
         loadComponent: () => import('./change-nominee/change-nominee')

@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
+
+
 
 @Component({
   selector: 'app-changepassword',
@@ -19,7 +22,7 @@ export class Changepassword {
   showNew = false;
   showConfirm = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService: AuthService) {
     this.form = this.fb.group({
       currentPassword: ['', Validators.required],
       newPassword: ['', [
@@ -54,7 +57,8 @@ export class Changepassword {
       return;
     }
 
-    const clientId = localStorage.getItem('userId');
+    const clientId = this.authService.getUserId();
+
     if (!clientId) {
       Swal.fire({
         icon: 'warning',

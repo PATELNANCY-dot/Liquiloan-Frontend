@@ -1,20 +1,19 @@
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-
-
+import { AuthService } from '../services/auth';
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [ CommonModule ],
+  imports: [CommonModule ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
   loading: boolean = true;
 
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private authService: AuthService) { } 
 
   ngOnInit() {
     // Simulate a loading delay (e.g., fetching data)
@@ -24,7 +23,7 @@ export class Dashboard {
   }
 
   invest() {
-    const userId = localStorage.getItem('userId');
+    const userId = this.authService.getUserId();
     if (userId === null) {
       this.router.navigate(['/login']);
     } else {

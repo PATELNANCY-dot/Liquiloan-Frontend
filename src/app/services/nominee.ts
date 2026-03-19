@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth';
 
 export interface UpdateNominee {
 
@@ -54,16 +55,19 @@ export class NomineeService {
     return this.nomineesData;
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   deleteNominee(id: number) {
     return this.http.delete(`${this.apiUrl}/DeleteNominee/${id}`);
   }
 
   getNominee(): Observable<UpdateNominee[]> {
-    const clientId = Number(localStorage.getItem('userId'));
+    const clientId = Number(this.authService.getUserId());
+    if (!clientId) throw new Error('User not logged in');
+
     return this.http.get<UpdateNominee[]>(`${this.apiUrl}/${clientId}`);
   }
+
 
   getNomineeById(id: any) {
     return this.http.get(`${this.apiUrl}/single/${id}`);

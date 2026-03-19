@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { BankDetailsService } from '../services/bank-details.service';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-add-bank',
@@ -20,13 +21,26 @@ export class AddBank {
     ifscCode: '',
     micrCode: '',
     branchAddress: '',
-    clientId: Number(localStorage.getItem('userId'))
   };
 
   constructor(
     private bankService: BankDetailsService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
+
+
+
+  ngOnInit() {
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      Swal.fire('Error', 'User not logged in', 'error');
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.bank.clientId = Number(userId);
+  }
+
 
   saveBank() {
     this.bankService.addBank(this.bank).subscribe({

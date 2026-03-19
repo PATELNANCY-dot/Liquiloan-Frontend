@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\footer",
+    "\\src\\app\\investor-details-page",
+    "\\src\\app\\investor-page",
     "\\src\\app\\manage-account",
-    "\\src\\app\\services",
-    "\\src\\app\\shared\\nav-bar",
-    "\\src\\app\\view-nominee"
+    "\\src\\app\\manage-bank",
+    "\\src\\app\\shared",
+    "\\src\\app\\transaction-status"
   ],
-  "SelectedNode": "\\src\\app\\manage-account\\manage-account.css",
+  "SelectedNode": "\\src\\app\\shared\\nav-bar\\nav-bar.css",
   "PreviewInSolutionExplorer": false
 }

@@ -6,6 +6,7 @@ import { TransactionService } from '../services/transaction.service';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
 
 
 @Component({
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './payment-page.html',
   styleUrls: ['./payment-page.css']
@@ -42,7 +43,8 @@ export class PaymentPage {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -76,7 +78,9 @@ export class PaymentPage {
   continuePayment() {
     this.showConfirm = false
     this.transactionId = this.generateTransactionId();
-    const storedClientId = localStorage.getItem('userId');
+
+    const storedClientId = this.authService.getUserId();
+
     const clientId = storedClientId ? Number(storedClientId) : 0;
     const queryParams = this.route.snapshot.queryParams;
 
@@ -156,7 +160,9 @@ export class PaymentPage {
   cancelPayment() {
     this.showConfirm = false
     this.transactionId = this.generateTransactionId();
-    const storedClientId = localStorage.getItem('userId');
+
+    const storedClientId = this.authService.getUserId();
+
     const clientId = storedClientId ? Number(storedClientId) : 0;
     const queryParams = this.route.snapshot.queryParams;
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-forgot-password2',
@@ -15,14 +17,18 @@ export class ForgotPassword2 {
   email: string = '';
   private apiUrl = 'http://localhost:5048/api/Otp';
 
-  constructor(private router: Router, private http: HttpClient) {
-    const storedEmail = localStorage.getItem('fpEmail');
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) {
+
+    const storedEmail = this.authService.getFpEmail();
+
     if (!storedEmail) {
-      alert('No email found. Start from email entry.');
+      Swal.fire('Error', 'Session expired. Please try again.', 'error');
       this.router.navigate(['/forgot-password']);
-    } else {
+    }  else {
       this.email = storedEmail;
     }
+
+    
   }
 
   verifyOtp() {
@@ -37,7 +43,9 @@ export class ForgotPassword2 {
     }).subscribe({
       next: (res) => {
         alert('OTP Verified ✅');
-        localStorage.setItem('fpClientId', res.clientId.toString());
+
+        this.authService.setFpClientId(res.clientId.toString());
+
         this.router.navigate(['/changepassword2']);
       },
       error: (err) => {

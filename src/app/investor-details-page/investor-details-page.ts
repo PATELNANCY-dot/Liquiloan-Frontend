@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { AccountDetails } from '../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth';
 
 
 @Component({
@@ -24,10 +25,13 @@ export class InvestorDetailsPage {
 
   private apiUrl: string = 'http://localhost:5048/api/AccountDetails';
 
-  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef, private authService: AuthService) { }
 
   ngOnInit(): void {
-    const storedClientId = localStorage.getItem('userId');
+
+    const storedClientId = this.authService.getUserId();
+
+
     console.log('Stored Client ID:', storedClientId);
 
     if (!storedClientId) {

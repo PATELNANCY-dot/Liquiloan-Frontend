@@ -6,6 +6,7 @@ import { AccountDetails } from '../../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-nav-bar',
@@ -26,13 +27,13 @@ export class NavBar {
 
 
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef, private http: HttpClient) { }
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private http: HttpClient, private authService: AuthService) { }
 
 
 
     ngOnInit() {
 
-      const clientId = localStorage.getItem('userId');
+      const clientId = this.authService.getUserId();
 
       console.log("ClientId from storage:", clientId);
 

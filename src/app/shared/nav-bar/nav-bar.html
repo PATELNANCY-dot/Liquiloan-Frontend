@@ -91,7 +91,8 @@
             <hr>
 
             <!-- MOBILE + CHANGE PASSWORD -->
-            <div class="profile-section">
+            <div class="profile-section profile-actions">
+
               <div class="profile-mobile">
                 <span class="icon-box">
                   <i class="bi bi-telephone-fill"></i>
@@ -99,22 +100,37 @@
                 {{ account?.mobile }}
               </div>
 
-              <a class="profile-link" routerLink="/changepassword"
-                 (click)="profileOpen=false">
-                Change Password
-              </a>
+              <div class="action-row">
+
+                <a class="profile-link" routerLink="/changepassword"
+                   (click)="profileOpen=false">
+                  Change Password
+                </a>
+            
+              </div>
             </div>
 
 
 
-            <hr>
+            <br />
+      
 
+       
             <!-- LOGOUT -->
-            <div class="profile-section">
-              <button class="logout-btn"
-                      (click)="logout(); profileOpen=false">
-               <b> Logout </b>
+            <div class="action-row">
+              <button class="logout-btn" (click)="logout(); profileOpen=false">
+                <b>
+                  <i class="bi bi-box-arrow-right"></i>
+                  Logout
+                </b>
               </button>
+
+              <a routerLink="/faq" class="help-btn" (click)=" profileOpen=false">
+                <i class="bi bi-question-circle"></i>
+                Help
+              </a>
+
+
             </div>
 
           </div>

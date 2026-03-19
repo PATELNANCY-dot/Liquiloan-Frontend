@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule, HttpClientModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './login-otp.html',
   styleUrls: ['./login-otp.css']
 })
@@ -15,7 +16,7 @@ export class LoginOtp {
   email: string = '';
   enteredOtp: string = '';
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   // SEND OTP via backend
   sendOtp() {
@@ -53,11 +54,10 @@ export class LoginOtp {
     }).subscribe({
 
       next: (res) => {
-
-        console.log("API Response:", res); 
       
-        localStorage.setItem("userId", res.clientId.toString());
 
+        console.log("FULL API RESPONSE:", res);
+        this.authService.setUserId(res.clientId.toString());
         alert("Login Successful");
 
         this.router.navigate(['/dashboard']);

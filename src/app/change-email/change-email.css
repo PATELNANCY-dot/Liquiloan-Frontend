@@ -118,7 +118,6 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
-
 }
 
   .submit-btn:hover {
@@ -295,23 +294,23 @@ label {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-/*  HOW TO REGISTER SECTION */
+  /*  HOW TO REGISTER SECTION */
 
-.classdiv.text-left {
-  background: linear-gradient(135deg, #ffffff, #f8fbff) !important;
-}
+  .classdiv.text-left {
+    background: linear-gradient(135deg, #ffffff, #f8fbff) !important;
+  }
 
-.classdiv h5 {
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #001f5b;
-}
+  .classdiv h5 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #001f5b;
+  }
 
-.classdiv p {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #555;
-}
+  .classdiv p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+  }
 
 .bi-check-circle-fill {
   color: #00b894;
