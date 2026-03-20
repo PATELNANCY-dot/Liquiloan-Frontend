@@ -7,6 +7,8 @@ import { AccountDetails } from '../models/account-details.model';
 import { ChangeDetectorRef } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth';
+import { LoaderService } from '../services/loader.service';
+
 
 
 @Component({
@@ -18,25 +20,25 @@ import { AuthService } from '../services/auth';
 })
 export class InvestorDetailsPage {
 
-
+ 
   account?: AccountDetails;
   errorMessage: string = '';
-  isLoading: boolean = true;
+
 
   private apiUrl: string = 'http://localhost:5048/api/AccountDetails';
 
-  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef, private authService: AuthService) { }
+  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef, private authService: AuthService, private loaderService: LoaderService) { }
 
   ngOnInit(): void {
 
     const storedClientId = this.authService.getUserId();
 
-
+    this.loaderService.hide();
     console.log('Stored Client ID:', storedClientId);
 
     if (!storedClientId) {
       this.errorMessage = 'No user found. Please login.';
-      this.isLoading = false;
+
       this.router.navigate(['/login']);
       return;
     }
@@ -44,7 +46,6 @@ export class InvestorDetailsPage {
     const clientId = Number(storedClientId);
     if (isNaN(clientId)) {
       this.errorMessage = 'Invalid user ID. Please login again.';
-      this.isLoading = false;
       this.router.navigate(['/login']);
       return;
     }
@@ -53,20 +54,20 @@ export class InvestorDetailsPage {
   }
 
   loadAccount(clientId: number) {
-    this.isLoading = true;
+    this.loaderService.show();
 
     this.http.get<AccountDetails>(`${this.apiUrl}/account/${clientId}`).subscribe({
       next: (data) => {
         this.account = data;
         console.log('Account loaded:', data);
-        this.isLoading = false;
+        this.loaderService.hide();
         this.cdr.detectChanges(); // <-- force Angular to refresh view
 
       },
       error: (err) => {
         console.error('Error fetching account:', err);
         this.errorMessage = 'Unable to load account details.';
-        this.isLoading = false;
+        this.loaderService.hide();
       }
     });
   }
@@ -113,26 +114,26 @@ export class InvestorDetailsPage {
     if (!this.account) return;
 
     const email = this.account.email;
+    this.loaderService.show(); // show loader
 
     this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email })
       .subscribe({
         next: () => {
-
+          this.loaderService.hide(); // hide loader
           Swal.fire({
             icon: 'success',
             title: 'OTP Sent',
             text: 'OTP sent to your email',
             confirmButtonText: 'OK'
           }).then(() => {
-            // 👇 modal opens ONLY after clicking OK
             const modal = new (window as any).bootstrap.Modal(
               document.getElementById('otpModal')
             );
             modal.show();
           });
-
         },
         error: () => {
+          this.loaderService.hide(); // hide loader
           Swal.fire({
             icon: 'error',
             title: 'Failed',
@@ -141,6 +142,7 @@ export class InvestorDetailsPage {
         }
       });
   }
+
   verifyOtp() {
     if (!this.account) return;
 
@@ -155,12 +157,14 @@ export class InvestorDetailsPage {
       return;
     }
 
+    this.loaderService.show();
+
     this.http.post<any>('http://localhost:5048/api/Otp/verify-otp', {
       email: email,
       otp: this.emailOtp
     }).subscribe({
       next: () => {
-
+        this.loaderService.hide();// hide loader
         Swal.fire({
           icon: 'success',
           title: 'Verified',
@@ -174,6 +178,7 @@ export class InvestorDetailsPage {
         this.accountActivation();
       },
       error: () => {
+        this.loaderService.hide();// hide loader
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -182,6 +187,5 @@ export class InvestorDetailsPage {
       }
     });
   }
-
 
 }

@@ -2,11 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,57 +20,57 @@ export class AuthService {
 
   setUserId(id: string) {
     this._userId = id;
-    sessionStorage.setItem('userId', id); // ✅ added
+    sessionStorage.setItem('userId', id); //  added
   }
 
   getUserId(): string | null {
     if (!this._userId) {
-      this._userId = sessionStorage.getItem('userId'); // ✅ added
+      this._userId = sessionStorage.getItem('userId'); //  added
     }
     return this._userId;
   }
 
   clearUserId() {
     this._userId = null;
-    sessionStorage.removeItem('userId'); // ✅ added
+    sessionStorage.removeItem('userId'); //  added
   }
 
   // ================= FORGOT PASSWORD EMAIL =================
 
   setFpEmail(email: string) {
     this._fpEmail = email;
-    sessionStorage.setItem('fpEmail', email); // ✅ added
+    sessionStorage.setItem('fpEmail', email); //  added
   }
 
   getFpEmail(): string | null {
     if (!this._fpEmail) {
-      this._fpEmail = sessionStorage.getItem('fpEmail'); // ✅ added
+      this._fpEmail = sessionStorage.getItem('fpEmail'); //  added
     }
     return this._fpEmail;
   }
 
   clearFpEmail() {
     this._fpEmail = null;
-    sessionStorage.removeItem('fpEmail'); // ✅ added
+    sessionStorage.removeItem('fpEmail'); //  added
   }
 
   // ================= FORGOT PASSWORD CLIENT ID =================
 
   setFpClientId(id: string) {
     this._fpClientId = id;
-    sessionStorage.setItem('fpClientId', id); // ✅ added
+    sessionStorage.setItem('fpClientId', id); //  added
   }
 
   getFpClientId(): string | null {
     if (!this._fpClientId) {
-      this._fpClientId = sessionStorage.getItem('fpClientId'); // ✅ added
+      this._fpClientId = sessionStorage.getItem('fpClientId'); //  added
     }
     return this._fpClientId;
   }
 
   clearFpClientId() {
     this._fpClientId = null;
-    sessionStorage.removeItem('fpClientId'); // ✅ added
+    sessionStorage.removeItem('fpClientId'); //  added
   }
 
   // ================= API CALLS =================

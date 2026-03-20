@@ -178,3 +178,50 @@ body::-webkit-scrollbar {
 router-outlet + app-footer {
   margin-top: auto;
 }
+
+
+
+
+/*  Loader Overlay */
+.universal-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px); /* subtle blur behind loader */
+  background: rgba(255, 255, 255, 0.5); /* semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* higher than modals */
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+  .universal-loader.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+/* Animated Spinner */
+.loader-spinner {
+  width: 70px;
+  height: 70px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ff6600; /* modern orange color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

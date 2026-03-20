@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth';
+import { LoaderService } from '../services/loader.service';
+import Swal from 'sweetalert2';
 
 @Component({
   standalone: true,
@@ -16,27 +18,51 @@ export class LoginOtp {
   email: string = '';
   enteredOtp: string = '';
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService,
+    private loaderService: LoaderService
+  ) { }
 
-  // SEND OTP via backend
+  // ================= SEND OTP =================
   sendOtp() {
     if (!this.email) {
-      alert("Please enter your email");
+      Swal.fire({
+        icon: 'warning',
+        title: 'Email Required',
+        text: 'Please enter your email'
+      });
       return;
     }
+
+    this.loaderService.show();
 
     this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email: this.email })
       .subscribe({
         next: () => {
-          alert("OTP sent to your email");
+          this.loaderService.hide();
+
+          Swal.fire({
+            icon: 'success',
+            title: 'OTP Sent',
+            text: 'OTP sent to your email'
+          });
         },
         error: (err) => {
           console.error(err);
-          alert("Failed to send OTP");
+          this.loaderService.hide();
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: 'Failed to send OTP'
+          });
         }
       });
   }
 
+  // ================= VERIFY OTP =================
   verifyOtp() {
 
     const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
@@ -44,9 +70,15 @@ export class LoginOtp {
     inputs.forEach(input => this.enteredOtp += input.value);
 
     if (!this.enteredOtp || this.enteredOtp.length !== 6) {
-      alert("Please enter the 6-digit OTP");
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid OTP',
+        text: 'Please enter the 6-digit OTP'
+      });
       return;
     }
+
+    this.loaderService.show();
 
     this.http.post<any>('http://localhost:5048/api/Otp/verify-otp', {
       email: this.email,
@@ -54,25 +86,48 @@ export class LoginOtp {
     }).subscribe({
 
       next: (res) => {
-      
+        this.loaderService.hide();
 
-        console.log("FULL API RESPONSE:", res);
-        this.authService.setUserId(res.clientId.toString());
-        alert("Login Successful");
+        if (res.clientId) {
 
-        this.router.navigate(['/dashboard']);
+          this.authService.setUserId(res.clientId.toString());
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful!',
+            text: 'Redirecting...',
+            timer: 1500,
+            showConfirmButton: false
+          });
+
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']);
+          }, 1500);
+
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'OTP verified but user not found'
+          });
+        }
       },
 
       error: (err) => {
         console.error(err);
-        alert(err.error?.message || "Invalid OTP");
+        this.loaderService.hide();
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Invalid OTP',
+          text: err.error || 'OTP is incorrect or expired'
+        });
       }
 
     });
-
   }
 
-  // Move to next input box
+  // ================= OTP INPUT HANDLING =================
   moveNext(event: any) {
     const input = event.target;
     if (input.value && input.nextElementSibling) {
@@ -80,7 +135,6 @@ export class LoginOtp {
     }
   }
 
-  // Move to previous input box
   moveBack(event: any) {
     const input = event.target;
     if (!input.value && input.previousElementSibling) {
@@ -88,7 +142,6 @@ export class LoginOtp {
     }
   }
 
-  // Collect OTP from 6 boxes
   collectOtp() {
     const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
     this.enteredOtp = '';

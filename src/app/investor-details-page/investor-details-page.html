@@ -5,7 +5,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-<div class="dashboard">
+<div class="page-container">
 
 
 
@@ -24,17 +24,17 @@
 
     <div class="modern-section container btnalign">
 
-      <button class="mordenbtn" (click)="back()"> Back</button>
+      <button type="button" class="mordenbtn" (click)="back()"> Back</button>
 
 
     </div>
 
     <!--1c-->
 
-    <div class="modern-section container" style="margin-block-start:40px;margin-block-end:40px;">
+    <div style="margin-block-start:20px;margin-block-end:20px;">
       <h6>BASIC INFORMATION</h6>
       <br />
-      <form *ngIf="account">
+      <div class="form" *ngIf="account">
         <!--1-->
         <div class="row g-5" *ngIf="account">
           <div class="col-md-3">
@@ -120,15 +120,15 @@
         </div>
         <br />
         <br />
-      </form>
+      </div>
     </div>
 
     <!--2c-->
 
-    <div class="modern-section container" style="margin-block-start:40px;margin-block-end:40px;">
+    <div style="margin-block-start:20px; margin-block-end:20px;">
       <h6>ADDRESS INFORMATION</h6>
       <br />
-      <form>
+      <div class="form">
         <!--1-->
         <div class="row g-4" *ngIf="account">
           <div class="col-md-3">
@@ -170,15 +170,15 @@
         </div>
 
         <br />
-      </form>
+      </div>
     </div>
 
     <!--3c-->
 
-    <div class="modern-section container" style="margin-block-start:40px;margin-block-end:40px;">
+    <div style="margin-block-start:20px;margin-block-end:20px;">
       <h6>BANK DETAILS</h6>
       <br />
-      <form>
+      <div class="form">
         <!--1-->
         <div class="row g-4" *ngIf="account">
           <div class="col-md-3">
@@ -231,41 +231,54 @@
         </div>
 
         <br />
-      </form>
+      </div>
     </div>
     <div class="modern-section container btnalign">
-      <button class="mordenbtn" (click)="openOtpModal()">Continue</button>
+      <button type="button" class="mordenbtn" (click)="openOtpModal()">Continue</button>
     </div>
 
+    <div class="classdiv text-left ">
+      <div class="footer-bar">
 
-    <div class="modern-section container" style="margin-block-start:40px;margin-block-end:40px;">
-      <form>
-        <!-- Social Icons -->
-        <div class="social-icons d-flex gap-3">
-          <a href="https://www.facebook.com" target="_blank" class="facebook">
-            <i class="bi bi-facebook fs-3"></i>
+        <!-- LEFT: SOCIAL ICONS -->
+        <div class="social-icons">
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="bi bi-facebook"></i>
           </a>
-          <a href="https://www.twitter.com" target="_blank" class="twitter">
-            <i class="bi bi-twitter fs-3"></i>
+          <a href="https://www.twitter.com" target="_blank">
+            <i class="bi bi-twitter"></i>
           </a>
-          <a href="https://www.linkedin.com" target="_blank" class="linkedin">
-            <i class="bi bi-linkedin fs-3"></i>
+          <a href="https://www.linkedin.com" target="_blank">
+            <i class="bi bi-linkedin"></i>
           </a>
-          <a href="https://www.youtube.com" target="_blank" class="youtube">
-            <i class="bi bi-youtube fs-3"></i>
+          <a href="https://www.youtube.com" target="_blank">
+            <i class="bi bi-youtube"></i>
           </a>
-          <a href="https://www.instagram.com" target="_blank" class="instagram">
-            <i class="bi bi-instagram fs-3"></i>
+          <a href="https://www.instagram.com" target="_blank">
+            <i class="bi bi-instagram"></i>
           </a>
-          <a>
-            |
-          </a>
-
         </div>
-      </form>
 
+        <!-- RIGHT -->
+        <div class="footer-right">
+          <span class="divider">|</span>
 
+          <span class="toll">
+            <i class="bi bi-telephone"></i>
+            1800-123-456
+          </span>
+
+          <span class="divider">|</span>
+
+          <a routerLink="/faq" class="help-link">
+            <i class="bi bi-question-circle"></i>
+            Help
+          </a>
+        </div>
+
+      </div>
     </div>
+
   </div>
 
 </div>

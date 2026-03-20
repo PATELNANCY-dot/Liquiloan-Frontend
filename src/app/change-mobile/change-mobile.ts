@@ -138,6 +138,7 @@ export class ChangeMobile implements OnInit {
       .then(() => {
         this.mobileOtpVerified = true;
         Swal.fire('Success', 'Mobile verified successfully', 'success');
+        this.router.navigate(['./dashbord'])
       })
       .catch(() => {
         Swal.fire('Error', 'Invalid or expired OTP', 'error');

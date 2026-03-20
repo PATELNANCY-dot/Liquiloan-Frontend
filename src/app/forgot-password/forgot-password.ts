@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth';
+import { LoaderService } from '../services/loader.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,41 +14,65 @@ import { AuthService } from '../services/auth';
   styleUrls: ['./forgot-password.css'],
 })
 export class ForgotPassword {
+
   email: string = '';
-  clientId: number | null = null;
-  isLoading: boolean = false;
 
   private apiUrl = 'http://localhost:5048/api/Otp';
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService,
+    private loaderService: LoaderService
+  ) { }
 
   goBack() {
     this.router.navigate(['/login']);
   }
 
   goNext() {
+
     if (!this.email) {
-      alert('Please enter your email');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Email Required',
+        text: 'Please enter your email'
+      });
       return;
     }
 
-    this.isLoading = true;
+    this.loaderService.show();
 
     this.http.post<any>(`${this.apiUrl}/send-otp`, { email: this.email })
       .subscribe({
         next: (res) => {
-          this.isLoading = false;
+          this.loaderService.hide();
 
-          // clientId is optional in your backend, so save email to use in OTP verification
+          // Save email for next step
           this.authService.setFpEmail(this.email);
 
-          alert(res.message || 'OTP sent successfully');
-          this.router.navigate(['/forgot-password2']);
+          Swal.fire({
+            icon: 'success',
+            title: 'OTP Sent',
+            text: res.message || 'OTP sent successfully',
+            timer: 1500,
+            showConfirmButton: false
+          });
+
+          setTimeout(() => {
+            this.router.navigate(['/forgot-password2']);
+          }, 1500);
         },
+
         error: (err: HttpErrorResponse) => {
-          this.isLoading = false;
+          this.loaderService.hide();
           console.error('Send OTP error:', err);
-          alert(err.error || `Failed to send OTP: ${err.status} ${err.statusText}`);
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: err.error || `Failed to send OTP (${err.status})`
+          });
         }
       });
   }

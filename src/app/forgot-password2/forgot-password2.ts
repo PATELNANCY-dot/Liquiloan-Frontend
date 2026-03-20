@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-forgot-password2',
@@ -13,44 +14,79 @@ import { AuthService } from '../services/auth';
   styleUrls: ['./forgot-password2.css'],
 })
 export class ForgotPassword2 {
+
   enteredOtp: string = '';
   email: string = '';
   private apiUrl = 'http://localhost:5048/api/Otp';
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService,
+    private loaderService: LoaderService
+  ) {
 
     const storedEmail = this.authService.getFpEmail();
 
     if (!storedEmail) {
-      Swal.fire('Error', 'Session expired. Please try again.', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Session Expired',
+        text: 'Please try again'
+      });
+
       this.router.navigate(['/forgot-password']);
-    }  else {
+    } else {
       this.email = storedEmail;
     }
-
-    
   }
 
+  // ================= VERIFY OTP =================
   verifyOtp() {
+
     if (!this.enteredOtp || this.enteredOtp.length !== 6) {
-      alert('Enter 6-digit OTP');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid OTP',
+        text: 'Enter 6-digit OTP'
+      });
       return;
     }
+
+    this.loaderService.show();
 
     this.http.post<any>(`${this.apiUrl}/verify-otp`, {
       email: this.email,
       otp: this.enteredOtp
     }).subscribe({
+
       next: (res) => {
-        alert('OTP Verified ✅');
+        this.loaderService.hide();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Verified',
+          text: 'OTP Verified Successfully',
+          timer: 1500,
+          showConfirmButton: false
+        });
 
         this.authService.setFpClientId(res.clientId.toString());
 
-        this.router.navigate(['/changepassword2']);
+        setTimeout(() => {
+          this.router.navigate(['/changepassword2']);
+        }, 1500);
       },
+
       error: (err) => {
+        this.loaderService.hide();
         console.error('OTP verify error:', err);
-        alert(err.error || 'Invalid OTP');
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error || 'Invalid or expired OTP'
+        });
       }
     });
   }

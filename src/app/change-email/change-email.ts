@@ -6,7 +6,8 @@ import { CommonModule } from '@angular/common';
 import { RegistrationDataService } from '../services/ client-registration.service';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth';
-
+import { LoaderService } from '../services/loader.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-change-email',
@@ -31,7 +32,9 @@ export class ChangeEmail implements OnInit {
     private router: Router,
     private http: HttpClient,
     private registrationData: RegistrationDataService,
-    private authService: AuthService
+    private authService: AuthService,
+    private loaderService: LoaderService,
+    private cdr: ChangeDetectorRef
   ) {
     this.changeEmailForm = this.fb.group({
       newEmail: ['', [Validators.required, Validators.email]],
@@ -40,38 +43,45 @@ export class ChangeEmail implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const userId = this.authService.getUserId();
+
+    if (!userId) {
+      Swal.fire('Error', 'User session expired. Please login again.', 'error');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const clientId = Number(userId);
+
+    if (!clientId) {
+      Swal.fire('Error', 'Client ID not found', 'error');
+      return;
+    }
+
     const cached = this.registrationData.getData();
-    if (cached && cached.clientId) {
+
+    //  ONLY use cache if it matches logged-in user
+    if (cached && cached.clientId === clientId) {
       this.account = cached;
-      this.changeEmailForm.patchValue({ newEmail: this.account.email });
     } else {
-
-      const userId = this.authService.getUserId();
-      if (!userId) {
-        Swal.fire('Error', 'User session expired. Please login again.', 'error');
-        this.router.navigate(['/login']);
-        return;
-      }
-
-      const clientId = Number(userId);
-
-
-      if (!clientId) {
-        Swal.fire('Error', 'Client ID not found', 'error');
-        return;
-      }
-      this.loadAccount(clientId);
+      this.loadAccount(clientId); //  fetch fresh data
     }
   }
 
   loadAccount(clientId: number) {
+
     this.http.get<any>(`http://localhost:5048/api/AccountDetails/account/${clientId}`).subscribe({
       next: data => {
         this.account = data;
         this.registrationData.setData(data);
-        this.changeEmailForm.patchValue({ newEmail: data.email });
+        this.loaderService.hide();
+        this.cdr.detectChanges(); //  FORCE UI UPDATE
       },
-      error: () => Swal.fire('Error', 'Unable to load account details', 'error')
+      error: () => {
+        this.loaderService.hide();
+        Swal.fire('Error', 'Unable to load account details', 'error');
+      }
     });
   }
 
@@ -80,6 +90,7 @@ export class ChangeEmail implements OnInit {
   // =====================
   sendOtp() {
     const email = this.changeEmailForm.get('newEmail')?.value;
+
     if (!email || email === this.account.email) {
       Swal.fire('Error', 'Enter a new valid email', 'error');
       return;
@@ -87,14 +98,18 @@ export class ChangeEmail implements OnInit {
 
     if (this.lastEmailSent === email) return;
 
+    this.loaderService.show(); // ✅ moved here
+
     this.lastEmailSent = email;
 
     this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email }).subscribe({
       next: () => {
+        this.loaderService.hide();
         this.otpSent = true;
         Swal.fire('OTP Sent', `OTP sent to ${email}`, 'success');
       },
       error: () => {
+        this.loaderService.hide();
         this.lastEmailSent = '';
         Swal.fire('Error', 'Failed to send OTP', 'error');
       }
@@ -110,15 +125,21 @@ export class ChangeEmail implements OnInit {
 
     if (!otp || otp.length !== 6) {
       Swal.fire('Error', 'Enter valid 6-digit OTP', 'error');
-      return;
+      return; // ✅ no loader before this
     }
+
+    this.loaderService.show(); // ✅ moved below validation
 
     this.http.post<any>('http://localhost:5048/api/Otp/verify-otp', { email, otp }).subscribe({
       next: () => {
+        this.loaderService.hide();
         this.otpVerified = true;
         Swal.fire('Success', 'Email verified successfully', 'success');
       },
-      error: () => Swal.fire('Error', 'Invalid or expired OTP', 'error')
+      error: () => {
+        this.loaderService.hide();
+        Swal.fire('Error', 'Invalid or expired OTP', 'error');
+      }
     });
   }
 
@@ -144,6 +165,7 @@ export class ChangeEmail implements OnInit {
         this.changeEmailForm.get('emailOtp')?.reset();
         this.otpVerified = false;
         this.otpSent = false;
+        this.router.navigate(['./dashboard'])
       },
       error: () => Swal.fire('Error', 'Failed to update email', 'error')
     });

@@ -18,7 +18,7 @@ export class Faq implements OnInit {
   filteredFaqs: any[] = [];
 
   categories: string[] = [];
-  selectedCategory: string = 'All';
+  selectedCategory: string = 'all';
 
   searchText = '';
   showQuery = false;

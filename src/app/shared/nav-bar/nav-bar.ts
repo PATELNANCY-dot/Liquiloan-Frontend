@@ -82,10 +82,12 @@ export class NavBar {
     this.accountDropdownOpen = false;
 
   }
-
   logout() {
-    localStorage.removeItem('userId');
+    this.authService.clearUserId();
+    this.authService.clearFpEmail();
+    this.authService.clearFpClientId();
     this.router.navigate(['/login']);
+    console.log("data removed sucessfully");
   }
 
 

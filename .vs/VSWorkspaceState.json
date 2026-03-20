@@ -3,14 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\footer",
-    "\\src\\app\\investor-details-page",
-    "\\src\\app\\investor-page",
-    "\\src\\app\\manage-account",
-    "\\src\\app\\manage-bank",
-    "\\src\\app\\shared",
-    "\\src\\app\\transaction-status"
+    "\\src\\app\\faq"
   ],
-  "SelectedNode": "\\src\\app\\shared\\nav-bar\\nav-bar.css",
+  "SelectedNode": "\\src\\app\\faq\\faq.ts",
   "PreviewInSolutionExplorer": false
 }

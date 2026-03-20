@@ -188,9 +188,7 @@ select {
   color: #475569;
 }
 
-.classdiv i {
-  color: #ff7a00;
-}
+
 
 /* ========================================
    SOCIAL ICONS
@@ -326,7 +324,6 @@ select {
     background: #fff7f0;
   }
 
-/* When File Selected (Optional JS needed later) */
 .file-upload input[type="file"]:focus + .file-label {
   border-color: #ff7a00;
 }
@@ -417,17 +414,6 @@ select {
     color: #ff7a00;
   }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 /*alert*/
 /* Overlay to cover entire screen */
 .custom-alert-overlay {
@@ -606,25 +592,7 @@ label {
   letter-spacing: 0.5px;
 }
 
-/* BUTTON STYLE */
-.btn1 {
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: none;
-  background: #2f4f9d;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
 
-.classdiv {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 20px;
-  margin: 20px auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
 
   /*  HOW TO REGISTER SECTION */
 
@@ -644,11 +612,83 @@ label {
     color: #555;
   }
 
-.bi-check-circle-fill {
-  color: #00b894;
-  margin-right: 6px;
-}
-
 .bi-dot {
   color: #ff8c00;
+}
+
+
+
+/*footer*/
+
+
+.classdiv {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-top: 40px;
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+  .social-icons a {
+    font-size: 20px;
+    color: #ff7a00;
+    transition: 0.3s;
+  }
+
+    .social-icons a:hover {
+      color: #1e3a8a;
+      transform: scale(1.2);
+    }
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.divider {
+  color: #aaa;
+}
+
+.toll {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #0b2c5f;
+  font-weight: 500;
+}
+
+
+.help-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #1e3a8a;
+  font-weight: 500;
+}
+
+  .help-link:hover {
+    color: #ff7a00;
+  }
+
+app-footer {
+  flex-shrink: 0;
+}
+
+.classdiv i {
+  color: #ff7a00;
 }

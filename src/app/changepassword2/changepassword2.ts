@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-changepassword2',
@@ -16,10 +17,14 @@ import { AuthService } from '../services/auth';
 export class Changepassword2 {
   newPassword: string = '';
   confirmPassword: string = '';
-  private apiUrl = 'http://localhost:5048/api/PasswordChange'; // <-- your actual API
   private clientId: number | null = null;
 
-  constructor(private router: Router, private http: HttpClient, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService,
+    private loaderService: LoaderService
+  ) {
 
     const id = this.authService.getFpClientId();
 
@@ -27,7 +32,7 @@ export class Changepassword2 {
       Swal.fire({
         icon: 'warning',
         title: 'Flow Expired',
-        text: 'OTP session expired. Please start forgot password flow again',
+        text: 'OTP session expired. Please start forgot password again',
         confirmButtonColor: '#ff7a00'
       });
       this.router.navigate(['/forgot-password']);
@@ -36,13 +41,13 @@ export class Changepassword2 {
     }
   }
 
-
-
   goBack() {
     this.router.navigate(['/login']);
   }
 
   goNext() {
+
+    // ===== VALIDATION =====
     if (!this.newPassword || !this.confirmPassword) {
       Swal.fire({
         icon: 'warning',
@@ -66,18 +71,15 @@ export class Changepassword2 {
     if (!this.clientId) {
       Swal.fire({
         icon: 'error',
-        title: 'Invalid Client',
+        title: 'Invalid Session',
         text: 'Client ID not found',
         confirmButtonColor: '#d80000'
       });
       return;
     }
 
-    // ===== Payload for your PasswordChange API =====
-    const payload = {
-      clientId: this.clientId,
-      newPassword: this.newPassword
-    };
+    // ===== API CALL =====
+    this.loaderService.show();
 
     this.http.post<any>('http://localhost:5048/api/Otp/change-password-forgot', {
       clientId: this.clientId,
@@ -85,25 +87,43 @@ export class Changepassword2 {
     })
       .subscribe({
         next: (res) => {
-          alert(res.message || 'Password changed successfully!');
-          localStorage.removeItem('fpClientId');
-          this.router.navigate(['/login']);
+          this.loaderService.hide();
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Password Changed',
+            text: res.message || 'Password updated successfully',
+            timer: 1800,
+            showConfirmButton: false
+          });
+
+          // ✅ clear session properly
+          this.authService.clearFpClientId();
+          this.authService.clearFpEmail();
+
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 1800);
         },
         error: (err) => {
+          this.loaderService.hide();
+
           console.error('Change password error:', err);
-          alert(err.error?.message || 'Failed to change password');
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: err.error?.message || 'Failed to change password',
+            confirmButtonColor: '#d80000'
+          });
         }
       });
   }
 
-
-
-
-  // Variables to track visibility
+  // ===== PASSWORD TOGGLE =====
   showNew = false;
   showConfirm = false;
 
-  // Toggle functions
   toggleNew() {
     this.showNew = !this.showNew;
   }
