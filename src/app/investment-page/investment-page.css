@@ -1,7 +1,4 @@
 
-
-
-
 /*HEADING SECTION */
 
 .page-header {
@@ -27,13 +24,12 @@
    MAIN CARD DESIGN
 ======================================== */
 
-.classdiv {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 30px;
-  margin: 30px auto;
-  max-width: 1200px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+.const {
+  gap: 30px;
+  padding: 40px 50px;
+  background: #ffff;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 /* ========================================
@@ -176,13 +172,13 @@ select {
    HOW TO INVEST
 ======================================== */
 
-.classdiv h5 {
+.const h5 {
   font-weight: 700;
   margin-bottom: 15px;
   color: #0b2c5f;
 }
 
-.classdiv p {
+.const p {
   font-size: 14px;
   line-height: 1.7;
   color: #475569;
@@ -190,26 +186,6 @@ select {
 
 
 
-/* ========================================
-   SOCIAL ICONS
-======================================== */
-
-.social-icons a {
-  background: #eef2f7;
-  padding: 10px 14px;
-  border-radius: 8px;
-  transition: 0.3s;
-  color: #0b2c5f;
-}
-
-  .social-icons a:hover {
-    background: #ff7a00;
-    color: white;
-  }
-
-/* ========================================
-   RESPONSIVE
-======================================== */
 
 @media (max-width: 992px) {
   .form-row {
@@ -596,99 +572,23 @@ label {
 
   /*  HOW TO REGISTER SECTION */
 
-  .classdiv.text-left {
-    background: linear-gradient(135deg, #ffffff, #f8fbff) !important;
-  }
+.const.text-left {
+  background: linear-gradient(135deg, #ffffff, #f8fbff) !important;
+}
 
-  .classdiv h5 {
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #001f5b;
-  }
+.const h5 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #001f5b;
+}
 
-  .classdiv p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #555;
-  }
+.const p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+}
 
 .bi-dot {
   color: #ff8c00;
 }
 
-
-
-/*footer*/
-
-
-.classdiv {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  margin-top: 40px;
-}
-
-.footer-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-.social-icons {
-  display: flex;
-  gap: 15px;
-}
-
-  .social-icons a {
-    font-size: 20px;
-    color: #ff7a00;
-    transition: 0.3s;
-  }
-
-    .social-icons a:hover {
-      color: #1e3a8a;
-      transform: scale(1.2);
-    }
-
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-}
-
-.divider {
-  color: #aaa;
-}
-
-.toll {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: #0b2c5f;
-  font-weight: 500;
-}
-
-
-.help-link {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
-  color: #1e3a8a;
-  font-weight: 500;
-}
-
-  .help-link:hover {
-    color: #ff7a00;
-  }
-
-app-footer {
-  flex-shrink: 0;
-}
-
-.classdiv i {
-  color: #ff7a00;
-}

@@ -186,7 +186,7 @@ export class InvestmentPage implements OnInit {
 
     const clientId = storedClientId ? Number(storedClientId) : 0;
 
-    // ✅ GATEWAY
+    //  GATEWAY
     if (this.selectedPayment === 'gateway') {
 
       this.router.navigate(['/payment-page'], {
@@ -350,7 +350,7 @@ export class InvestmentPage implements OnInit {
         this.account = data;
         console.log('Account loaded:', data);
         this.isLoading = false;
-        this.cdr.detectChanges(); // <-- force Angular to refresh view
+        this.cdr.markForCheck();  
 
       },
       error: (err) => {

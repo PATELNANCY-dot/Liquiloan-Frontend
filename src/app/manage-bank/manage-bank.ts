@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BankDetailsService } from '../services/bank-details.service';
 import { ChangeDetectorRef } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-manage-bank',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './manage-bank.html',
   styleUrls: ['./manage-bank.css']
 })
@@ -16,7 +17,7 @@ export class ManageBank implements OnInit {
 
   banks: any[] = [];
 
-  constructor(private bankService: BankDetailsService, private cdr: ChangeDetectorRef, private router: Router, private authService: AuthService) { }
+  constructor(private bankService: BankDetailsService, private cdr: ChangeDetectorRef, private router: Router, private authService: AuthService, private location: Location) { }
 
   ngOnInit(): void {
     this.loadBanks();

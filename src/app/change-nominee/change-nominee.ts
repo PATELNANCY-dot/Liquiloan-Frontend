@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth';
+import { Location } from '@angular/common';
+
 
 
 
@@ -27,7 +29,8 @@ export class ChangeNominee implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
-    private authService: AuthService 
+    private authService: AuthService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -345,7 +348,7 @@ export class ChangeNominee implements OnInit {
   }
 
   BACK() {
-    this.router.navigate(['./view-nominee'])
+    this.location.back();
   }
 
 

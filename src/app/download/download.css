@@ -1,0 +1,106 @@
+/* Page background */
+body {
+  background: #EEF2F8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page header */
+.page-header {
+  margin-bottom: 30px;
+}
+
+  .page-header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+.subtitle {
+  color: #6b7a99;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Heading colors */
+.orange {
+  color: #f26522;
+}
+
+.navy {
+  color: #0b2c5f;
+}
+
+/* Card */
+.nominee-card.download-card {
+  gap: 30px;
+  padding: 40px 50px;
+  background: #ffff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+/* Report item inside card */
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #eef2f8;
+}
+
+/* Report info */
+.report-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.report-icon {
+  font-size: 30px;
+}
+
+.report-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1f2a44;
+}
+
+.report-desc {
+  font-size: 13px;
+  color: #667085;
+}
+
+/* Download button */
+.download-btn {
+  background: #2f4f9d;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+  .download-btn:hover {
+    background: #1d3f8f;
+    transform: translateY(-1px);
+  }
+
+/* Back button */
+.form-actions {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #2f4f9d;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+  .back-btn:hover {
+    text-decoration: underline;
+  }

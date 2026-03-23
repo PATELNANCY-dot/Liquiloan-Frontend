@@ -3,8 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\faq"
+    "\\src\\app\\add-bank",
+    "\\src\\app\\change-nominee",
+    "\\src\\app\\dashboard",
+    "\\src\\app\\investor-page",
+    "\\src\\app\\manage-account",
+    "\\src\\app\\manage-bank",
+    "\\src\\app\\view-nominee"
   ],
-  "SelectedNode": "\\src\\app\\faq\\faq.ts",
+  "SelectedNode": "\\src\\app\\manage-bank\\manage-bank.css",
   "PreviewInSolutionExplorer": false
 }

@@ -25,6 +25,10 @@ export class ChangeEmail implements OnInit {
   lastEmailSent = '';
   emailForm!: FormGroup;
 
+lastLogin = '';
+lastLogout = '';
+attempts = 0;
+
   private apiUrl = 'http://localhost:5048/api/ClientRegistrations';
 
   constructor(
@@ -67,6 +71,15 @@ export class ChangeEmail implements OnInit {
     } else {
       this.loadAccount(clientId); //  fetch fresh data
     }
+
+    if (userId) {
+      this.authService.getLoginInfo(userId).subscribe((res: any) => {
+        this.lastLogin = res.lastLogin;
+        this.lastLogout = res.lastLogout;
+        this.attempts = res.loginAttempts;
+      });
+    }
+
   }
 
   loadAccount(clientId: number) {

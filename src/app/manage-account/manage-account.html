@@ -1,6 +1,7 @@
 
 
-<div class="page-container">
+<div>
+
   <div class="page-container-vertical">
 
     <!-- Sidebar Navigation -->
@@ -12,10 +13,10 @@
         <i class="bi bi-phone"></i>  Change Mobile
       </button>
       <button class="nav-btn" [class.active]="activeTab === 'bank'" (click)="activeTab = 'bank'">
-        <i class="bi bi-bank"></i> Bank Details
+        <i class="bi bi-bank"></i> Manage Bank
       </button>
       <button class="nav-btn" [class.active]="activeTab === 'nominee'" (click)="activeTab = 'nominee'">
-        <i class="bi bi-people"></i> Nominee Information
+        <i class="bi bi-people"></i> Update Nominee 
       </button>
     </div>
 
@@ -165,47 +166,5 @@
   </div>
 
 
-
-  <div class="classdiv text-left ">
-    <div class="footer-bar">
-
-      <!-- LEFT: SOCIAL ICONS -->
-      <div class="social-icons">
-        <a href="https://www.facebook.com" target="_blank">
-          <i class="bi bi-facebook"></i>
-        </a>
-        <a href="https://www.twitter.com" target="_blank">
-          <i class="bi bi-twitter"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank">
-          <i class="bi bi-linkedin"></i>
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-          <i class="bi bi-youtube"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-          <i class="bi bi-instagram"></i>
-        </a>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="footer-right">
-        <span class="divider">|</span>
-
-        <span class="toll">
-          <i class="bi bi-telephone"></i>
-          1800-123-456
-        </span>
-
-        <span class="divider">|</span>
-
-        <a routerLink="/faq" class="help-link">
-          <i class="bi bi-question-circle"></i>
-          Help
-        </a>
-      </div>
-
-    </div>
-  </div>
 
 </div>

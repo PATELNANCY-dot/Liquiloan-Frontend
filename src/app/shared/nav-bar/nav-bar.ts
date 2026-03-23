@@ -82,14 +82,39 @@ export class NavBar {
     this.accountDropdownOpen = false;
 
   }
-  logout() {
-    this.authService.clearUserId();
-    this.authService.clearFpEmail();
-    this.authService.clearFpClientId();
-    this.router.navigate(['/login']);
-    console.log("data removed sucessfully");
-  }
 
+  logout() {
+
+    const userId = this.authService.getUserId();
+
+    if (!userId) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.authService.logout(userId).subscribe({
+      next: () => {
+
+        // clear stored data
+        this.authService.clearUserId();
+        this.authService.clearFpEmail();
+        this.authService.clearFpClientId();
+
+        console.log("Logout saved in database");
+
+        this.router.navigate(['/login']);
+      },
+
+      error: (err) => {
+        console.error("Logout API error:", err);
+
+        // still clear data
+        this.authService.clearUserId();
+        this.router.navigate(['/login']);
+      }
+    });
+
+  }
 
 
   /* CLOSE DROPDOWN WHEN CLICKING OUTSIDE */

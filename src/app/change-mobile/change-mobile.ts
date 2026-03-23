@@ -10,7 +10,6 @@ import { getAuth, Auth, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationRe
 import { firebaseConfig } from '../firebase.config';
 import { AuthService } from '../services/auth';
 
-
 export interface AccountDetails {
   clientId: number;
   name: string;

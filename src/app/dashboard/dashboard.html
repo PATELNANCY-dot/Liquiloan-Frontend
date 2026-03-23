@@ -1,66 +1,55 @@
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<!-- Bootstrap JS (required for dropdowns) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="page-container">
-
-  <!-- Loader Overlay -->
-  <div *ngIf="loading" class="loader-overlay">
-    <div class="loader-box">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBBAg1z1HNL5OyqxjU_o4tZwuyzHcY_EcoPQ&s" alt="Logo" class="loader-logo" />
-    </div>
-  </div>
+<div>
 
 
   <!-- Main Content -->
 
-  <div class="main-content">
-    <!-- Hero Section -->
-    <div class="hero-section text-left py-5 px-4">
-      <h1 class="hero-title">Invest in India's First Credit<br> Assessed & Rated P2P Platform*</h1>
-      <h2 class="hero-subtitle"> <i class="bi bi-lightning-charge-fill logo-icon"></i> LIQUILOANS</h2>
-      <p class="hero-desc"><b>Earn better inflation-adjusted returns than traditional debt investments</b></p>
-      <button class=" btn-gradient mt-3" (click)="invest()">Lend Now</button>
-    </div>
-
-    <div class="about-section-full">
-      <div class="container">
-
-        <h2 class="section-title text-center mb-4">About Liquiloans</h2>
-
-        <p class="about-text">
-          Liquiloans is a technology-driven Indian fintech platform transforming the way individuals Lend and borrow through Peer-to-Peer lending.
-          Our platform connects creditworthy borrowers with lenders seeking better, inflation-adjusted returns — all through a secure, fully digital, and transparent ecosystem.
-        </p>
-
-        <p class="about-text">
-          By leveraging advanced credit assessment models, data analytics, and risk-based borrower profiling, Liquiloans ensures Lends are intelligently diversified to reduce risk and enhance stability.
-        </p>
-
-        <div class="row justify-content-center mt-4">
-          <div class="col-md-6">
-            <ul class="about-list">
-              <li><i class="bi bi-check-circle-fill"></i> Transparent Lengings opportunities</li>
-              <li><i class="bi bi-check-circle-fill"></i> Automated risk assessment & credit grading</li>
-              <li><i class="bi bi-check-circle-fill"></i> Paperless onboarding & KYC</li>
-              <li><i class="bi bi-check-circle-fill"></i> Diversified lending portfolios</li>
-              <li><i class="bi bi-check-circle-fill"></i> Attractive returns vs traditional debt Lengings</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="mission-text">
-          Our mission is to democratize credit access while empowering investors with smarter, data-backed investment solutions.
-        </p>
-
+  <div>
+    <div class="cont">
+      <!-- Hero Section -->
+      <div class="hero-section text-left py-5 px-4">
+        <h1 class="hero-title">Invest in India's First Credit<br> Assessed & Rated P2P Platform*</h1>
+        <h2 class="hero-subtitle"> <i class="bi bi-lightning-charge-fill logo-icon"></i> LIQUILOANS</h2>
+        <p class="hero-desc"><b>Earn better inflation-adjusted returns than traditional debt investments</b></p>
+        <button class=" btn-gradient mt-3" (click)="invest()">Lend Now</button>
       </div>
+    </div>
+    <div class="cont">
+
+
+      <h2 class="section-title text-center mb-4">About Liquiloans</h2>
+
+      <p class="about-text">
+        Liquiloans is a technology-driven Indian fintech platform transforming the way individuals Lend and borrow through Peer-to-Peer lending.
+        Our platform connects creditworthy borrowers with lenders seeking better, inflation-adjusted returns — all through a secure, fully digital, and transparent ecosystem.
+      </p>
+
+      <p class="about-text">
+        By leveraging advanced credit assessment models, data analytics, and risk-based borrower profiling, Liquiloans ensures Lends are intelligently diversified to reduce risk and enhance stability.
+      </p>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+          <ul class="about-list">
+            <li><i class="bi bi-check-circle-fill"></i> Transparent Lengings opportunities</li>
+            <li><i class="bi bi-check-circle-fill"></i> Automated risk assessment & credit grading</li>
+            <li><i class="bi bi-check-circle-fill"></i> Paperless onboarding & KYC</li>
+            <li><i class="bi bi-check-circle-fill"></i> Diversified lending portfolios</li>
+            <li><i class="bi bi-check-circle-fill"></i> Attractive returns vs traditional debt Lengings</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mission-text">
+        Our mission is to democratize credit access while empowering investors with smarter, data-backed investment solutions.
+      </p>
+
+
     </div>
 
     <!-- How It Works -->
-    <div class="how-section section-spacing">
-      <div class="container">
+    <div class="cont">
+      <div>
         <h2 class="section-title text-center">How Does it Work?</h2>
 
         <div class="row g-4 mt-4">
@@ -99,9 +88,9 @@
       </div>
     </div>
     <!-- How to Invest -->
-    <div class="invest-section text-center py-5 px-4 bg-light">
+    <div class="cont">
       <h2 class="section-title">How to Invest?</h2>
-      <div class="container mt-4">
+      <div>
         <div class="row g-4 justify-content-center">
           <div class="col-md-4">
             <div class="invest-card">
@@ -130,46 +119,5 @@
   </div>
 
 
-  <div class="classdiv text-left ">
-    <div class="footer-bar">
-
-      <!-- LEFT: SOCIAL ICONS -->
-      <div class="social-icons">
-        <a href="https://www.facebook.com" target="_blank">
-          <i class="bi bi-facebook"></i>
-        </a>
-        <a href="https://www.twitter.com" target="_blank">
-          <i class="bi bi-twitter"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank">
-          <i class="bi bi-linkedin"></i>
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-          <i class="bi bi-youtube"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-          <i class="bi bi-instagram"></i>
-        </a>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="footer-right">
-        <span class="divider">|</span>
-
-        <span class="toll">
-          <i class="bi bi-telephone"></i>
-          1800-123-456
-        </span>
-
-        <span class="divider">|</span>
-
-        <a routerLink="/faq" class="help-link">
-          <i class="bi bi-question-circle"></i>
-          Help
-        </a>
-      </div>
-
-    </div>
-  </div>
 
 </div>

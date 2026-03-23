@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { BankDetailsService } from '../services/bank-details.service';
 import { AuthService } from '../services/auth';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-bank',
@@ -26,7 +27,8 @@ export class AddBank {
   constructor(
     private bankService: BankDetailsService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) { }
 
 
@@ -58,6 +60,6 @@ export class AddBank {
   }
 
   back() {
-    this.router.navigate(['./manage-bank']);
+    this.location.back();
   }
 }

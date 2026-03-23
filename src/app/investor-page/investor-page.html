@@ -1,18 +1,5 @@
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-
-
-<!-- Bootstrap Icons -->
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-<div class="page-container">
+<div>
 
   <!-- Main Content -->
   <div class="flex-grow-1">
@@ -28,7 +15,7 @@
 
 
 
-    <div *ngIf="liquiloan && isActivated()" class="classdiv text-center">
+    <div *ngIf="liquiloan && isActivated()" class="cont text-center">
       <div>
         <!--1-->
         <div class="form-row">
@@ -98,7 +85,7 @@
     </div>
 
 
-    <div *ngIf="liquiloan && isPending()" class="classdiv text-center">
+    <div *ngIf="liquiloan && isPending()" class="cont text-center">
 
       <div>
         <!--1-->
@@ -171,7 +158,7 @@
 
 
 
-    <div class="classdiv text-left" style="margin-block-start:40px;margin-block-end:40px;background-color:lightgray">
+    <div class="cont text-left" >
       <h5>How To Register</h5>
       <p>
         Investment facilites available for resident individual investors only <br />
@@ -191,47 +178,7 @@
   </div>
 
 
-  <div class="classdiv text-left ">
-   <div class="footer-bar">
-
-     <!-- LEFT: SOCIAL ICONS -->
-     <div class="social-icons">
-       <a href="https://www.facebook.com" target="_blank">
-         <i class="bi bi-facebook"></i>
-       </a>
-       <a href="https://www.twitter.com" target="_blank">
-         <i class="bi bi-twitter"></i>
-       </a>
-       <a href="https://www.linkedin.com" target="_blank">
-         <i class="bi bi-linkedin"></i>
-       </a>
-       <a href="https://www.youtube.com" target="_blank">
-         <i class="bi bi-youtube"></i>
-       </a>
-       <a href="https://www.instagram.com" target="_blank">
-         <i class="bi bi-instagram"></i>
-       </a>
-     </div>
-
-     <!-- RIGHT -->
-     <div class="footer-right">
-       <span class="divider">|</span>
-
-       <span class="toll">
-         <i class="bi bi-telephone"></i>
-         1800-123-456
-       </span>
-
-       <span class="divider">|</span>
-
-       <a routerLink="/faq" class="help-link">
-         <i class="bi bi-question-circle"></i>
-         Help
-       </a>
-     </div>
-
-   </div>
- </div>
+ 
 
 </div>
 
@@ -371,18 +318,14 @@
               <td>{{b.accountNumber}}</td>
               <td>{{b.branchName}}</td>
               <td>{{b.ifscCode}}</td>
-
-              <td>
-                <button class="btn btn-sm btn-outline-primary"
-                        (click)="editBank({id:0})">
-                  ADD
-                </button>
-              </td>
             </tr>
           </tbody>
 
         </table>
-
+        <button class="btn btn-sm btn-outline-primary"
+                (click)="editBank({id:0})">
+          ADD
+        </button>
       </div>
 
     </div>

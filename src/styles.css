@@ -14,13 +14,24 @@ body {
    PAGE LAYOUT
 ======================================== */
 .page-container {
-  width: 70%;
+  max-width: 1350px;
+  width: 95%;
   margin: 40px auto;
-  min-height: 80vh;
+  padding: 0 20px 20px 20px;
+}
+
+.classdiv {
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  width: 95%;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* ADD THIS */
 }
 
 .main-content {
-  width: 100%;
+  width: 95%;
 }
 
 
@@ -166,19 +177,6 @@ body::-webkit-scrollbar {
   color: white !important;
   background: transparent !important;
 }
-
-
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-router-outlet + app-footer {
-  margin-top: auto;
-}
-
 
 
 

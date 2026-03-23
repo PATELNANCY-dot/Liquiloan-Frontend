@@ -25,6 +25,7 @@ import { AddBank } from './add-bank/add-bank';
 import { ChangeEmail } from './change-email/change-email';
 import { ChangeMobile } from './change-mobile/change-mobile';
 import { Faq } from './faq/faq';
+import { Download } from './download/download';
 
 export const routes: Routes = [
 
@@ -62,6 +63,7 @@ export const routes: Routes = [
       { path: 'change-email', component: ChangeEmail },
       { path: 'change-mobile', component: ChangeMobile },
       { path: 'faq', component: Faq },
+      { path: 'download', component: Download },
       {
         path: 'change-nominee/:id',
         loadComponent: () => import('./change-nominee/change-nominee')

@@ -85,4 +85,12 @@ export class AuthService {
       Password_1: password
     });
   }
+
+  getLoginInfo(userId: string) {
+    return this.http.get(`${this.baseUrl}/login-info/${userId}`);
+  }
+
+  logout(userId: string) {
+    return this.http.post(`${this.baseUrl}/logout/${userId}`, {});
+  }
 }

@@ -1,0 +1,42 @@
+<div>
+
+  <!-- Page Header -->
+  <div class="page-header text-center">
+    <h1>
+      <span class="orange">Liquiloan</span>
+      <span class="navy">Reports</span>
+    </h1>
+  </div>
+
+  <!-- Show download card only if record is activated -->
+  <div *ngIf="reportData?.activationStatus === 'Activated'; else noData">
+    <div class="nominee-card download-card">
+
+      <div class="report-item">
+
+        <div class="report-info">
+          <span class="report-icon">📄</span>
+
+          <div>
+            <div class="report-name">Liquiloan Client Report</div>
+            <div class="report-desc">Contains client details, activation status, and contact info</div>
+          </div>
+        </div>
+
+        <button class="change-btn download-btn" type="button" (click)="downloadPDF()">
+          Download PDF
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- No data fallback -->
+  <ng-template #noData>
+    <div class="nominee-card download-card text-center">
+      <p>No data to download</p>
+    </div>
+  </ng-template>
+
+</div>

@@ -19,6 +19,8 @@ export class ManageAccount implements OnInit {
   account?: AccountDetails;
   isLoading: boolean = true;
 
+
+
   private apiUrl: string = 'http://localhost:5048/api/AccountDetails';
 
   constructor(
@@ -38,6 +40,8 @@ export class ManageAccount implements OnInit {
 
     const clientId = Number(userId);
     this.loadAccount(clientId);
+
+
   }
 
   loadAccount(clientId: number) {
