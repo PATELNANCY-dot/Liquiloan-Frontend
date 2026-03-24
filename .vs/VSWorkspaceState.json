@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\add-bank",
-    "\\src\\app\\change-nominee",
-    "\\src\\app\\dashboard",
-    "\\src\\app\\investor-page",
-    "\\src\\app\\manage-account",
-    "\\src\\app\\manage-bank",
+    "\\src\\app\\factor-auth",
+    "\\src\\app\\faq",
+    "\\src\\app\\investment-page",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\nav-bar",
     "\\src\\app\\view-nominee"
   ],
-  "SelectedNode": "\\src\\app\\manage-bank\\manage-bank.css",
+  "SelectedNode": "\\src\\app\\investment-page\\investment-page.html",
   "PreviewInSolutionExplorer": false
 }

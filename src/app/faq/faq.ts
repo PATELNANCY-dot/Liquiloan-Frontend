@@ -94,16 +94,17 @@ export class Faq implements OnInit {
 
     const payload = {
       clientId: Number(clientId),
-      queryText: this.queryText   // ✅ IMPORTANT CHANGE
+      queryText: this.queryText   
     };
 
     console.log("Sending payload:", payload);
 
     this.faqService.raiseQuery(payload).subscribe({
       next: () => {
+        this.showQuery = false;
+        this.cdr.detectChanges(); 
         alert("Query submitted");
         this.queryText = '';
-        this.showQuery = false;
       },
       error: (err) => {
         console.error("API ERROR:", err);
