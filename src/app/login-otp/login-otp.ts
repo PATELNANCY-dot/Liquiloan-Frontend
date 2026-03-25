@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth';
 import { LoaderService } from '../services/loader.service';
+import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,8 +23,14 @@ export class LoginOtp {
     private router: Router,
     private http: HttpClient,
     private authService: AuthService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private route: ActivatedRoute
   ) { }
+
+
+  ngOnInit() {
+    this.email = this.route.snapshot.queryParamMap.get('email') || '';
+  }
 
   // ================= SEND OTP =================
   sendOtp() {

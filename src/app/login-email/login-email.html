@@ -1,0 +1,43 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+
+<div class="page">
+  <div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="box left">
+      <h2>New Here?</h2>
+      <p>Create your account and start investing with Liquiloans!</p>
+      <button routerLink="/registration1">Join Now</button>
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="box right">
+      <form>
+
+        <h2>Sign In </h2>
+
+        <input class="textf"
+               type="email"
+               name="email"
+               placeholder="Enter Email"
+               [(ngModel)]="email">
+
+        <div style="text-align:center; margin-bottom:15px;">
+          <button id="bt1" type="button" (click)="sendOtp()">Send OTP</button>
+        </div>
+
+        <div class="links">
+          <a routerLink="/forgot-password">Forgot password?</a>
+          <a routerLink="/login" class="otp-link">Login with password</a>
+        </div>
+        <br /><br />
+
+      </form>
+    </div>
+
+  </div>
+</div>

@@ -5,7 +5,6 @@
   align-items: center;
 }
 
-
 .container {
   width: 900px;
   height: 400px;
@@ -52,52 +51,6 @@
     }
 
 /* RIGHT SIDE */
-
-/* login button */
-.right button {
-  width: 50%;
-  padding: 12px;
-  background: #00BFFF;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-}  /* space ONLY between the two links without layout changes */
-  .right a + b {
-  margin-left:60px; /* increase if needed */
-}
-#bt1 {
-  width:80px;
-  background-color: #2f4f9d; /* navy blue */
-  color: white; /* white text */
-  border: none; /* remove default border */
-  border-radius: 10px; /* slightly rounded corners */
-  text-align:center;
-  font-size: 16px; /* small font */
-  cursor: pointer; /* pointer on hover */
-  transition: background 0.3s;
-}
-
-.otp-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 15px 10px;
-}
-
-.otp-input {
-  width: 45px;
-  height: 45px;
-  text-align: center;
-  font-size: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-
-
-/* RIGHT SIDE */
 .box.right {
   width: 50%;
   display: flex;
@@ -114,7 +67,6 @@
 
   .box.right h2 {
     color: #000080;
-    top: 10px;
     margin-bottom: 25px;
     text-align: center;
   }
@@ -123,7 +75,7 @@
 .textf {
   width: 100%;
   padding: 12px 15px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
@@ -132,40 +84,6 @@
     border-color: #000080;
     outline: none;
   }
-
-
-/* Links and button */
-.links {
-  display: flex;
-  margin-bottom: 5px;
-}
-
-  .links a {
-    text-decoration: none;
-    color: #2f4f9d;
-  }
-
-    .links a:hover {
-      color: #ff7a18;
-    }
-
-.login-btn {
-  width: 100%;
-  padding: 12px;
-  background: #2f4f9d;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-  .login-btn:hover {
-    background: #001f5b;
-  }
-
-
-
 
 
 /* Links and button */
@@ -200,3 +118,34 @@
   }
 
 
+
+.password-box {
+  position: relative;
+}
+
+  .password-box i {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+    color: #777;
+    font-size: 18px;
+  }
+
+    .password-box i:hover {
+      color: #000080;
+    }
+
+
+#bt1 {
+  width: 100px;
+  height:40px;
+  background-color: #2f4f9d; /* navy blue */
+  color: white; /* white text */
+  border: none; /* remove default border */
+  border-radius: 10px; /* slightly rounded corners */
+  text-align: center;
+  font-size: 16px; /* small font */
+  cursor: pointer; /* pointer on hover */
+  transition: background 0.3s;
+}

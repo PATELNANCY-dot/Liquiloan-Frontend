@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\add-bank",
     "\\src\\app\\factor-auth",
-    "\\src\\app\\faq",
-    "\\src\\app\\investment-page",
+    "\\src\\app\\login",
+    "\\src\\app\\login-email",
+    "\\src\\app\\login-otp",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar",
     "\\src\\app\\view-nominee"
   ],
-  "SelectedNode": "\\src\\app\\investment-page\\investment-page.html",
+  "SelectedNode": "\\src\\styles.css",
   "PreviewInSolutionExplorer": false
 }

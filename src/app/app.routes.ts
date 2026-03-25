@@ -26,12 +26,14 @@ import { ChangeEmail } from './change-email/change-email';
 import { ChangeMobile } from './change-mobile/change-mobile';
 import { Faq } from './faq/faq';
 import { Download } from './download/download';
+import { LoginEmail } from './login-email/login-email';
 
 export const routes: Routes = [
 
   { path: '', component: Login },
   { path: 'login', component: Login },
   { path: 'login-otp', component: LoginOtp },
+  { path: 'login-email', component: LoginEmail },
  
   { path: 'registration1', component: Registration1 },
   { path: 'registration2', component: Registration2 },

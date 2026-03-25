@@ -3,22 +3,16 @@
 
     <!-- LEFT SIDE -->
     <div class="box left">
-      <h2 style="text-align:center">Sign Up</h2>
+      <h2>New Here?</h2>
+      <p>Create your account and start investing with Liquiloans!</p>
       <button routerLink="/registration1">Join Now</button>
     </div>
 
     <!-- RIGHT SIDE -->
     <div class="box right">
       <form>
-        <h2 style="text-align:center">Sign In</h2>
-
-        <!-- Email -->
-        <input class="textf"
-               type="email"
-               name="email"
-               placeholder="Email"
-               [(ngModel)]="email">
-
+         <h2 style="text-align:center;scroll-margin-top:20px">Sign In</h2>
+        <h6>Enter the 6-digit OTP sent to your email</h6>
         <!-- OTP BOXES -->
         <div class="otp-container">
           <input type="text" maxlength="1" class="otp-input" (input)="moveNext($event); collectOtp()" (keydown.backspace)="moveBack($event)" />
@@ -30,8 +24,8 @@
         </div>
 
         <!-- RESEND -->
-        <div style="text-align:center; margin-bottom:15px;">
-          <button type="button" id="bt1" (click)="sendOtp()">Send</button>
+        <div style="text-align:center;">
+          <button type="button" id="bt1" (click)="sendOtp()">Resend</button>
         </div>
 
         <div class="links">
@@ -41,8 +35,8 @@
         <br /><br />
 
         <!-- Submit OTP -->
-        <div style="text-align:center; margin-bottom:15px;">
-          <button type="button" (click)="verifyOtp()">Submit</button>
+        <div style="text-align:center">
+          <button type="button" (click)="verifyOtp()">Login</button>
         </div>
 
       </form>
