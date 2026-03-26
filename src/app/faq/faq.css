@@ -5,6 +5,31 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+
+
+/*HEADING SECTION */
+
+.page-header {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+  .page-header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+
+/* Text Colors */
+.orange {
+  color: #f26522; /* soft orange (not too bright) */
+}
+
+.navy {
+  color: #0b2c5f;
+}
+
+
 /* HEADER */
 .faq-header {
   background: #ffff;
@@ -99,13 +124,22 @@
   font-size: 12px;
 }
 
-/* ANSWER */
+/* Answer box style */
 .answer {
-  padding: 15px;
-  background: #ffffff;
-  border-top: 1px solid #ddd;
-  border-radius: 0 0 10px 10px;
+  padding: 15px 20px;
+  margin: 5px 0 10px 0;
+  background-color: #f5f7fa;
+  border-left: 4px solid #f3efe6;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: orange;
 }
+
 
 /* QUERY */
 .query-section {
@@ -143,29 +177,6 @@
   }
 
 
-
-
-/*HEADING SECTION */
-
-.page-header {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-  .page-header h1 {
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
-
-/* Text Colors */
-.orange {
-  color: #f26522; /* soft orange (not too bright) */
-}
-
-.navy {
-  color: #0b2c5f;
-}
 
 
 
@@ -315,16 +326,3 @@
 
 
 
-/* Answer box style */
-.answer {
-  padding: 15px 20px;
-  margin: 5px 0 10px 0; /* spacing below question */
-  background-color: #f5f7fa; /* light bluish-gray for contrast */
-  border-left: 4px solid #f3efe6; /* vertical accent line */
-  border-radius: 8px;
-  font-size: 14px;
-  color: #333;
-  line-height: 1.6;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-  transition: all 0.3s ease;
-}

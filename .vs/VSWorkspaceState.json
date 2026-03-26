@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\factor-auth",
-    "\\src\\app\\login",
-    "\\src\\app\\login-email",
-    "\\src\\app\\login-otp",
+    "\\src\\app\\changepassword2",
+    "\\src\\app\\faq",
+    "\\src\\app\\forgot-password2",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar",
-    "\\src\\app\\view-nominee"
+    "\\src\\assets",
+    "\\src\\assets\\favicon_io"
   ],
-  "SelectedNode": "\\src\\styles.css",
+  "SelectedNode": "\\src\\app\\changepassword2\\changepassword2.ts",
   "PreviewInSolutionExplorer": false
 }

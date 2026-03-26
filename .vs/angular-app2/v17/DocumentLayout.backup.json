@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\angular\\angular-app2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login-otp\\login-otp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\faq\\faq.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\faq\\faq.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\investment-page\\investment-page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\investment-page\\investment-page.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\faq\\faq.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\faq\\faq.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,39 +27,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "login-otp.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.html",
-              "RelativeDocumentMoniker": "src\\app\\login-otp\\login-otp.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.html",
-              "RelativeToolTip": "src\\app\\login-otp\\login-otp.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-24T11:35:54.437Z",
+              "Title": "faq.css",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\faq\\faq.css",
+              "RelativeDocumentMoniker": "src\\app\\faq\\faq.css",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\faq\\faq.css",
+              "RelativeToolTip": "src\\app\\faq\\faq.css",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAIsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-03-25T12:47:47.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "investment-page.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.html",
-              "RelativeDocumentMoniker": "src\\app\\investment-page\\investment-page.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.html",
-              "RelativeToolTip": "src\\app\\investment-page\\investment-page.html",
-              "ViewState": "AgIAABcBAAAAAAAAAAAAADEBAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-24T10:30:39.226Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "investment-page.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.css",
-              "RelativeDocumentMoniker": "src\\app\\investment-page\\investment-page.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.css",
-              "RelativeToolTip": "src\\app\\investment-page\\investment-page.css",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAtwH0AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-24T10:30:02.896Z"
+              "Title": "faq.html",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\faq\\faq.html",
+              "RelativeDocumentMoniker": "src\\app\\faq\\faq.html",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\faq\\faq.html",
+              "RelativeToolTip": "src\\app\\faq\\faq.html",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-03-25T12:47:47.137Z",
+              "EditorCaption": ""
             }
           ]
         }
