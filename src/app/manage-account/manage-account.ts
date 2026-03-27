@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
-import { AccountDetails } from '../models/account-details.model';
+
 import { AuthService } from '../services/auth';
 
 @Component({
@@ -16,12 +16,8 @@ import { AuthService } from '../services/auth';
 export class ManageAccount implements OnInit {
 
   activeTab: string = 'email';
-  account?: AccountDetails;
-  isLoading: boolean = true;
-
-
-
-  private apiUrl: string = 'http://localhost:5048/api/AccountDetails';
+  account: any = {};
+  isLoading: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -39,25 +35,5 @@ export class ManageAccount implements OnInit {
     }
 
     const clientId = Number(userId);
-    this.loadAccount(clientId);
-
-
   }
-
-  loadAccount(clientId: number) {
-    this.isLoading = true;
-
-    this.http.get<AccountDetails>(`${this.apiUrl}/account/${clientId}`).subscribe({
-      next: (data) => {
-        this.account = data;
-        this.isLoading = false;
-        this.cdr.detectChanges();
-      },
-      error: (err) => {
-        console.error('Error fetching account:', err);
-        this.isLoading = false;
-      }
-    });
-  }
-
 }

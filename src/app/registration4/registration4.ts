@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import flatpickr from 'flatpickr';
+import Swal from 'sweetalert2';
 import { RegistrationDataService } from '../services/ client-registration.service';
 
 @Component({
@@ -416,9 +417,16 @@ export class Registration4 {
           this.http.post('http://localhost:5048/api/auth/store', finalData1)
             .subscribe({
               next: () => {
-                alert('Registration successful!');
-                this.registrationService.clearData();
-                this.router.navigate(['/login']);
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success!',
+                  text: 'Registration successful!',
+                  confirmButtonText: 'OK'
+                }).then(() => {
+                  this.registrationService.clearData();
+                  this.router.navigate(['/login']);
+                });
+              
               },
               error: err => {
                 console.error("Auth Store Error:", err);
@@ -440,7 +448,12 @@ export class Registration4 {
             console.error("ANGULAR ERROR MESSAGE:", err.message);
           }
 
-          alert("Registration failed. Check console.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Registration failed. Check console.',
+            confirmButtonText: 'OK'
+          });
         }
       });
   }

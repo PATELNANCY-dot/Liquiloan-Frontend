@@ -28,7 +28,7 @@
 
         <span class="toll">
           <i class="bi bi-clock-history"></i>
-          Last Login: {{ lastLogin | date:'dd-MM-yyyy HH:mm' }}
+          Last Login: {{ lastLogin ? (lastLogin | date:'dd-MM-yyyy HH:mm') : '-' }}
         </span>
 
         <span class="divider">|</span>

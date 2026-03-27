@@ -79,10 +79,10 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/store`, data);
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, {
-      Username: username,
-      Password_1: password
+      email: email,
+      password: password
     });
   }
 

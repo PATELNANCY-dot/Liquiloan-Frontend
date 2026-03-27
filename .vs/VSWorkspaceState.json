@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\changepassword2",
-    "\\src\\app\\faq",
-    "\\src\\app\\forgot-password2",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\nav-bar",
-    "\\src\\assets",
-    "\\src\\assets\\favicon_io"
+    "\\src\\app\\change-mobile",
+    "\\src\\app\\change-nominee",
+    "\\src\\app\\footer",
+    "\\src\\app\\login-otp",
+    "\\src\\app\\manage-account",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\changepassword2\\changepassword2.ts",
+  "SelectedNode": "\\src\\app\\app.routes.ts",
   "PreviewInSolutionExplorer": false
 }
