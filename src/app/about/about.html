@@ -1,0 +1,88 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container">
+    <!-- fixed-width container -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="bi bi-lightning-charge-fill logo-icon"></i>
+      <span class="logo-text">Liquiloans</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="toggleNav()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [ngClass]="{'show': !isNavCollapsed}">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="about-page">
+
+  <section class="about-section py-5">
+    <div class="container cont">
+      <h2 class="section-title text-center mb-4">About Liquiloans</h2>
+
+      <p class="about-text">
+        Liquiloans is a technology-driven Indian fintech platform transforming the way individuals lend and borrow through Peer-to-Peer lending.
+        Our platform connects creditworthy borrowers with lenders seeking better, inflation-adjusted returns — all through a secure, fully digital, and transparent ecosystem.
+      </p>
+
+      <p class="about-text">
+        By leveraging advanced credit assessment models, data analytics, and risk-based borrower profiling, Liquiloans ensures investments are intelligently diversified to reduce risk and enhance stability.
+      </p>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+          <ul class="about-list">
+            <li><i class="bi bi-check-circle-fill"></i> Transparent Lending Opportunities</li>
+            <li><i class="bi bi-check-circle-fill"></i> Automated Risk Assessment & Credit Grading</li>
+            <li><i class="bi bi-check-circle-fill"></i> Paperless Onboarding & KYC</li>
+            <li><i class="bi bi-check-circle-fill"></i> Diversified Lending Portfolios</li>
+            <li><i class="bi bi-check-circle-fill"></i> Attractive Returns vs Traditional Lending</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mission-text mt-3">
+        Our mission is to democratize credit access while empowering investors with smarter, data-backed investment solutions.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-section py-5">
+    <div class="container">
+
+
+      <p class="about-text text-center">
+        Liquiloans is transforming peer-to-peer lending in India — smarter, safer, and more rewarding.
+      </p>
+
+      <div class="row text-center mt-4 mb-5">
+        <div class="col-md-4">
+          <h3 class="highlight-number">₹50 Cr+</h3>
+          <p>Lent through our platform</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="highlight-number">2000+</h3>
+          <p>Investors empowered</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="highlight-number">99%</h3>
+          <p>On-time repayments</p>
+        </div>
+      </div>
+
+
+      <p class="mission-text text-center mt-3">
+        Our mission is to democratize credit access while empowering investors with smarter, data-backed investment solutions.
+      </p>
+    </div>
+  </section>
+</div>

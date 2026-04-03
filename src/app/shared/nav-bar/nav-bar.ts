@@ -88,7 +88,7 @@ export class NavBar {
     const userId = this.authService.getUserId();
 
     if (!userId) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
       return;
     }
 
@@ -102,7 +102,7 @@ export class NavBar {
 
         console.log("Logout saved in database");
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       },
 
       error: (err) => {
@@ -110,7 +110,7 @@ export class NavBar {
 
         // still clear data
         this.authService.clearUserId();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       }
     });
 

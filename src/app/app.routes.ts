@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { Home } from './home/home';
+import { About } from './about/about'
 import { Login } from './login/login';
 import { LoginOtp } from './login-otp/login-otp';
 import { Dashboard } from './dashboard/dashboard';
@@ -27,9 +29,12 @@ import { ChangeMobile } from './change-mobile/change-mobile';
 import { Faq } from './faq/faq';
 import { Download } from './download/download';
 
+
 export const routes: Routes = [
 
-  { path: '', component: Login },
+  { path: '', component: Home },
+  { path: 'home', component: Home },
+  { path: 'about', component: About },
   { path: 'login', component: Login },
   { path: 'login-otp', component: LoginOtp },
  

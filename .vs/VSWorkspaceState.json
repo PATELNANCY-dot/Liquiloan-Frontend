@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\change-mobile",
-    "\\src\\app\\change-nominee",
-    "\\src\\app\\footer",
-    "\\src\\app\\login-otp",
-    "\\src\\app\\manage-account",
-    "\\src\\app\\services"
+    "\\src\\app\\about",
+    "\\src\\app\\factor-auth",
+    "\\src\\app\\home",
+    "\\src\\app\\investment-page",
+    "\\src\\app\\investor-details-page",
+    "\\src\\app\\login",
+    "\\src\\app\\login-otp"
   ],
-  "SelectedNode": "\\src\\app\\app.routes.ts",
+  "SelectedNode": "\\src\\app\\login-otp\\login-otp.ts",
   "PreviewInSolutionExplorer": false
 }

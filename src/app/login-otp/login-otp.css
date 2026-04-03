@@ -200,3 +200,30 @@
   }
 
 
+
+.box.left {
+  width: 50%;
+  background: linear-gradient(135deg, #1e5fa8, #1fa2d6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  position: relative; /* important for absolute positioning of arrow */
+}
+
+.arrow-top-left {
+  position: absolute;
+  top: 15px; /* distance from top */
+  left: 15px; /* distance from left */
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+  .arrow-top-left:hover {
+    transform: translateX(-5px);
+    transition: transform 0.3s;
+  }

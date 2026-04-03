@@ -108,7 +108,7 @@ export class LoginOtp {
           });
 
           setTimeout(() => {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/factor-auth']);
           }, 1500);
 
         } else {

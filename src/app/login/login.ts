@@ -78,32 +78,26 @@ export class Login {
   }
 
 
-  sendOtp() {
+  sendOtp(event: Event) {
+    event.preventDefault(); // ✅ prevent default navigation
 
     if (!this.email) {
       Swal.fire('Error', 'Enter email', 'warning');
       return;
     }
-    this.loaderService.show();
-    this.http.post<any>('http://localhost:5048/api/Otp/send-otp',
-      { email: this.email })
-      .subscribe({
 
+    this.loaderService.show();
+    this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email: this.email })
+      .subscribe({
         next: () => {
           this.loaderService.hide();
-          Swal.fire({
-            icon: 'success',
-            title: 'OTP Sent'
-          });
+          Swal.fire({ icon: 'success', title: 'OTP Sent' });
 
           this.router.navigate(['/login-otp'], {
             queryParams: { email: this.email }
           });
-
         }
-
       });
-
   }
 
 }
