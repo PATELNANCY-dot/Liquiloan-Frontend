@@ -359,3 +359,17 @@ section {
   .profile-link:hover {
     text-decoration: underline;
   }
+
+
+.nav-About {
+  color: #ff7a00 !important;
+  font-weight: 900;
+  background: rgba(255, 122, 0, 0.1);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.About {
+  color: #ff7a00 !important;
+  text-decoration: none;
+}

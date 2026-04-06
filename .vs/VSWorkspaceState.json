@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\about",
-    "\\src\\app\\factor-auth",
     "\\src\\app\\home",
     "\\src\\app\\investment-page",
     "\\src\\app\\investor-details-page",
     "\\src\\app\\login",
-    "\\src\\app\\login-otp"
+    "\\src\\app\\login-otp",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\login-otp\\login-otp.ts",
+  "SelectedNode": "\\src\\app\\footer",
   "PreviewInSolutionExplorer": false
 }
