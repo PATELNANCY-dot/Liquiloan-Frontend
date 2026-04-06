@@ -1,44 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\angular\\angular-app2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login-otp\\login-otp.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login-otp\\login-otp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login-otp\\login-otp.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\factor-auth\\factor-auth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login\\login.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login\\login.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\factor-auth\\factor-auth.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\factor-auth\\factor-auth.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\login\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\login\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -46,128 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:14:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "login-otp.ts",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.ts",
-              "RelativeDocumentMoniker": "src\\app\\login-otp\\login-otp.ts",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.ts",
-              "RelativeToolTip": "src\\app\\login-otp\\login-otp.ts",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAgwG4AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-03T12:39:28.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "factor-auth.ts",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.ts",
-              "RelativeDocumentMoniker": "src\\app\\factor-auth\\factor-auth.ts",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.ts",
-              "RelativeToolTip": "src\\app\\factor-auth\\factor-auth.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-03T12:38:55.358Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "factor-auth.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.html",
-              "RelativeDocumentMoniker": "src\\app\\factor-auth\\factor-auth.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.html",
-              "RelativeToolTip": "src\\app\\factor-auth\\factor-auth.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-03T12:38:04.252Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "factor-auth.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.css",
-              "RelativeDocumentMoniker": "src\\app\\factor-auth\\factor-auth.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\factor-auth\\factor-auth.css",
-              "RelativeToolTip": "src\\app\\factor-auth\\factor-auth.css",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAIwLEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-04-03T12:37:56.908Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "login-otp.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.css",
-              "RelativeDocumentMoniker": "src\\app\\login-otp\\login-otp.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.css",
-              "RelativeToolTip": "src\\app\\login-otp\\login-otp.css",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAIwMoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-04-03T12:29:06.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "login-otp.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.html",
-              "RelativeDocumentMoniker": "src\\app\\login-otp\\login-otp.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login-otp\\login-otp.html",
-              "RelativeToolTip": "src\\app\\login-otp\\login-otp.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-03T12:28:46.514Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "login.ts",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login\\login.ts",
-              "RelativeDocumentMoniker": "src\\app\\login\\login.ts",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login\\login.ts",
-              "RelativeToolTip": "src\\app\\login\\login.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-04-03T12:23:15.63Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "login.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login\\login.css",
-              "RelativeDocumentMoniker": "src\\app\\login\\login.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login\\login.css",
-              "RelativeToolTip": "src\\app\\login\\login.css",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAIwI4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-04-03T12:12:26.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "login.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\login\\login.html",
-              "RelativeDocumentMoniker": "src\\app\\login\\login.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\login\\login.html",
-              "RelativeToolTip": "src\\app\\login\\login.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-03T12:10:25.725Z",
-              "EditorCaption": ""
             }
           ]
         }

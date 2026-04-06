@@ -16,6 +16,7 @@ import { Location } from '@angular/common';
 export class AddBank {
 
   bank: any = {
+    clientId: 0,
     bankName: '',
     accountNumber: '',
     branchName: '',
@@ -43,8 +44,10 @@ export class AddBank {
     this.bank.clientId = Number(userId);
   }
 
-
   saveBank() {
+
+    console.log("Sending Bank Data:", this.bank);
+
     this.bankService.addBank(this.bank).subscribe({
       next: () => {
         Swal.fire({
@@ -55,7 +58,10 @@ export class AddBank {
           this.router.navigate(['/manage-bank']);
         });
       },
-      error: err => console.error(err)
+      error: err => {
+        console.error("API ERROR:", err);
+        console.log("Server Response:", err.error);
+      }
     });
   }
 
