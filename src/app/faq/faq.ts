@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth';
 import { FaqService } from '../services/faq.service';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-faq',
@@ -43,8 +44,7 @@ export class Faq implements OnInit {
         ...f,
         open: false
       }));
-
-      //  GET UNIQUE CATEGORIES
+ 
       this.categories = ['All', ...new Set(this.faqs.map(f => f.category))];
 
       this.filteredFaqs = this.faqs;
@@ -81,14 +81,14 @@ export class Faq implements OnInit {
 
   submitQuery() {
     if (!this.queryText) {
-      alert("Enter query");
+      Swal.fire('Error', 'Enter query', 'error');
       return;
     }
 
     const clientId = this.authService.getUserId();
 
     if (!clientId) {
-      alert("User not logged in");
+      Swal.fire('Error', 'User not logged in', 'error');
       return;
     }
 
@@ -103,12 +103,14 @@ export class Faq implements OnInit {
       next: () => {
         this.showQuery = false;
         this.cdr.detectChanges(); 
-        alert("Query submitted");
+      
+        Swal.fire('Query Sent', 'Query submitted ', 'success');
         this.queryText = '';
       },
       error: (err) => {
         console.error("API ERROR:", err);
-        alert(err.error || "Failed to submit query");
+
+        Swal.fire('Error', 'Failed to submit query', 'error');
       }
     });
   }

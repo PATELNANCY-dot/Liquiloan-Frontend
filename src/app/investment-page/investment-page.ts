@@ -158,7 +158,7 @@ export class InvestmentPage implements OnInit {
   // Navigation
   // -----------------------------
   goTo() {
-    this.router.navigate(['/investor-page']);
+    this.router.navigate(['/schemes']);
   }
   goPay() {
 

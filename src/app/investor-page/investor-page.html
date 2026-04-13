@@ -107,8 +107,8 @@
 
 
           <div class="form-col">
-            <label>Status:</label>
-            <p> <b> {{ liquiloan.activationStatus }} </b> </p>
+            <label>Status:  <b> {{ liquiloan.activationStatus }} </b></label> 
+
           </div>
 
           <div class="form-col">
@@ -269,7 +269,7 @@
             <tr *ngFor="let n of nomineesList">
               <td>{{ n.nomineeName }}</td>
               <td>{{ n.nomineeDob | date:'dd/MM/yyyy' }}</td>
-              <td></td>
+              <td>{{n.nomineeAddress}}</td>
               <td>{{ n.nomineeRelation }}</td>
               <td>
 

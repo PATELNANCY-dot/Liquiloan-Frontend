@@ -165,7 +165,7 @@ export class InvestorPage implements OnInit {
   }
   // ---------------- Actions ----------------
   openModal() {
-    this.router.navigate(['/investment-page']);
+    this.router.navigate(['/schemes']);
   }
 
   createAccount() {

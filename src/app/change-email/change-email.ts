@@ -65,11 +65,11 @@ attempts = 0;
 
     const cached = this.registrationData.getData();
 
-    //  ONLY use cache if it matches logged-in user
+
     if (cached && cached.clientId === clientId) {
       this.account = cached;
     } else {
-      this.loadAccount(clientId); //  fetch fresh data
+      this.loadAccount(clientId); 
     }
 
     if (userId) {
@@ -89,7 +89,7 @@ attempts = 0;
         this.account = data;
         this.registrationData.setData(data);
         this.loaderService.hide();
-        this.cdr.detectChanges(); //  FORCE UI UPDATE
+        this.cdr.detectChanges(); 
       },
       error: () => {
         this.loaderService.hide();
@@ -98,9 +98,7 @@ attempts = 0;
     });
   }
 
-  // =====================
-  // SEND OTP (like registration)
-  // =====================
+
   sendOtp() {
     const email = this.changeEmailForm.get('newEmail')?.value;
 
@@ -111,7 +109,7 @@ attempts = 0;
 
     if (this.lastEmailSent === email) return;
 
-    this.loaderService.show(); // ✅ moved here
+    this.loaderService.show(); 
 
     this.lastEmailSent = email;
 
@@ -129,19 +127,17 @@ attempts = 0;
     });
   }
 
-  // =====================
-  // VERIFY OTP (like registration)
-  // =====================
+
   verifyEmailOtp() {
     const email = this.changeEmailForm.get('newEmail')?.value;
     const otp = this.changeEmailForm.get('emailOtp')?.value;
 
     if (!otp || otp.length !== 6) {
       Swal.fire('Error', 'Enter valid 6-digit OTP', 'error');
-      return; // ✅ no loader before this
+      return;
     }
 
-    this.loaderService.show(); // ✅ moved below validation
+    this.loaderService.show();
 
     this.http.post<any>('http://localhost:5048/api/Otp/verify-otp', { email, otp }).subscribe({
       next: () => {
@@ -156,9 +152,7 @@ attempts = 0;
     });
   }
 
-  // =====================
-  // UPDATE EMAIL
-  // =====================
+
   updateEmail() {
     if (!this.otpVerified) {
       Swal.fire('Error', 'Please verify OTP before updating email', 'error');
@@ -184,9 +178,7 @@ attempts = 0;
     });
   }
 
-  // =====================
-  // EMAIL BLUR TO SEND OTP automatically
-  // =====================
+
   onEmailBlur() {
     const emailControl = this.changeEmailForm.get('newEmail');
     const email = emailControl?.value;

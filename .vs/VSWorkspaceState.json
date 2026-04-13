@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\add-bank",
+    "\\src\\app\\change-email",
+    "\\src\\app\\faq",
     "\\src\\app\\investment-page",
-    "\\src\\app\\investor-details-page",
-    "\\src\\app\\login",
-    "\\src\\app\\login-otp",
+    "\\src\\app\\investor-page",
+    "\\src\\app\\schemes",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\add-bank\\add-bank.ts",
+  "SelectedNode": "\\src\\app\\change-email\\change-email.ts",
   "PreviewInSolutionExplorer": false
 }

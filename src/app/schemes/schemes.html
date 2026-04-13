@@ -1,0 +1,136 @@
+<!-- Custom Alert -->
+<div *ngIf="showAlert" class="custom-alert-overlay">
+  <div class="custom-alert-box" [ngClass]="alertType">
+    <p>{{ alertMessage }}</p>
+    <button class="btn-close-alert" (click)="showAlert = false">OK</button>
+  </div>
+</div>
+
+<div class="flex-grow-1">
+
+  <!-- Heading -->
+  <div class="page-header text-center">
+    <h1>
+      <span class="orange">Liquiloan</span>
+      <span class="navy">Details</span>
+    </h1>
+  </div>
+
+
+
+  <!-- Investor Info -->
+  <div class="investor-info">
+    <div class="info-item">
+      <span class="label">Client Name</span>
+      <span class="value">
+        <i class="bi bi-person"></i> {{ account?.name }}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="label">Investor ID</span>
+      <span class="value">{{ account?.clientId }}</span>
+    </div>
+  </div>
+
+
+
+  <!-- ===================== -->
+  <!-- SCHEMES SECTION -->
+  <!-- ===================== -->
+
+  <div class="const text-left">
+    <div class="scheme-section">
+
+      <!-- EMPTY STATE -->
+      <div *ngIf="schemes && schemes.length == 0" class="text-center empty-schemes">
+        <img src="assets/no-data.svg" style="width:120px;opacity:0.6;margin-bottom:10px">
+        <p>Currently, there are no available schemes for investment.</p>
+      </div>
+
+      <!-- SCHEME LIST -->
+      <div *ngIf="schemes && schemes.length > 0" class="scheme-container">
+
+        <div *ngFor="let s of schemes"
+             class="scheme-card"
+             [class.selected]="selectedScheme?.schemeId === s.schemeId"
+             (click)="selectScheme(s)">
+
+          <div class="scheme-left">
+            <h4>{{s.schemeName}}</h4>
+            <p class="scheme-desc">{{s.description}}</p>
+          </div>
+
+          <div class="scheme-details">
+
+            <div>
+              <span>Return</span>
+              <strong>{{s.interestRate}}%</strong>
+            </div>
+
+            <div>
+              <span>Tenure</span>
+              <strong>{{s.tenureMonths}} Months</strong>
+            </div>
+
+            <div>
+              <span>Min Invest</span>
+              <strong>₹{{s.minInvestment}}</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    </div>
+
+  <div class="loan-heading-section2 mb-5">
+
+    <div class="action-buttons right-buttons">
+
+      <button (click)="goback()" class="btn-back">
+        <b>← Back</b>
+      </button>
+
+      <button class="btn-invest"
+              [disabled]="!selectedScheme"
+              (click)="goTo()">
+        <b>Next</b>
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+    <div class="const text-left">
+
+      <!-- HOW TO INVEST -->
+
+      <div class="how-section">
+
+        <h5>How To Invest</h5>
+
+        <p>
+          The minimum amount for 1st time investment is Rs.10000 and in multiples of Rs.1000<br>
+          Minimum amount for additional investment is Rs.5000 and in multiples of Rs.1000<br><br>
+
+          <i class="bi bi-check-circle-fill"></i> To start investing, Click on Invest Link against the investor.<br>
+          <i class="bi bi-check-circle-fill"></i> Select the Payout Option.<br>
+          <i class="bi bi-check-circle-fill"></i> Choose the plan - Lock-in or Without Lock-in.<br>
+          <i class="bi bi-check-circle-fill"></i> Choose the Minimum Holding period.<br>
+          <i class="bi bi-check-circle-fill"></i> Enter the amount and Click Invest.<br>
+          <i class="bi bi-check-circle-fill"></i> You will be redirected to payment gateway.<br>
+          <i class="bi bi-check-circle-fill"></i> Complete payment using Net Banking / UPI.<br>
+          <i class="bi bi-check-circle-fill"></i> Amount reflects in portfolio within 24 business hours.<br>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>

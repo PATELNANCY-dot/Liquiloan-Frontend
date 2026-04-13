@@ -26,6 +26,7 @@ import { ManageBank } from './manage-bank/manage-bank';
 import { AddBank } from './add-bank/add-bank';
 import { ChangeEmail } from './change-email/change-email';
 import { ChangeMobile } from './change-mobile/change-mobile';
+import { Schemes } from './schemes/schemes'
 import { Faq } from './faq/faq';
 import { Download } from './download/download';
 
@@ -67,6 +68,7 @@ export const routes: Routes = [
       { path: 'add-bank', component: AddBank },
       { path: 'change-email', component: ChangeEmail },
       { path: 'change-mobile', component: ChangeMobile },
+      { path: 'schemes', component: Schemes },
       { path: 'faq', component: Faq },
       { path: 'download', component: Download },
       {
