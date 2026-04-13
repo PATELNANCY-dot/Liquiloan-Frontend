@@ -1,5 +1,3 @@
-
-
 <div>
 
   <div class="page-container-vertical">
@@ -36,22 +34,25 @@
       <div *ngIf="!isLoading && account">
 
         <!-- email INFO -->
-        <div *ngIf="activeTab === 'email'" class="info-card">
-          <h6><i class="bi bi-envelope"></i> CHANGE OF EMAIL ID</h6>
+        <div *ngIf="activeTab === 'email'" >
+        
+          <div class="info-card">
 
-          <p class="info-text">
-            Change email id on Liquiloan – Online process
-          </p>
+            <h6><i class="bi bi-envelope"></i> CHANGE OF EMAIL ID</h6>
+            <p class="info-text">
+              Change email id on Liquiloan – Online process
+            </p>
 
-          <ul>
-            <li>Enter your new email id</li>
-            <li>Enter OTP received on new email id</li>
-            <li>On entering OTP, new email id will be updated in Liquiloan</li>
-          </ul>
+            <ul>
+              <li>Enter your new email id</li>
+              <li>Enter OTP received on new email id</li>
+              <li>On entering OTP, new email id will be updated in Liquiloan</li>
+            </ul>
 
-          <div class="note">
-            <i class="bi bi-info-circle"></i>
-            <strong>Note:</strong> Make sure your new email id is active and accessible to receive OTP.
+            <div class="note">
+              <i class="bi bi-info-circle"></i>
+              <strong>Note:</strong> Make sure your new email id is active and accessible to receive OTP.
+            </div>
           </div>
 
           <div class="form-actions">
@@ -66,7 +67,9 @@
 
 
         <!-- mobile INFO -->
-        <div *ngIf="activeTab === 'mobile'" class="info-card">
+        <div *ngIf="activeTab === 'mobile'" >
+          <div class="info-card">
+
           <h6><i class="bi bi-phone"></i> CHANGE OF MOBILE NUMBER</h6>
 
           <p class="info-text">
@@ -83,6 +86,7 @@
             <i class="bi bi-info-circle"></i>
             <strong>Note:</strong> Make sure your new mobile number is active to receive OTP.
           </div>
+        </div>
 
           <div class="form-actions">
             <button class="next-btn" type="button" routerLink="/change-mobile">
@@ -157,14 +161,8 @@
           </div>
         </div>
 
-
-
-
-
       </div>
     </div>
   </div>
-
-
 
 </div>

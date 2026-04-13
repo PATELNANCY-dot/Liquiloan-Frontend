@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\change-email",
-    "\\src\\app\\faq",
+    "\\src\\app\\about",
     "\\src\\app\\investment-page",
     "\\src\\app\\investor-page",
+    "\\src\\app\\manage-account",
     "\\src\\app\\schemes",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\change-email\\change-email.ts",
   "PreviewInSolutionExplorer": false
 }
