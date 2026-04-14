@@ -46,7 +46,12 @@ export class Login {
     this.authService.login(this.email, this.password).subscribe({
       next: (res: any) => {
 
-        this.authService.setUserId(res.userId);
+        // STORE BOTH IDS
+        this.authService.setUserId(res.clientId);
+
+        if (res.loginId) {
+          this.authService.setLoginId(res.loginId);
+        }
 
         Swal.fire({
           icon: 'success',

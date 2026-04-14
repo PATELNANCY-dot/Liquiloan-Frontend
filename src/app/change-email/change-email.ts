@@ -25,9 +25,6 @@ export class ChangeEmail implements OnInit {
   lastEmailSent = '';
   emailForm!: FormGroup;
 
-lastLogin = '';
-lastLogout = '';
-attempts = 0;
 
   private apiUrl = 'http://localhost:5048/api/ClientRegistrations';
 
@@ -72,13 +69,7 @@ attempts = 0;
       this.loadAccount(clientId); 
     }
 
-    if (userId) {
-      this.authService.getLoginInfo(userId).subscribe((res: any) => {
-        this.lastLogin = res.lastLogin;
-        this.lastLogout = res.lastLogout;
-        this.attempts = res.loginAttempts;
-      });
-    }
+ 
 
   }
 

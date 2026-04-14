@@ -104,7 +104,7 @@ export class Faq implements OnInit {
         this.showQuery = false;
         this.cdr.detectChanges(); 
       
-        Swal.fire('Query Sent', 'Query submitted ', 'success');
+        Swal.fire( 'Query submitted ','', 'success');
         this.queryText = '';
       },
       error: (err) => {

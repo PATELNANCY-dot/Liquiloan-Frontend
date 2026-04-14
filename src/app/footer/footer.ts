@@ -22,16 +22,16 @@ export class Footer {
 
   ngOnInit(): void {
 
-    const userId = this.authService.getUserId();
+    const loginId = this.authService.getLoginId();   
 
-    if (userId) {
-      this.authService.getLoginInfo(userId).subscribe((res: any) => {
+    if (loginId) {
+      this.authService.getLoginInfo(loginId).subscribe((res: any) => {
 
         this.lastLogin = res.lastLogin ? new Date(res.lastLogin) : null;
         this.lastLogout = res.lastLogout ? new Date(res.lastLogout) : null;
         this.attempts = res.loginAttempts;
 
-        this.cdr.detectChanges();   // ⭐ Fix
+        this.cdr.detectChanges();
       });
     }
   }

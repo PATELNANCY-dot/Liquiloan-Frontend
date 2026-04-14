@@ -82,35 +82,26 @@ export class NavBar {
     this.accountDropdownOpen = false;
 
   }
-
   logout() {
 
-    const userId = this.authService.getUserId();
+    const loginId = this.authService.getLoginId();
 
-    if (!userId) {
-      this.router.navigate(['/home']);
-      return;
-    }
+    if (!loginId) return;
 
-    this.authService.logout(userId).subscribe({
+    this.authService.logout(loginId).subscribe({
       next: () => {
 
-        // clear stored data
+        // Clear session storage
         this.authService.clearUserId();
+        this.authService.clearLoginId();
         this.authService.clearFpEmail();
         this.authService.clearFpClientId();
-
-        console.log("Logout saved in database");
 
         this.router.navigate(['/home']);
       },
 
-      error: (err) => {
-        console.error("Logout API error:", err);
-
-        // still clear data
-        this.authService.clearUserId();
-        this.router.navigate(['/home']);
+      error: () => {
+        console.error("Logout failed");
       }
     });
 

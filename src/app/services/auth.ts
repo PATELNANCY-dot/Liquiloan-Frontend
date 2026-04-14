@@ -10,68 +10,94 @@ export class AuthService {
 
   private baseUrl = 'http://localhost:5048/api/auth';
 
+  // CLIENT ID (used for account related APIs)
   private _userId: string | null = null;
+
+  // LOGIN ID (used for login-info and logout)
+  private _loginId: string | null = null;
+
   private _fpEmail: string | null = null;
   private _fpClientId: string | null = null;
 
   constructor(private http: HttpClient) { }
 
-  // ================= LOGIN =================
+  // ================= CLIENT ID =================
 
   setUserId(id: string) {
     this._userId = id;
-    sessionStorage.setItem('userId', id); //  added
+    sessionStorage.setItem('clientId', id);
   }
 
   getUserId(): string | null {
     if (!this._userId) {
-      this._userId = sessionStorage.getItem('userId'); //  added
+      this._userId = sessionStorage.getItem('clientId');
     }
     return this._userId;
   }
 
   clearUserId() {
     this._userId = null;
-    sessionStorage.removeItem('userId'); //  added
+    sessionStorage.removeItem('clientId');
+  }
+
+  // ================= LOGIN ID =================
+
+  setLoginId(id: string) {
+    this._loginId = id;
+    sessionStorage.setItem('loginId', id);
+  }
+
+  getLoginId(): string | null {
+    if (!this._loginId) {
+      this._loginId = sessionStorage.getItem('loginId');
+    }
+    return this._loginId;
+  }
+
+  clearLoginId() {
+    this._loginId = null;
+    sessionStorage.removeItem('loginId');
   }
 
   // ================= FORGOT PASSWORD EMAIL =================
 
   setFpEmail(email: string) {
     this._fpEmail = email;
-    sessionStorage.setItem('fpEmail', email); //  added
+    sessionStorage.setItem('fpEmail', email);
   }
 
   getFpEmail(): string | null {
     if (!this._fpEmail) {
-      this._fpEmail = sessionStorage.getItem('fpEmail'); //  added
+      this._fpEmail = sessionStorage.getItem('fpEmail');
     }
     return this._fpEmail;
   }
 
   clearFpEmail() {
     this._fpEmail = null;
-    sessionStorage.removeItem('fpEmail'); //  added
+    sessionStorage.removeItem('fpEmail');
   }
 
   // ================= FORGOT PASSWORD CLIENT ID =================
 
   setFpClientId(id: string) {
     this._fpClientId = id;
-    sessionStorage.setItem('fpClientId', id); //  added
+    sessionStorage.setItem('fpClientId', id);
   }
 
   getFpClientId(): string | null {
     if (!this._fpClientId) {
-      this._fpClientId = sessionStorage.getItem('fpClientId'); //  added
+      this._fpClientId = sessionStorage.getItem('fpClientId');
     }
     return this._fpClientId;
   }
 
   clearFpClientId() {
     this._fpClientId = null;
-    sessionStorage.removeItem('fpClientId'); //  added
+    sessionStorage.removeItem('fpClientId');
   }
+
+
 
   // ================= API CALLS =================
 
@@ -86,11 +112,11 @@ export class AuthService {
     });
   }
 
-  getLoginInfo(userId: string) {
-    return this.http.get(`${this.baseUrl}/login-info/${userId}`);
+  getLoginInfo(loginId: string) {
+    return this.http.get(`${this.baseUrl}/login-info/${loginId}`);
   }
 
-  logout(userId: string) {
-    return this.http.post(`${this.baseUrl}/logout/${userId}`, {});
+  logout(loginId: string) {
+    return this.http.post(`${this.baseUrl}/logout/${loginId}`, {});
   }
 }

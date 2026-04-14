@@ -304,8 +304,6 @@ export class Registration4 {
     formData.append("MicrCode", existingData.micrCode || '');
 
 
-
-    //STATE AND CITY ID
     // State
     if (existingData.stateID !== undefined && existingData.stateID !== null) {
       formData.append("StateID", existingData.stateID.toString());

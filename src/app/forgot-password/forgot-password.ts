@@ -43,37 +43,74 @@ export class ForgotPassword {
 
     this.loaderService.show();
 
-    this.http.post<any>(`${this.apiUrl}/send-otp`, { email: this.email })
+    // STEP 1 → CHECK EMAIL
+    this.http.get<any>(`http://localhost:5048/api/Auth/check-email?email=${this.email}`)
       .subscribe({
+
         next: (res) => {
-          this.loaderService.hide();
 
-          // Save email for next step
-          this.authService.setFpEmail(this.email);
+          if (!res.emailExists) {
 
-          Swal.fire({
-            icon: 'success',
-            title: 'OTP Sent',
-            text: res.message || 'OTP sent successfully',
-            timer: 1500,
-            showConfirmButton: false
-          });
+            this.loaderService.hide();
 
-          setTimeout(() => {
-            this.router.navigate(['/forgot-password2']);
-          }, 1500);
+            Swal.fire({
+              icon: 'error',
+              title: 'Email Not Found',
+              text: 'This email is not registered'
+            });
+
+            return;
+          }
+
+          // STEP 2 → SEND OTP
+          this.http.post<any>(`${this.apiUrl}/send-otp`, { email: this.email })
+            .subscribe({
+
+              next: (otpRes) => {
+
+                this.loaderService.hide();
+
+                this.authService.setFpEmail(this.email);
+
+                Swal.fire({
+                  icon: 'success',
+                  title: 'OTP Sent',
+                  text: otpRes.message || 'OTP sent successfully',
+                  timer: 1500,
+                  showConfirmButton: false
+                });
+
+                setTimeout(() => {
+                  this.router.navigate(['/forgot-password2']);
+                }, 1500);
+              },
+
+              error: (err: HttpErrorResponse) => {
+
+                this.loaderService.hide();
+
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Failed',
+                  text: err.error || `Failed to send OTP (${err.status})`
+                });
+              }
+
+            });
+
         },
 
-        error: (err: HttpErrorResponse) => {
+        error: () => {
+
           this.loaderService.hide();
-          console.error('Send OTP error:', err);
 
           Swal.fire({
             icon: 'error',
-            title: 'Failed',
-            text: err.error || `Failed to send OTP (${err.status})`
+            title: 'Server Error',
+            text: 'Unable to verify email'
           });
         }
+
       });
   }
 }

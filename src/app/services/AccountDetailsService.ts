@@ -28,13 +28,13 @@ export interface AccountDetails {
   providedIn: 'root'
 })
 export class AccountDetailsService {
-  private apiUrl = 'https://localhost:5001/api/AccountDetails'; // Your .NET backend URL
+
+  private apiUrl = 'http://localhost:5048/api/ClientRegistrations';
 
   constructor(private http: HttpClient) { }
 
   getAccount(clientId: number): Observable<AccountDetails> {
     return this.http.get<AccountDetails>(`${this.apiUrl}/account/${clientId}`);
   }
-
 
 }

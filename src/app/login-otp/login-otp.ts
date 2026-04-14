@@ -27,13 +27,13 @@ export class LoginOtp {
     private route: ActivatedRoute
   ) { }
 
-
   ngOnInit() {
     this.email = this.route.snapshot.queryParamMap.get('email') || '';
   }
 
   // ================= SEND OTP =================
   sendOtp() {
+
     if (!this.email) {
       Swal.fire({
         icon: 'warning',
@@ -48,6 +48,7 @@ export class LoginOtp {
     this.http.post<any>('http://localhost:5048/api/Otp/send-otp', { email: this.email })
       .subscribe({
         next: () => {
+
           this.loaderService.hide();
 
           Swal.fire({
@@ -55,8 +56,10 @@ export class LoginOtp {
             title: 'OTP Sent',
             text: 'OTP sent to your email'
           });
+
         },
         error: (err) => {
+
           console.error(err);
           this.loaderService.hide();
 
@@ -65,6 +68,7 @@ export class LoginOtp {
             title: 'Failed',
             text: 'Failed to send OTP'
           });
+
         }
       });
   }
@@ -73,6 +77,7 @@ export class LoginOtp {
   verifyOtp() {
 
     const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
+
     this.enteredOtp = '';
     inputs.forEach(input => this.enteredOtp += input.value);
 
@@ -93,11 +98,18 @@ export class LoginOtp {
     }).subscribe({
 
       next: (res) => {
+
         this.loaderService.hide();
 
         if (res.clientId) {
 
+          // STORE CLIENT ID
           this.authService.setUserId(res.clientId.toString());
+
+          // STORE LOGIN ID IF AVAILABLE
+          if (res.loginId) {
+            this.authService.setLoginId(res.loginId.toString());
+          }
 
           Swal.fire({
             icon: 'success',
@@ -112,15 +124,18 @@ export class LoginOtp {
           }, 1500);
 
         } else {
+
           Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'OTP verified but user not found'
           });
+
         }
       },
 
       error: (err) => {
+
         console.error(err);
         this.loaderService.hide();
 
@@ -129,14 +144,17 @@ export class LoginOtp {
           title: 'Invalid OTP',
           text: err.error || 'OTP is incorrect or expired'
         });
+
       }
 
     });
   }
 
   // ================= OTP INPUT HANDLING =================
+
   moveNext(event: any) {
     const input = event.target;
+
     if (input.value && input.nextElementSibling) {
       input.nextElementSibling.focus();
     }
@@ -144,16 +162,22 @@ export class LoginOtp {
 
   moveBack(event: any) {
     const input = event.target;
+
     if (!input.value && input.previousElementSibling) {
       input.previousElementSibling.focus();
     }
   }
 
   collectOtp() {
+
     const inputs = document.querySelectorAll('.otp-input') as NodeListOf<HTMLInputElement>;
+
     this.enteredOtp = '';
+
     inputs.forEach(input => {
       this.enteredOtp += input.value;
     });
+
   }
+
 }

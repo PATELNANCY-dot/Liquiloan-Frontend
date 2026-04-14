@@ -1,10 +1,4 @@
-<!-- Custom Alert -->
-<div *ngIf="showAlert" class="custom-alert-overlay">
-  <div class="custom-alert-box" [ngClass]="alertType">
-    <p>{{ alertMessage }}</p>
-    <button class="btn-close-alert" (click)="showAlert = false">OK</button>
-  </div>
-</div>
+
 
 <div class="flex-grow-1">
 
@@ -36,8 +30,9 @@
 
 
 
-
     <div class="scheme-section">
+
+      <p class="plan-title">Select Your Plan</p>
 
       <!-- EMPTY STATE -->
       <div *ngIf="schemes && schemes.length == 0" class="text-center empty-schemes">
@@ -101,6 +96,8 @@
     </div>
 
   </div>
+
+
 
 
 

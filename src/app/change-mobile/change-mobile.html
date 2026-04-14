@@ -39,14 +39,14 @@
       <!-- New Mobile -->
       <div class="field">
         <label>New Mobile</label>
-        <input type="text" [(ngModel)]="newMobile" placeholder="Enter new mobile">
+        <input type="text" [(ngModel)]="newMobile" placeholder="Enter new mobile" (blur)="sendMobileOtp()">
       </div>
       <!-- OTP box -->
       <div class="otp-clean mt-2">
         <input type="text"
                placeholder="Enter Mobile OTP"
                [(ngModel)]="mobileOtp">
-        <span class="otp-link" (click)="sendMobileOtp()">Send OTP</span>
+        <!--<span class="otp-link" (click)="sendMobileOtp()">Send OTP</span>-->
         <span class="otp-link" (click)="verifyMobileOtp()">Verify</span>
         <span *ngIf="mobileOtpVerified" class="text-success ms-2">✔ Verified</span>
       </div>

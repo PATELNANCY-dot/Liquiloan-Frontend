@@ -36,7 +36,7 @@ export class ChangeMobile implements OnInit {
   mobileOtpVerified: boolean = false;
   errorMessage: string = '';
 
-  private apiUrl = 'http://localhost:5048/api/ClientRegistrations';
+  private apiUrl = 'http://localhost:5048/api/AccountDetails';
 
   // Firebase
   auth!: Auth;
