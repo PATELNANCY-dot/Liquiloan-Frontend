@@ -31,7 +31,7 @@
   }
 
     .social-icons a:hover {
-      background: #ff7a00;
+      background: white;
       color: white;
       transform: scale(1.1);
     }
@@ -73,3 +73,47 @@
 .classdiv i {
   color: #ff7a00;
 }
+
+
+
+
+.social-icons a {
+  font-size: 18px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #eef2f7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+  /* ICON INHERIT */
+  .social-icons a i {
+    color: inherit;
+  }
+
+  /* FACEBOOK */
+  .social-icons a.facebook {
+    color: #1877f2;
+  }
+
+  /* TWITTER / X */
+  .social-icons a.twitter {
+    color: #1da1f2;
+  }
+
+  /* LINKEDIN */
+  .social-icons a.linkedin {
+    color: #0a66c2;
+  }
+
+  /* YOUTUBE */
+  .social-icons a.youtube {
+    color: #ff0000;
+  }
+
+  /* INSTAGRAM */
+  .social-icons a.instagram {
+    color: #e1306c;
+  }
