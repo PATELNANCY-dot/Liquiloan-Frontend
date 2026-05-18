@@ -238,7 +238,7 @@ export class InvestmentPage implements OnInit {
       formData.append('Option1', this.selectedOptionId?.toString() || '');
       formData.append('Status', 'Pending');
 
-      // ✅ Append the file properly (matches backend)
+      //  Append the file properly (matches backend)
       if (this.selectedFile) {
         formData.append('PaymentDocPath', this.selectedFile, this.selectedFile.name);
       }

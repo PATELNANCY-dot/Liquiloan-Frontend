@@ -55,7 +55,7 @@ export class AddBank {
           title: 'Success',
           text: 'Bank Added Successfully'
         }).then(() => {
-          this.router.navigate(['/manage-bank']);
+          this.router.navigate(['/manage-account']);
         });
       },
       error: err => {

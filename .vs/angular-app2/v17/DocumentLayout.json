@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\angular\\angular-app2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\footer\\footer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\footer\\footer.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\add-bank\\add-bank.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\add-bank\\add-bank.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\footer\\footer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\footer\\footer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\investment-page\\investment-page.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\angular\\angular-app2\\src\\app\\add-bank\\add-bank.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\add-bank\\add-bank.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "footer.html",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\footer\\footer.html",
-              "RelativeDocumentMoniker": "src\\app\\footer\\footer.html",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\footer\\footer.html",
-              "RelativeToolTip": "src\\app\\footer\\footer.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "add-bank.html",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\add-bank\\add-bank.html",
+              "RelativeDocumentMoniker": "src\\app\\add-bank\\add-bank.html",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\add-bank\\add-bank.html",
+              "RelativeToolTip": "src\\app\\add-bank\\add-bank.html",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-14T09:26:16.079Z",
+              "WhenOpened": "2026-05-18T04:22:21.986Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "footer.css",
-              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\footer\\footer.css",
-              "RelativeDocumentMoniker": "src\\app\\footer\\footer.css",
-              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\footer\\footer.css",
-              "RelativeToolTip": "src\\app\\footer\\footer.css",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-04-14T09:26:15.177Z",
+              "DocumentIndex": 2,
+              "Title": "add-bank.ts",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\add-bank\\add-bank.ts",
+              "RelativeDocumentMoniker": "src\\app\\add-bank\\add-bank.ts",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\add-bank\\add-bank.ts",
+              "RelativeToolTip": "src\\app\\add-bank\\add-bank.ts",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwDoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-18T04:13:56.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "investment-page.ts",
+              "DocumentMoniker": "D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.ts",
+              "RelativeDocumentMoniker": "src\\app\\investment-page\\investment-page.ts",
+              "ToolTip": "D:\\angular\\angular-app2\\src\\app\\investment-page\\investment-page.ts",
+              "RelativeToolTip": "src\\app\\investment-page\\investment-page.ts",
+              "ViewState": "AgIAAAABAAAAAAAAAAAgwCEBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-05-15T05:34:56.203Z",
               "EditorCaption": ""
             }
           ]

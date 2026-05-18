@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\faq",
-    "\\src\\app\\footer",
-    "\\src\\app\\forgot-password",
-    "\\src\\app\\forgot-password2",
+    "\\src\\app\\add-bank",
     "\\src\\app\\home",
+    "\\src\\app\\investment-page",
     "\\src\\app\\login",
-    "\\src\\app\\login-otp"
+    "\\src\\app\\login-otp",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\nav-bar"
   ],
-  "SelectedNode": "\\src\\app\\footer\\footer.html",
+  "SelectedNode": "\\src\\app\\add-bank\\add-bank.html",
   "PreviewInSolutionExplorer": false
 }
