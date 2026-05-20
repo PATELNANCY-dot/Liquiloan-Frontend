@@ -146,12 +146,13 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 # 📊 Investor Dashboard & Features
 
 # ✅ Account Status
-
-## 🟢 Liquiloan Details Activated
-![Activated](./Screenshots/LiquiloanDetailsActivated.png)
-
 ## 🟡 Liquiloan Details Pending
 ![Pending](./Screenshots/LiquiloanDetailsPending.png)
+
+## LIQUILOAN CLIENT DETAILS
+![Activated](./Screenshots/LIQUILOANCLIENTDETAILS.png)
+## 🟢 Liquiloan Details Activated
+![Activated](./Screenshots/LiquiloanDetailsActivated.png)
 
 ## 💰 Investment Schemes
 ![Schemes](./Screenshots/schemes.png)
