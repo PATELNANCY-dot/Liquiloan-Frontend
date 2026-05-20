@@ -104,6 +104,8 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 
 ## 👤 Profile Page
 ![Profile Page](./Screenshots/Profile.png)
+## 🔒 Change Password
+![Change Password](./Screenshots/ChangePassword.png)
 
 ## ⚙️ Manage Account
 ![Manage Account](./Screenshots/ManageAccount.png)
@@ -114,8 +116,7 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 ## 📱 Change Mobile Number
 ![Change Mobile Number](./Screenshots/ChangeMobile.png)
 
-## 🔒 Change Password
-![Change Password](./Screenshots/ChangePassword.png)
+
 
 ---
 
