@@ -38,8 +38,8 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 ## 🎨 Frontend
 - Angular
 - TypeScript
-- HTML5
-- CSS3
+- HTML
+- CSS
 - Bootstrap
 
 ## ⚙️ Backend
@@ -102,7 +102,7 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 
 # 👤 Profile & Account Management
 
-## 👤 Profile Page
+## 👤 Profile 
 ![Profile Page](./Screenshots/Profile.png)
 ## 🔒 Change Password
 ![Change Password](./Screenshots/ChangePassword.png)
@@ -169,18 +169,7 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 
 ---
 
----
 
-# 🚀 Future Enhancements
-
-- 📈 Investment Analytics Dashboard
-- 💳 Online Payment Integration
-- 🔔 Real-Time Notifications
-- 📊 Portfolio Tracking
-- 🤖 AI-Based Investment Suggestions
-- 🌙 Dark Mode Support
-
----
 
 # 👩‍💻 Developed By
 
