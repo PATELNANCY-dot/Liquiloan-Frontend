@@ -59,6 +59,9 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 ## 🏠 Home Page (Before Login)
 ![Home Page](./Screenshots/Home.png)
 
+## ℹ️ About Us Page
+![About Us](./Screenshots/AboutUs.png)
+
 ## 🔐 Login Page
 ![Login Page](./Screenshots/Login.png)
 
@@ -141,7 +144,13 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 
 # 📊 Investor Dashboard & Features
 
+# ✅ Account Status
 
+## 🟢 Liquiloan Details Activated
+![Activated](./Screenshots/LiquiloanDetailsActivated.png)
+
+## 🟡 Liquiloan Details Pending
+![Pending](./Screenshots/LiquiloanDetailsPending.png)
 
 ## 💰 Investment Schemes
 ![Schemes](./Screenshots/schemes.png)
@@ -152,21 +161,11 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 ## ❓ FAQs Page
 ![FAQs Page](./Screenshots/FAQs.png)
 
-## ℹ️ About Us Page
-![About Us](./Screenshots/AboutUs.png)
 
 ## 🦶 Footer Section
 ![Footer](./Screenshots/Footer.png)
 
 ---
-
-# ✅ Account Status
-
-## 🟢 Liquiloan Details Activated
-![Activated](./Screenshots/LiquiloanDetailsActivated.png)
-
-## 🟡 Liquiloan Details Pending
-![Pending](./Screenshots/LiquiloanDetailsPending.png)
 
 ---
 
