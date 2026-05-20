@@ -65,8 +65,23 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 ## 📱 Login With OTP
 ![Login With OTP](./Screenshots/LoginWithOtp.png)
 
-## 📝 Registration Page
+##  Registration Pages
+
+## 📝 Individual-Registration
 ![Registration Page](./Screenshots/Individual-Registration.png)
+
+## 📄 Personal Details
+![Personal Details](./Screenshots/Individual-PersonalDetails.png)
+
+## 🏦 Individual Bank Details
+![Individual Bank Details](./Screenshots/Individual-BankDetails.png)
+
+## 👤 Nominee Details
+![Nominee Details](./Screenshots/Individual-NomineeDetails.png)
+
+## 👶 Nominee Details (Minor)
+![Nominee Minor Details](./Screenshots/Individual-NomineeDetails(ifnomineeminor).png)
+
 
 ## 🔑 Forgot Password
 ![Forgot Password](./Screenshots/ForgetPassword1.png)
@@ -109,18 +124,12 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 ## 👁️ View Bank Details
 ![View Bank Details](./Screenshots/viewBank.png)
 
-## 🏦 Individual Bank Details
-![Individual Bank Details](./Screenshots/Individual-BankDetails.png)
+
 
 ---
 
 # 👨‍👩‍👧 Nominee Management
 
-## 👤 Nominee Details
-![Nominee Details](./Screenshots/Individual-NomineeDetails.png)
-
-## 👶 Nominee Details (Minor)
-![Nominee Minor Details](./Screenshots/Individual-NomineeDetails(ifnomineeminor).png)
 
 ## ✏️ Update Nominee
 ![Update Nominee](./Screenshots/UpdateNominee.png)
@@ -132,8 +141,7 @@ This project focuses only on the **Investor Module** of the P2P lending system.
 
 # 📊 Investor Dashboard & Features
 
-## 📄 Personal Details
-![Personal Details](./Screenshots/Individual-PersonalDetails.png)
+
 
 ## 💰 Investment Schemes
 ![Schemes](./Screenshots/schemes.png)
