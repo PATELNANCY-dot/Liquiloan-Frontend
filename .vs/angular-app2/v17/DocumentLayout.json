@@ -51,8 +51,7 @@
               "RelativeToolTip": "src\\app\\add-bank\\add-bank.ts",
               "ViewState": "AgIAABwAAAAAAAAAAAAgwDoAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-05-18T04:13:56.571Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T04:13:56.571Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "src\\app\\investment-page\\investment-page.ts",
               "ViewState": "AgIAAAABAAAAAAAAAAAgwCEBAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-05-15T05:34:56.203Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-15T05:34:56.203Z"
             }
           ]
         }
